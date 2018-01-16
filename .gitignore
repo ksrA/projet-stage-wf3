@@ -1,4 +1,7 @@
 
+# Ignorer le dossier .idea creer par phpstorm
+.idea/
+
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/
