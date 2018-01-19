@@ -1,6 +1,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'en'
+    mailer_transport: smtp
+    mailer_auth_mode: login
+    mailer_host: smtp.gmail.com
+    mailer_encryption: tls
+    mailer_port: 587
+    mailer_user: helloworldwf3@gmail.com
+    mailer_password: webforce3
 
 services:
     # default configuration for services in *this* file
