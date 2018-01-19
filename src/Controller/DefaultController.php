@@ -17,6 +17,22 @@
     class DefaultController extends Controller
     {
         /**
+         * @Route("/test", name="test_page")
+         */
+        public function test()
+        {
+            return $this->render('test.html.twig');
+        }
+
+        /**
+         * @Route("/numericall-description", name="numericall")
+         */
+        public function numericall()
+        {
+            return $this->render('numericall-description.html.twig');
+        }
+
+        /**
          * @Route("/contact", name="contact_page")
          */
         public function contact(Request $request, \Swift_Mailer $mailer)
