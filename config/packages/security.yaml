@@ -1,0 +1,28 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        db_provider:
+            entity:
+                class: App\Entity\User
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            provider: db_provider
+            form_login:
+               login_path: login
+               check_path: login
+               default_target_path: /panel-admin
+               failure_path: /inscription
+               csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /logout
+                target: /inscription
+    access_control:
+        - { path: ^/panel-admin, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

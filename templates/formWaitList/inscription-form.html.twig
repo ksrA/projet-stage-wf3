@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% if formValid is defined %}
+        <div>DONE!</div>
+    {% else %}
+    {% form_theme formWaitList 'bootstrap_4_layout.html.twig' %}
+
+    {{ form(formWaitList) }}
+
+    {% if mailExist is defined %}
+        <span>L'adresse mail est déjà enregistré dans notre base de donnée</span>
+    {% endif %}
+    <p>Le lieu de réunion peut parfois être différent du lieu de formation.</p>
+    {% endif %}
+{% endblock %}
