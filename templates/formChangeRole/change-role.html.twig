@@ -1,0 +1,14 @@
+{% extends "base-backoffice.html.twig" %}
+
+{% block body %}
+    {% if change is defined %}
+<div>Rôle assigné : {{ role [0]}}<br>
+    Stylise moi stpppp!</div>
+{% elseif notchange is defined %}
+        {% form_theme formChangeRole 'bootstrap_4_layout.html.twig' %}
+        <p>Peut etre faire de l'ajax pour recupérer et afficher le role correspondant
+            a l'username select avant que le formulaire sois soumis</p>
+        {{ form(formChangeRole) }}
+{% endif %}
+
+{% endblock %}

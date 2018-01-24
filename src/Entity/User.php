@@ -2,6 +2,7 @@
 
     namespace App\Entity;
 
+    use Doctrine\Common\Collections\ArrayCollection;
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -34,13 +35,24 @@
     private $email;
 
     /**
+     * @ORM\Column(type="array")
+     */
+    private $roles;
+
+    /**
     * @ORM\Column(name="is_active", type="boolean")
     */
     private $isActive;
 
+    /**
+     * @ORM\Column(name="reset_hash", type="string")
+     */
+    private $resethash;
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->roles = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -93,6 +105,11 @@
         $this->isActive = $isActive;
     }
 
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
     public function getUsername()
     {
         return $this->username;
@@ -116,11 +133,26 @@
     }
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return $this->roles;
+    }
+
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
     }
 
     public function eraseCredentials()
     {
+    }
+
+    public function setResetHash($resethash)
+    {
+        $this->resethash = $resethash;
+    }
+
+    public function getResetHash()
+    {
+        return $this->resethash;
     }
 
     /** @see \Serializable::serialize() */

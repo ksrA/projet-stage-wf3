@@ -1,0 +1,13 @@
+{% extends "base-backoffice.html.twig" %}
+{% block body %}
+    {% if change is defined %}
+        <div>Un email de redéfinition de mdp vous a été envoyé !<br>
+            Stylise moi stpppp!</div>
+    {% elseif notchange is defined %}
+        {% form_theme askEmail 'bootstrap_4_layout.html.twig' %}
+        {{ form(askEmail) }}
+        {% if userNotFound is defined %}
+            <p>Utilisateur non existant</p>
+        {% endif %}
+    {% endif %}
+        {% endblock %}

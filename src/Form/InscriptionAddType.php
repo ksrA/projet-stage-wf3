@@ -50,6 +50,8 @@
                     new Email([
                         "message" => "Veuilliez saisir une adresse mail valide",
                     ]),
+                    new Regex('/^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]{1,80}@[a-zA-Z0-9-]{1,40}(?:\.[a-zA-Z0-9-]{1,10})*$/'),
+                    new Length(['min' => 2, 'max' => 255]),
                 ],
             ]);
             $builder->add('phonenumber',   TextType::class, [
@@ -57,7 +59,9 @@
                 'constraints' => [
                     new NotBlank(),
                     new Length(['min' => 10, 'max' => 14]),
-                    new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[1-9]([0-9]{2}){4}$/'),
+                    //possibilité de faire comme ca, a voir selon la view
+                    //new Regex(['pattern' => '/^[\w_]*$/', 'message' => 'login.login.only_alpha_underscore'])
+                    new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[1-9]([0-9]){7,8}$/'),
                 ],
             ]);
             $builder->add('save', SubmitType::class, ['label' => 'M\'inscrire']);

@@ -13,6 +13,8 @@
     use Symfony\Component\Validator\Constraints\Email;
     use Symfony\Component\Validator\Constraints\Length;
     use Symfony\Component\Validator\Constraints\NotBlank;
+    use Symfony\Component\Validator\Constraints\Regex;
+    use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
     class DefaultController extends Controller
     {
@@ -43,6 +45,8 @@
                         new Email([
                             "message" => "Veuilliez saisir une adresse mail valide",
                         ]),
+                        new Regex('/^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]{1,80}@[a-zA-Z0-9-]{1,40}(?:\.[a-zA-Z0-9-]{1,10})*$/'),
+                        new Length(['min' => 2, 'max' => 255]),
                     ]])
                 ->add('subject', TextType::class, [
                     'label' => 'Sujet : ',
