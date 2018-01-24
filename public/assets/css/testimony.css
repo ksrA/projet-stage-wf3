@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    padding: 20px;
+    text-align: center;
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+    color: #636363;
+    font-weight: bold;
+}
+
+.card-columns {
+    margin: 5vw;
+}
+
+.card {
+    border: none;
+}
+
+iframe {
+    width: 100%;
+    border: 5px solid #b61928;
+    border-radius: 7px;
+}
+
+p {
+    padding: 30px;
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #ececec;
+    border-style: outset;
+    border-radius: 10px;
+}
+
+p span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+p span.slash {
+    color: #636363;
+}
+
+p span.quotes,
+.rquotes {
+    color: #b61928;
+}
+
+.slash,
+.rquotes {
+    float: right;
+}
