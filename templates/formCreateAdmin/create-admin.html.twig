@@ -1,0 +1,18 @@
+{% extends "base-backoffice.html.twig" %}
+{% block body %}
+    {% if formOk is defined %}
+        <div>Nouvel utilisateur créer en bdd. Un mail va lui être envoyé avec un mdp généré aléatoirement!<br>
+            Stylise moi stpppp!</div>
+        <i>{{ mdp }}</i>
+    {% elseif formNotOk is defined %}
+        {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
+        {# Petit texte pour l'input select Role => préciser ce que recouvre le ROLE_ADMIN ainsi que le ROLE_SUPERADMIN #}
+        {{ form(formCreateAdmin) }}
+        {% for error in inputError %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% else %}
+        {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
+        {{ form(formCreateAdmin) }}
+    {% endif %}
+        {% endblock %}

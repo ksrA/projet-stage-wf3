@@ -1,8 +1,6 @@
 <?php
-
-namespace App\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
+    namespace App\Entity;
+    use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InscriptionRepository")
@@ -17,12 +15,12 @@ class Inscription
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=30)
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=30)
      */
     private $firstName;
 
@@ -36,11 +34,15 @@ class Inscription
      */
     private $email;
 
+    //Enum ?
     /**
      * @ORM\Column(type="string")
      */
     private $locality;
 
+    //Possibilité de faire comme ci-dessous:
+    //@ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+    //private $timestamp;
     /**
      * @ORM\Column(type="string")
      */
@@ -50,7 +52,6 @@ class Inscription
      * @ORM\Column(type="string")
      */
     private $status;
-
 
     /**
      * @return mixed

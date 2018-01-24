@@ -1,0 +1,12 @@
+{% extends "base-email.html.twig" %}
+
+{% block body %}
+    <h1>Voici les informations concernant votre compte</h1>
+    <i>Nom d'utilisateur: {{ username }}</i><br>
+    <i>E-mail du compte: {{ email }}</i><br>
+    {% if password is defined %}
+    <i>Mdp: {{ password }}</i><br>
+        {% endif %}
+    <i>Droit: {{ role }}</i>
+    <p>Rendez vous sur le panel-admin pour vous y connecter</p>
+{% endblock %}
