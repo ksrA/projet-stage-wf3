@@ -1,0 +1,56 @@
+{% extends "base-actu.html.twig" %}
+
+{% block title %}
+    Numéricall-actualités de janvier 2017
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- ma feuille de style -->
+    <link rel="stylesheet" href="assets/css/actu-pages-style.css">
+{% endblock %}
+
+{% block body1 %}
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>Janvier 2017</h1></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body2 %}
+    <section class="col-lg-9" id="articles">
+
+        <article class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <div class="container box-item">
+                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2017/01/IMG_2139-1200x900.jpg" alt="IMG_2139-1200x900">
+                        <div class="row align-items-center items">
+                            <div class="col-6 link">
+                                <a href="/art050117"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-6 zoom">
+                                <a href="https://www.numericall.fr/wp-content/uploads/2017/01/IMG_2139-1200x900.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="title2 mt-md-0">
+                        <a href="/art050117"> <h2>Day one Session 4 WF3 Fit4coding au Luxembourg. C’est parti!</h2> </a>
+                        <div class="animate"></div>
+                    </div>
+                    <span>5 janvier 2017</span>
+                    <p>
+                        <!-- contenu vide -->
+                    </p>
+                </div>
+                <div class="read-more">
+                    <a href="/art050117">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                    <div class="animate"></div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+{% endblock %}

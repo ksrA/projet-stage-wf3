@@ -1,0 +1,55 @@
+{% extends "base-actu.html.twig" %}
+
+{% block title %}
+    Numéricall-actualités de décembre 2017
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- ma feuille de style -->
+    <link rel="stylesheet" href="assets/css/actu-pages-style.css">
+{% endblock %}
+
+{% block body1 %}
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>Décembre 2017</h1></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body2 %}
+    <section class="col-lg-9" id="articles">
+
+        <article class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <div class="container box-item">
+                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2017/12/AWARD.jpeg" alt="AWARD">
+                        <div class="row align-items-center items">
+                            <div class="col-6 link">
+                                <a href="/art081217"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-6 zoom">
+                                <a href="https://www.numericall.fr/wp-content/uploads/2017/12/AWARD.jpeg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="title2 mt-md-0">
+                        <a href="/art081217"> <h2>NumericALL lauréate au European Digital Skills Awards 2017</h2> </a>
+                        <div class="animate"></div>
+                    </div>
+                    <span>8 décembre 2017</span>
+                    <p> La formation Fit4Coding organisée par NumericALL en partenariats avec l'Agence pour le développement de l'emploi, le Fonds
+                        Social Européen, et WebForce3, a gagné l'Award dans la catégorie Digital Skills for [...]</p>
+                </div>
+                <div class="read-more">
+                    <a href="/art081217">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                    <div class="animate"></div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+{% endblock %}
