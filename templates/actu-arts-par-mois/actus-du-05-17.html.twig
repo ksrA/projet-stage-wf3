@@ -1,0 +1,56 @@
+{% extends "base-actu.html.twig" %}
+
+{% block title %}
+    Numéricall-actualités de mai 2017
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- ma feuille de style -->
+    <link rel="stylesheet" href="assets/css/actu-pages-style.css">
+{% endblock %}
+
+{% block body1 %}
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>Mai 2017</h1></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body2 %}
+    <section class="col-lg-9" id="articles">
+
+        <article class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <div class="container box-item">
+                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2016/08/Prochaine-reunion-dinformation-logo.jpg" alt="Prochaine-reunion-dinformation-logo">
+                        <div class="row align-items-center items">
+                            <div class="col-6 link">
+                                <a href="/art110517"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-6 zoom">
+                                <a href="https://www.numericall.fr/wp-content/uploads/2016/08/Prochaine-reunion-dinformation-logo.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="title2 mt-md-0">
+                        <a href="/art110517"> <h2>Réunion d’information WF3 le 11 juillet, de 9h à 12h – Rue Bender, Luxembourg ville</h2> </a>
+                        <div class="animate"></div>
+                    </div>
+                    <span>11 mai 2017</span>
+                    <p>
+                        <!-- contenu vide -->
+                    </p>
+                </div>
+                <div class="read-more">
+                    <a href="/art110517">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                    <div class="animate"></div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+{% endblock %}
