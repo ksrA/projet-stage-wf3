@@ -19,6 +19,46 @@
     class DefaultController extends Controller
     {
         /**
+         * @Route("/test", name="test_page")
+         */
+        public function test()
+        {
+            return $this->render('test.html.twig');
+        }
+
+        /**
+         * @Route("/numericall-description", name="numericall")
+         */
+        public function numericall()
+        {
+            return $this->render('numericall-description.html.twig');
+        }
+
+        /**
+         * @Route("/home", name="home")
+         */
+        public function home()
+        {
+            return $this->render('home/home.html.twig');
+        }
+
+        /**
+         * @Route("/faq", name="faq")
+         */
+        public function faq()
+        {
+            return $this->render('faq/faq.html.twig');
+        }
+
+        /**
+         * @Route("/testimony", name="testimony")
+         */
+        public function testimony()
+        {
+            return $this->render('testimony/testimony.html.twig');
+        }
+
+        /**
          * @Route("/contact", name="contact_page")
          */
         public function contact(Request $request, \Swift_Mailer $mailer)

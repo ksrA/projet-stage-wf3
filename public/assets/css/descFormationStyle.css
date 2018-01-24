@@ -1,0 +1,74 @@
+
+body{
+    background-color: #ececec;
+}
+/****************/
+/* style teaser */
+/****************/
+#cover{
+    background-color:#2a2a2a ;
+    padding: 20px;
+    border-radius: 10px;
+    color:  #ececec;
+}
+#donne{
+    font-size: 24px;
+    color: #da1816;
+}
+#coverFormation{
+    float: left;
+}
+#picto{
+    width: 150px;
+}
+
+/**************/
+/* style typo */
+/**************/
+#title{
+    color: #da1816;
+}
+#labelpara{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*********************/
+/* style map/adresse */
+/*********************/
+#adresse{
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    overflow: auto;
+    background-color: #ececec;
+    color: #2a2a2a;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+#adresse:hover{
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.493);
+    transition: 0.5s;
+}
+#maps{
+    width: 100%;
+    height: 400px;
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.24);
+    transition: 0.5s;
+}
+#maps:hover{
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.493);
+    transition: 0.5s;
+}
+
+/******************/
+/* media queries */
+/****************/
+@media screen and (max-width:700px) {
+    #adresseDetails{
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    background-image: url('../img/faq/question-mark.jpg');
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position-y: 70%;
+    background-attachment: fixed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: #464646;
+    padding: 30px;
+}
+
+p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+div.box {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+div.answer {
+    display: none;
+    margin: auto;
+    width: 60%;
+    background-color: #ececec;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+a.btn {
+    display: block;
+    width: 60%;
+    color: white;
+    margin: auto;
+    background-color: #da0000;
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 50px #555555;
+}
+
+p a.btn:hover {
+    background-color: #ff0000;
+}

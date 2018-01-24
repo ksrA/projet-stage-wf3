@@ -1,0 +1,55 @@
+body {
+    background-color: #ececec;
+    height: 1000px;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-caption {
+    text-shadow: 2px 2px 2px rgba(0,0,0,.9);
+}
+
+main h1 {
+    color: #b61928;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    font-family: "Slabo 27px", Arial, Helvetica, sans-serif;
+}
+
+main p {
+    text-align: center;
+}
+
+main h2 {
+    color: #505050;
+    text-align: center;
+    font-size: 27px;
+    font-family: "Slabo 27px", Arial, Helvetica, sans-serif;
+}
+
+main button {
+    background-color: #b61928;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+main button a {
+    color: white;
+    padding: 10px;
+}
+
+main button a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+main button:hover,
+main button:active,
+main button:focus {
+    background-color: #d10000;
+}
