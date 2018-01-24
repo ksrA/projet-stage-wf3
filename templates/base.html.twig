@@ -1,15 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- normalize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+        <!-- feuille de style bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+
+        <!-- font awesom -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- feuille de style header, footer et social-sidebar -->
+        <link rel="stylesheet" href="assets/css/header-footer-social_sidebarre.css" >
+
         {% block stylesheets %}{% endblock %}
-        {% block redirectionPage %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <header>
+            <div class="row justify-content-around" id="nav">
+                <!-- logo numericall -->
+                <div class="col-md-auto">
+                    <a id="brand" class="navbar-brand" href="#">
+                        <img id="logo" src="assets/img/numericall_logo.png" alt="logo">
+                    </a>
+                </div>
+
+                <nav id="nav" class="navbar navbar-expand navbar-dark">
+                    <!-- button menu -->
+                    <div id="menu" class="navbar-collapse" id="navbarsExample03">
+                        <ul class="navbar-nav">
+                            <!-- bouton acceuil -->
+                            <li id="menubtn" class="nav-item">
+                                <a id="lien" class="nav-link" href="#"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <!-- dropdown menu -->
+                            <li id="menubtn" class="nav-item dropdown">
+                                <a id="lien" class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">Formations</a>
+                                <!-- dropdown item -->
+                                <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdown03">
+                                    <a id="lienDrop" class="dropdown-item" href="#">Webforce3</a>
+                                    <a id="lienDrop" class="dropdown-item" href="#">S'inscrire</a>
+                                    <a id="lienDrop" class="dropdown-item" href="#">Témoignage</a>
+                                </div>
+                            </li>
+                            <!-- bouton Numéricall -->
+                            <li id="menubtn" class="nav-item">
+                                <a id="lien" class="nav-link" href="#">Numéricall</a>
+                            </li>
+                            <!-- bouton contact -->
+                            <li id="menubtn" class="nav-item">
+                                <a id="lien" class="nav-link" href="#">Contact</a>
+                            </li>
+                            <!-- bouton actu -->
+                            <li id="menubtn" class="nav-item">
+                                <a id="lien" class="nav-link" href="/actualitesp1">Actualités</a>
+                            </li>
+                            <!-- bouton faq -->
+                            <li id="menubtn" class="nav-item">
+                                <a id="lien" class="nav-link" href="#">F.A.Q</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        {% block body %}
+        {% endblock %}
+
+        <!-- Sidebar social-network -->
+        <aside id="sidebar-social">
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/NumericAll/" class="facebook" target="_blank">
+                        <span class="network-name">Facebook</span>
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/info_numericall" class="twitter" target="_blank">
+                        <span class="network-name">Twitter</span>
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/school/10940579/" class="linkedin" target="_blank">
+                        <span class="network-name">LinkedIn</span>
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <footer id="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-3 logo">
+                        <a href="#">
+                            <img class="img-fluid" src="assets/img/numericall_logo.png" alt="logo-numericall">
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-4 mini-nav">
+                        <div class="ul-container">
+                            <ul>
+                                <li> # <a href="#"> Acceuil </a> </li>
+                                <li> # <a href="#"> Webforce3 </a> </li>
+                                <li> # <a href="#"> S'inscrire </a> </li>
+                                <li> # <a href="#"> Témoignage </a> </li>
+                            </ul>
+                        </div>
+                        <div class="ul-container">
+                            <ul>
+                                <li> # <a href="#"> Numericall </a> </li>
+                                <li> # <a href="#"> Contact </a> </li>
+                                <li> # <a href="/actualitesp1"> Actualités </a> </li>
+                                <li> # <a href="#"> F.A.Q </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-5 arts">
+                        <h3>Les dernières actualités :</h3>
+                        <ul>
+                            <li><a href="/art050118">Fit4CodingJobs Session 1 Day One au Technoport</a></li>
+                            <li><a href="/art081217">NumericALL lauréate au European Digital Skills Awards 2017</a></li>
+                            <li><a href="/art281117">Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row copyright">
+                    <div class="col-md-6"> <i class="fa fa-copyright" aria-hidden="true"></i>2018 Numericall | Tous droits réservés <a href="{{ path('login') }}">Back-office</a> </div>
+                    <div class="col-md-6"> Réalisation : Anicet, Clément, Florent, Joshua & Yohan </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- script pour bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-
