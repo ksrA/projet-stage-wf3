@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if formValid is defined %}
+    <div>Done!<br>
+        Stylise moi stpppp!</div>
+    {% else %}
+    {% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+
+    {{ form(formContact) }}
+    {% endif %}
+{% endblock %}
