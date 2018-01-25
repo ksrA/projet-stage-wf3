@@ -1,0 +1,360 @@
+/* debug :
+main { background-color: rgb(255, 0, 221); }
+div { background-color: pink; }
+section { background-color: green; }
+article { background-color: yellow; }
+aside { background-color: rgb(80, 80, 230); } */
+
+
+
+
+
+
+
+
+body {
+    background-color: #ececec;
+}
+
+.main-actu {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+
+
+
+
+
+
+
+/* block du titre de page (1er block) **************************/
+/* ********************************************************** */
+#title1 { 
+    background-color: rgb(223, 223, 223);
+    padding: 2% 2% 2% 2%;
+    border-top: solid 1px rgb(196, 195, 195);
+    border-bottom: solid 1px rgb(196, 195, 195);
+    box-shadow: 0px 1px 5px #2a2a2a;
+}
+
+#title1>div {
+    margin: 0% 5% 0% 5%;
+}
+
+#title1 div div h1 {
+    font-size: 2em;
+    color: #2a2a2a;
+}
+
+#title1 div div a {
+    padding-top: 12px; 
+    font-size: 14px;
+    text-decoration: none;
+    color: #2a2a2a;
+    transition: all 0.2s ease;
+}
+#title1 div div a:hover,
+#title1 div div a:focus,
+#title1 div div a:active {
+    color: #da1816;
+}
+/* *********************************************************** */
+/* ********************************************************** */
+
+
+
+
+
+
+
+
+/* block des articles ******************************************/
+/* ********************************************************** */
+#articles article {
+    margin-top: 4em;
+    border-bottom: solid 1px rgb(143, 143, 143);
+}
+
+#articles article>div {
+    margin-bottom: 10px;
+}
+
+
+
+/* animation hover img des articles */
+.box-item,
+.items,
+.link,
+.zoom {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+#articles article div.box-item div.items a i {
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 200%;
+}
+#articles article div.box-item div.items a i:hover,
+#articles article div.box-item div.items a i:focus,
+#articles article div.box-item div.items a i:active {
+    color: #2a2a2a;
+}
+
+#articles article div.box-item  {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+#articles article div.box-item img {
+    transition: all 0.5s ease;
+    height: 100%;
+    width: 100%;
+        
+}
+#articles article div.box-item:hover img,
+#articles article div.box-item:focus img,
+#articles article div.box-item:active img {
+    transform: scale(1.5);
+}
+
+#articles article div.box-item div.items {
+    position: absolute;
+    background-color: red;
+    opacity: 0.8;
+    height: 31%;
+    width: 100%;
+    text-align: center;
+    top: 100%;
+    transition: all 0.3s ease;
+}
+#articles article div.box-item:hover div.items,
+#articles article div.box-item:focus div.items,
+#articles article div.box-item:active div.items {
+    top: 70%;
+}
+/* **************************** */
+
+
+
+#articles article h2 {
+    font-size: 18px;
+}
+
+#articles article div.title2 {
+    overflow: hidden;
+    margin-top: 2em;
+}
+
+#articles article div.title2 div.animate {
+    border-bottom: double 3px #da1816;
+    position: relative;
+    left: -100%;
+    transition: all 0.2s ease;
+}
+#articles article div.title2:hover div.animate,
+#articles article div.title2:focus div.animate,
+#articles article div.title2:active div.animate {
+    left: 0;
+    border-color: #2a2a2a;
+}
+
+#articles article a {
+    text-decoration: none;
+    color: #da1816;
+    transition: all 0.2s ease;
+}
+#articles article div.title2:hover a,
+#articles article div.title2:focus a,
+#articles article div.title2:active a {
+    color: #2a2a2a;
+}
+#articles article div.read-more:hover a,
+#articles article div.read-more:focus a,
+#articles article div.read-more:active a {
+    color: #2a2a2a;
+}
+
+#articles article span {
+    color: #2a2a2a;
+}
+
+#articles article p {
+    margin-top: 2em;
+    color: #2a2a2a;
+}
+
+#articles article div.read-more {
+    overflow: hidden;
+}
+
+#articles article div.read-more div.animate {
+    border-bottom: double 3px #da1816;
+    position: relative;
+    left: 100%;
+    transition: all 0.2s ease;
+}
+#articles article div.read-more:hover div.animate,
+#articles article div.read-more:focus div.animate,
+#articles article div.read-more:active div.animate {
+    left: 0;
+    border-color: #2a2a2a;
+}
+/* ******************************************************* */
+/* ****************************************************** */
+
+
+
+
+
+
+
+
+/* les liens et boutons de paginations ****************** */
+/* ***************************************************** */
+#pagination-menu {
+    margin: 3em 0 0 0;
+    border-top: solid 1px rgb(143, 143, 143);
+}
+#pagination-menu a {
+    text-decoration: none;
+}
+
+
+
+/* bouton : */
+#pagination-menu div.button-div div span {
+    display: block;
+    margin-left: 1.5em;
+    background-color: #da1816;
+    color: white;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+    padding-left: 10px ;
+}
+
+#pagination-menu div.button-div div a.button {
+    display: block;
+    margin-left: 1.5em;
+    color: #2a2a2a;
+    height: 30px;
+    width: 30px;
+    padding-top: 1px;
+    padding-left: 10px;
+    border: solid 1px #2a2a2a;
+    transition: all 0.2s ease;
+}
+#pagination-menu div.button-div div a.button:hover,
+#pagination-menu div.button-div div a.button:focus,
+#pagination-menu div.button-div div a.button:active {
+    color: #da1816;
+    border-color: #da1816;
+}
+
+
+
+/* next or previous : */
+#pagination-menu div.nextorprev-div div div a {
+    color: #da1816;
+    transition: all 0.2 ease;
+}
+#pagination-menu div.nextorprev-div div div:hover a,
+#pagination-menu div.nextorprev-div div div:focus a,
+#pagination-menu div.nextorprev-div div div:active a {
+    color: #2a2a2a;
+}
+
+#pagination-menu div.nextorprev-div div div {
+    overflow: hidden;
+}
+
+#pagination-menu div.nextorprev-div div div.next div.animate {
+    border-top: double 3px #da1816;
+    border-bottom: double 3px #da1816;
+    position: relative;
+    height: 75%;
+    width: 100%;
+    top: -75%;
+    left: 100%;
+    transition: all 0.2s ease;
+    z-index: -1;
+}
+#pagination-menu div.nextorprev-div div div.next:hover div.animate,
+#pagination-menu div.nextorprev-div div div.next:focus div.animate,
+#pagination-menu div.nextorprev-div div div.next:active div.animate {
+    left: 0%;
+    border-color: #2a2a2a;
+}
+
+#pagination-menu div.nextorprev-div div div.prev div.animate {
+    border-top: double 3px #da1816;
+    border-bottom: double 3px #da1816;
+    position: relative;
+    height: 75%;
+    width: 100%;
+    top: -75%;
+    left: -100%;
+    transition: all 0.2s ease;
+    z-index: -1;
+}
+#pagination-menu div.nextorprev-div div div.prev:hover div.animate,
+#pagination-menu div.nextorprev-div div div.prev:focus div.animate,
+#pagination-menu div.nextorprev-div div div.prev:active div.animate {
+    left: 0%;
+    border-color: #2a2a2a;
+}
+/* ******************************************************* */
+/* ****************************************************** */
+
+
+
+
+
+
+
+
+/* side barre de menu de navigation des articles************ */
+/* ******************************************************** */
+#side-nav {
+    padding-left: 6%;
+    padding-right: 2%;
+    font-size: 14px;
+}
+
+#side-nav h3 {
+    font-size: 18px;
+    margin: 3em 0 1em 0;
+    color: #2a2a2a;
+}
+
+#side-nav ul {
+    list-style: none;
+    border-left: solid 1px rgb(143, 143, 143);
+}
+
+#side-nav ul li {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: solid 1px rgb(143, 143, 143);
+}
+
+#side-nav ul li a {
+    text-decoration: none;
+    color: #da1816;
+    transition: all 0.2s ease;
+}
+#side-nav ul li a:hover,
+#side-nav ul li a:focus,
+#side-nav ul li a:active {
+    color: #2a2a2a;
+}
+
+#side-nav ul li a i {
+    margin-right: 1em;
+}
+/* ****************************************************** */
+/* ***************************************************** */
+

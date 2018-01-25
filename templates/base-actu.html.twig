@@ -77,8 +77,44 @@
             </div>
         </header>
 
-        {% block body %}
+        {% block body1 %}
         {% endblock %}
+
+        <main class="main-actu">
+            <div class="container-fluid">
+                <div class="row">
+
+                    {% block body2 %}
+                    {% endblock %}
+
+                    <aside class="col-lg-3" id="side-nav">
+                        <h3>Articles récents</h3>
+                        <nav>
+                            <ul>
+                                <li><a href="/art050118"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fit4CodingJobs Session 1 Day One au Technoport</a></li>
+                                <li><a href="/art081217"><i class="fa fa-arrow-right" aria-hidden="true"></i>NumericALL lauréate au European Digital Skills Awards 2017</a></li>
+                                <li><a href="/art281117"><i class="fa fa-arrow-right" aria-hidden="true"></i>Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
+                                <li><a href="/art110917"><i class="fa fa-arrow-right" aria-hidden="true"></i>Prochaine réunion d’information: Formation Développeur WebForce3</a></li>
+                                <li><a href="/art070917"><i class="fa fa-arrow-right" aria-hidden="true"></i>Piennes : Session WF3 Agefos, 6 Novembre 2017 au 7 Février 2018</a></li>
+                                <li><a href="/art070917esch"><i class="fa fa-arrow-right" aria-hidden="true"></i>Esch Technoport : day one – S6</a></li>
+                            </ul>
+                        </nav>
+                        <h3>Archives</h3>
+                        <nav>
+                            <ul>
+                                <li><a href="/actualitesdu0118"><i class="fa fa-arrow-right" aria-hidden="true"></i>Janvier 2018</a></li>
+                                <li><a href="/actualitesdu1217"><i class="fa fa-arrow-right" aria-hidden="true"></i>Décembre 2017</a></li>
+                                <li><a href="/actualitesdu1117"><i class="fa fa-arrow-right" aria-hidden="true"></i>Novembre 2017</a></li>
+                                <li><a href="/actualitesdu0917"><i class="fa fa-arrow-right" aria-hidden="true"></i>Septembre 2017</a></li>
+                                <li><a href="/actualitesdu0517"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mai 2017</a></li>
+                                <li><a href="/actualitesdu0117"><i class="fa fa-arrow-right" aria-hidden="true"></i>Janvier 2017</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                </div>
+            </div>
+        </main>
 
         <!-- Sidebar social-network -->
         <aside id="sidebar-social">
@@ -153,7 +189,6 @@
                         <i class="fa fa-copyright" aria-hidden="true"></i>2018 Numericall | Tous droits réservés 
                         <a href="{{ path('login') }}">Back-office</a><!-- Ne pas oublier de mettre une route éxistante pour que ça fonctionne (la route de bas est login (ne pas mettre de /)) --> 
                     </div>
-
                     <div class="col-md-6"> Réalisation : Anicet, Clément, Florent, Joshua & Yohan </div>
                 </div>
             </div>
@@ -163,7 +198,5 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-        {% block javascripts %}{% endblock %}
     </body>
 </html>

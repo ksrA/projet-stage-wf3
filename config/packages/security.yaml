@@ -23,6 +23,13 @@ security:
             logout:
                 path: /logout
                 target: /inscription
+            #Sauvegarde cookie, fonctionne pas ?
+            #remember_me:
+            #   secret: '%kernel.secret%'
+            #   always_remember_me: true
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_ADMIN
+        ROLE_SUPERADMIN: [ROLE_ADMIN, ROLE_SUPERADMIN]
     access_control:
         - { path: ^/panel-admin, roles: ROLE_ADMIN }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

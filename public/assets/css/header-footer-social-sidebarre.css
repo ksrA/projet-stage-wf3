@@ -1,0 +1,236 @@
+/*********************************************/
+/* HEADER ***********************************/
+/*******************************************/
+
+
+/* style navbar */
+/****************/
+#nav{
+    margin: 0px;
+    padding: 0px;
+    background-color: #2a2a2a;
+}
+#brand{
+    margin: 0;
+    padding: 0;
+    background-color: #2a2a2a;
+}
+#logo{
+    padding: 5px;
+    margin: 0px;
+    width: 300px;
+}
+#menu{
+    /* height: 70px; */
+    padding: 0;
+    margin: 0;
+}
+#menubtn{
+    /* height: 70px; */
+    padding: 15px 8px;
+    margin: 0;
+}
+#dropdown{
+    background-color: #2a2a2a;
+}
+#lien{
+    font-size: 20px;
+    color: #ececec;
+}
+#lien:hover{
+    background-color: #da1816;
+}
+#lienDrop{
+    font-size: 20px;
+    color: #ececec;
+}
+#lienDrop:hover{
+    color: #da1816;
+}
+#menubtn:hover{
+    background-color:#da1816;
+}
+
+
+
+
+/* media queries */
+/****************/
+@media screen and (max-width:700px) {
+    #logo{
+        width: 150px;
+    }
+    #lien{
+        padding: 2px;
+        font-size: 11px;
+    }
+    #adresseDetails{
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*********************************************/
+/* FOOTER ***********************************/
+/*******************************************/
+
+#footer {
+    background-color: #2a2a2a;
+    padding: 2em 0em 0em 0em;
+}
+
+/* mini nav */
+/***********/
+#footer div.mini-nav {
+    text-align: center;
+}
+
+#footer div.mini-nav div.ul-container {
+    width: 100px;
+    display: inline-block;
+    text-align: left;
+}
+
+#footer div.mini-nav div.ul-container ul {
+    list-style: none;
+    padding-left: 0;
+    color: #ececec;
+}
+
+#footer div.mini-nav div.ul-container ul li a {
+    text-decoration: none;
+    color: #ececec;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+#footer div.mini-nav div.ul-container ul li a:hover,
+#footer div.mini-nav div.ul-container ul li a:focus,
+#footer div.mini-nav div.ul-container ul li a:active {
+    color: #da1816;
+}
+
+/* articles */
+/***********/
+#footer div.arts h3 {
+    color: #da1816;
+    font-size: 18px;
+}
+
+#footer div.arts ul {
+    list-style: #ececec;
+    padding-left: 40px;
+    color: #ececec;
+}
+
+#footer div.arts ul li a {
+    text-decoration: none;
+    color: #ececec;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+#footer div.arts ul li a:hover,
+#footer div.arts ul li a:focus,
+#footer div.arts ul li a:active {
+    color: #da1816;
+}
+
+/* copyright */
+/************/
+#footer div.copyright {
+    color: #757575;
+    font-size: 12px;
+    text-align: center;
+    /* border-top: solid 1px #757575; */
+    padding: 10px 0px;
+}
+
+#footer div.copyright a {
+    color: #757575;
+    margin-left: 20px;
+}
+#footer div.copyright a:hover {
+    color: #ececec;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************/
+/* SIDEBAR SOCIAL-NETWORK *******************/
+/*******************************************/
+
+#sidebar-social {
+    left: 0px;
+    position: fixed;
+    top: 43%;
+    z-index: 1;
+}
+
+#sidebar-social ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar-social ul li {
+    width: 38px;
+}
+
+#sidebar-social a {
+    text-decoration: none;
+    background: rgb(255, 0, 0);
+    color: #fff;
+    display: block;
+    height: 36px;
+    font: 16px "Open Sans", sans-serif;
+    position: relative;
+    width: 156px;
+    left: -120px;
+    transition: 0.2s ease;
+}
+
+#sidebar-social a:hover {
+    left: 0px;
+}
+
+#sidebar-social a span.network-name {
+    display: block;
+    text-align: center;
+    float: left;
+    width: 125px;
+    padding-top: 8px;
+}
+
+#sidebar-social a span.fa-stack {
+    display: block;
+    text-align: center;
+    margin-left: 122px;
+    height: 36px;
+    padding-top: 2px;
+}
+
+#sidebar-social a span.fa-stack i { transition: 1s ease; }
+#sidebar-social a:hover span.fa-stack i { transform: rotate(360deg); }
+
+#sidebar-social a.facebook { background: #3b5998; }
+#sidebar-social a.facebook span.fa-stack i.fa-facebook { color: #3b5998; }
+#sidebar-social a.twitter { background: #00aced; }
+#sidebar-social a.twitter span.fa-stack i.fa-twitter { color: #00aced; }
+#sidebar-social a.linkedin { background: #007bb6; }
+#sidebar-social a.linkedin span.fa-stack i.fa-linkedin { color: #007bb6; }

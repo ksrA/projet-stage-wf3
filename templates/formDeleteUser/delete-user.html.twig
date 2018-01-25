@@ -1,0 +1,15 @@
+{% extends "base-backoffice.html.twig" %}
+
+{% block body %}
+    {% if change is defined %}
+<div>Utilisateur supprimé !<br>
+    Stylise moi stpppp!</div>
+{% elseif notchange is defined %}
+        {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
+
+        {{ form(formDeleteUser) }}
+        {% if notfound is defined %}
+            <p>Problème lors de l'execution de la requête</p>
+        {% endif %}
+{% endif %}
+{% endblock %}
