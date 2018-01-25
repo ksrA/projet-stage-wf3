@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html.twig" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Témoignages</title>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+{% block title %}Témoignages{% endblock %}
+
+{% block stylesheets %}
     <link rel="stylesheet" href="assets/css/testimony.css">
-</head>
+{% endblock %}
 
-<body>
-
+{% block body %}
 <h2>< Ils parlent de WebForce3 ></h2>
 
 <div class="card-columns">
@@ -80,9 +74,93 @@
             Co-Fondateur de l'école WebForce3
         </p>
     </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            Tout se passe très bien pour moi. Je travaille
+            actuellement pour une maison d'édition à Strasbourg et à partir de septembre (pendant au
+            moins un an) je travaillerai pour l'école CentraleSupélec à Châtenay-Malabry. Ils m'ont
+            d'abord engagé pour travailler sur une mission patrimoniale et ensuite je serais en charge
+            records management avec la prise en charge du numérique, avec les archives électronique
+            et certainement de la valorisation avec des contenus web. J'ai été embauchée notamment
+            grâce aux enseignements de webforce3. Ils nécessitaient une personne à la double
+            casquette "patrimoine et informatique".<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Mélina M.<br>
+            Etudiante de la session 1
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            J'ai choisis cette formation car elle correspondait à un manque dans mes compétences
+            informatiques et car elle était appliquée et pratique. Ce qui m'a
+            attiré est le sérieux affiché de la présentation de la formation et des personnes de l'équipe.
+            Cette formation m'a permis de me lancer en tant qu'auto-entrepreneur avec daavantage de
+            confiance, pour proposer la création de sites et pour faire mon propre site. Je ne regrette pas
+            la formation.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Julien B.<br>
+            Etudiant de la session 1
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            Je suis actuellement sur Sydney. Freelance enregistré en Australie dans la région de
+            New South Wales.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Eric G.<br>
+            Etudiant de la session 1
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            Après un premier stage plutôt convaincant et un Contrat à Durée Déterminée dans les
+            semaines qui ont suivi, j’ai eu la surprise d’être pris en CDI en début d’année ce qui me permet
+            aujourd’hui de mettre en pratique une bonne partie de ce qui m’a été enseigné durant la formation.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Alexandre O.<br>
+            Etudiant de la session 1
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            J’ai suivi la formation WebForce3, formation proposée par Numericall à
+            Piennes. A la fin de ma formation j’ai pu trouver un emploi assez rapidement
+            (au bout de 15 jours) en télétravail pour une agence web pour laquelle j’ai
+            travaillé deux mois avant de me voir proposer deux autres places.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Pierre A.<br>
+            Etudiant de la session 2
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            J'ai une bonne nouvelle concernant ma recherche
+            d'emploi. J'ai réussi à décrocher un CDD chez Razorfish.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Gwendoline L.<br>
+            Etudiante de la session 3
+        </p>
+    </div>
+    <div class="card">
+        <p>
+            <span class="quotes"><<</span><br>
+            Je rentre du Luxembourg où j'ai eu le plaisir de signer
+            mon CDI avec Adneom.
+            Ma prise de poste, chez atHome commence lundi
+            matin.
+            Merci pour tout.<br>
+            <span class="rquotes">>></span><span class="slash">/</span><br>
+            Amélie D.<br>
+            Etudiante de la session 3
+        </p>
+    </div>
 
 </div>
 
-</body>
-
-</html>
+{% endblock %}

@@ -1,10 +1,5 @@
 body {
     margin: 0;
-    background-image: url('../img/faq/question-mark.jpg');
-    background-repeat: no-repeat;
-    background-size: 20%;
-    background-position-y: 70%;
-    background-attachment: fixed;
 }
 
 * {
@@ -16,7 +11,7 @@ h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     color: #464646;
-    padding: 30px;
+    padding: 50px;
 }
 
 p {
@@ -24,33 +19,31 @@ p {
     font-weight: bold;
 }
 
-div.box {
-    width: 60%;
+a {
+    display: block;
+    padding: 7px;
+    width: 50%;
+    color: white;
+    text-align: center;
     margin: auto;
-    margin-bottom: 20px;
+    background-color: #da0000;
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 30px #363636;
+}
+
+p a:hover {
+    background-color: #ff0000;
+    text-decoration: none;
+    color: white;
 }
 
 div.answer {
     display: none;
     margin: auto;
-    width: 60%;
+    width: 50%;
     background-color: #ececec;
     color: black;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
-}
-
-a.btn {
-    display: block;
-    width: 60%;
-    color: white;
-    margin: auto;
-    background-color: #da0000;
-    border-radius: 10px;
-    box-shadow: inset 1px 1px 50px #555555;
-}
-
-p a.btn:hover {
-    background-color: #ff0000;
 }
