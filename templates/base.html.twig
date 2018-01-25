@@ -50,18 +50,18 @@
                                    aria-expanded="false">Formations</a>
                                 <!-- dropdown item -->
                                 <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdown03">
-                                    <a id="lienDrop" class="dropdown-item" href="#">Webforce3</a>
-                                    <a id="lienDrop" class="dropdown-item" href="#">S'inscrire</a>
-                                    <a id="lienDrop" class="dropdown-item" href="#">Témoignage</a>
+                                    <a id="lienDrop" class="dropdown-item" href="{{ path('Webforce3_description') }}">Webforce3</a>
+                                    <a id="lienDrop" class="dropdown-item" href="{{ path('inscription_waitlist') }}">S'inscrire</a>
+                                    <a id="lienDrop" class="dropdown-item" href="{{ path('testimony') }}">Témoignage</a>
                                 </div>
                             </li>
                             <!-- bouton Numéricall -->
                             <li id="menubtn" class="nav-item">
-                                <a id="lien" class="nav-link" href="#">Numéricall</a>
+                                <a id="lien" class="nav-link" href="{{ path('numericall') }}">NumericALL</a>
                             </li>
                             <!-- bouton contact -->
                             <li id="menubtn" class="nav-item">
-                                <a id="lien" class="nav-link" href="#">Contact</a>
+                                <a id="lien" class="nav-link" href="{{ path('contact_page') }}">Contact</a>
                             </li>
                             <!-- bouton actu -->
                             <li id="menubtn" class="nav-item">
@@ -69,7 +69,7 @@
                             </li>
                             <!-- bouton faq -->
                             <li id="menubtn" class="nav-item">
-                                <a id="lien" class="nav-link" href="#">F.A.Q</a>
+                                <a id="lien" class="nav-link" href="{{ path('faq') }}">F.A.Q</a>
                             </li>
                         </ul>
                     </div>
@@ -124,18 +124,18 @@
                     <div class="col-12 col-sm-4 col-md-4 mini-nav">
                         <div class="ul-container">
                             <ul>
-                                <li> # <a href="#"> Acceuil </a> </li>
-                                <li> # <a href="#"> Webforce3 </a> </li>
-                                <li> # <a href="#"> S'inscrire </a> </li>
-                                <li> # <a href="#"> Témoignage </a> </li>
+                                <li> # <a href="{{ path('home') }}"> Acceuil </a> </li>
+                                <li> # <a href="{{ path('Webforce3_description') }}"> Webforce3 </a> </li>
+                                <li> # <a href="{{ path('inscription_waitlist') }}"> S'inscrire </a> </li>
+                                <li> # <a href="{{ path('testimony') }}"> Témoignage </a> </li>
                             </ul>
                         </div>
                         <div class="ul-container">
                             <ul>
-                                <li> # <a href="#"> Numericall </a> </li>
-                                <li> # <a href="#"> Contact </a> </li>
+                                <li> # <a href="{{ path('numericall') }}"> Numericall </a> </li>
+                                <li> # <a href="{{ path('contact_page') }}"> Contact </a> </li>
                                 <li> # <a href="/actualitesp1"> Actualités </a> </li>
-                                <li> # <a href="#"> F.A.Q </a> </li>
+                                <li> # <a href="{{ path('faq') }}"> F.A.Q </a> </li>
                             </ul>
                         </div>
                     </div>
