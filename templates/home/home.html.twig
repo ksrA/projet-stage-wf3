@@ -1,13 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Témoignages{% endblock %}
+{% block title %}
+    Accueil - Numericall
+{% endblock %}
 
 {% block stylesheets %}
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/home.css" >
 {% endblock %}
 
 {% block body %}
 <main>
+
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>Accueil</h1></div>
+        </div>
+    </div>
 
     <!-- Le slider/carousel de bootstrap -->
 
@@ -19,21 +28,21 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <img class="img-fluid" src="assets/img/numericall_piennes.png" alt="Locaux du NuméricALL 1">
+                <img class="img-fluid" src="assets/img/home/numericall_pienne.png" alt="Locaux du NuméricALL 1">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Salle de formation (texte exemple)</h3>
+                    <h4>Salle de formation (texte exemple)</h4>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="assets/img/numericall_piennes_r.png" alt="Locaux du NuméricALL 2">
+                <img class="img-fluid" src="assets/img/home/numericall_pienne_r.png" alt="Locaux du NuméricALL 2">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Espace de coworking (texte exemple)</h3>
+                    <h4>Espace de coworking (texte exemple)</h4>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="assets/img/numericall_piennes_y.png" alt="Locaux du NuméricALL 3">
+                <img class="img-fluid" src="assets/img/home/numericall_pienne_y.png" alt="Locaux du NuméricALL 3">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Salle de réunion (texte exemple)</h3>
+                    <h4>Salle de réunion (texte exemple)</h4>
                 </div>
             </div>
         </div>
@@ -47,26 +56,24 @@
         </a>
     </div>
 
-    <h1>< Le premier campus numérique du Grand Est, ouvre en janvier 2016 à Piennes ></h1>
+    <h2>< Le premier campus numérique du Grand Est, ouvre en janvier 2016 à Piennes ></h2>
 
     <p>– – – – – – –</p>
 
-    <h2>
+    <h3>
         L’ambition des promoteurs du projet est de développer, au cœur de la ville de Piennes, <br>
         un véritable campus numérique de plus de 1 000 m² permettant d’offrir, <br>
         grâce à la fibre haut débit, un bouquet de services numériques
-    </h2>
+    </h3>
 
-    <button><a href="#">En savoir plus</a></button> <!-- ajouter le lien vers la page "NuméricALL" -->
+    <!-- lien vers la page "NuméricALL" -->
+    <button><a href="{{ path('numericall') }}">En savoir plus</a></button>
 </main>
-
-
-
 {% endblock %}
 
 {% block javascripts %}
-    <script src="assets/js/jquery.min.js"></script>
+    <!-- <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/global.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script> --><!-- Suprimer ces 3 scripts du dossier js ? -->
+    <!-- <script src="assets/js/global.js"></script> --><!--  <- Supprimer ce script du dossier js ? -->
 {% endblock %}

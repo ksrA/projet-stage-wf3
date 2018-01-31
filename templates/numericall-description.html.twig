@@ -1,18 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Numericall description
+    Descritpion Numericall - Numericall
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="assets/css/style_numericall.css" >
+    <link rel="stylesheet" href="assets/css/style_numericall.css" >
 {% endblock %}
 
 {% block body %}
-<section class="container" id="about">
+
+<!-- titre de page -->
+<div class=" container-fluid" id="title1">
     <div class="row">
-        <div class="col-12 col-lg-8">
-            <h2>Qui sommes-nous ?</h2><br><br>
+        <div class="col-12"><h1>NumericALL</h1></div>
+    </div>
+</div>
+
+<section class="container" id="about">
+    <h2>Qui sommes-nous ?</h2>
+    <div class="row">
+        <div class="col-12 col-lg-8 text-container">
             <p>
                 Fortement engagée dans sa transition digitale, l'économie luxembourgeoise, très dynamique, a besoin de nouvelles compétences dans tous les métiers de l'informatique, et notamment de développeurs pour les applications web et mobiles dont tous les secteurs de l'économie et de la vie publique ont besoin.
                 <br>
@@ -22,8 +30,7 @@ Numericall description
             </p>
         </div>
 
-        <div class="col-12 col-lg-4">
-            <!-- <img class="img-responsive" src="assets/img/computer.jpg" style="display: none; border-radius: 50%; display: block; margin: 1rem auto;" width="300" height="300" /> -->
+        <div class="col-8 col-lg-4 carousel-container">
 
             <div id="carousel" class="carousel slide" data-ride="carousel">
 
@@ -47,9 +54,9 @@ Numericall description
 
             </div>
         </div>
-    </div><br><br><br> <!-- .row -->
+    </div>
     <div class="row">
-        <div class="col-12 col-lg-4">
+        <div class="col-8 col-lg-4 carousel-container">
 
             <div id="carousel" class="carousel slide" data-ride="carousel">
 
@@ -70,7 +77,7 @@ Numericall description
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 text-container">
             <p>
                 Le programme Fit4CodingJobs vise a former 90 développeurs web sur 2 ans, à travers 6 sessions où des demandeurs d'emploi vont apprendre les langages de programmation et les technologies les plus fréquemment utilisés par les entreprises pour développer des sites web ( HTML, CSS, JS, PHP, Angular, Symfony)
                 <br>Cette formation intensive de 490 heures, réalisée en présentiel par des développeurs professionnels, se termine par la réalisation d'un site web, et est complétée par différentes initiatives visant à préparer les apprenants à l'emploi dans le secteur spécifique du web (module employabilité de 3 jours avec des professionnels du recrutement, mentoring par des cadres d'entreprises luxembourgeoises); la formation est réalisée en Anglais
@@ -102,10 +109,6 @@ Numericall description
         </div>
     </div>
 </section> -->
-{% endblock %}
-
-{% block javascripts %}
-    <script src="script.js"></script>
 {% endblock %}
 
     

@@ -1,13 +1,114 @@
-*{
+/* block du titre de page **************************/
+#title1 { 
+    background-color: #da1816;
+    padding: 1% 1% 1% 1%;
+    box-shadow: 0px 1px 5px #2a2a2a;
+}
+
+#title1>div {
+    margin: 0% 5% 0% 5%;
+}
+
+#title1 div div h1 {
+    font-size: 2em;
+    color: #ececec;
+}
+/* ************************************************ */
+
+
+
+
+h2 {
+    color: #da1816;
+    margin: 30px 0 30px 0;
+}
+
+
+body{
+   background-color: #ececec;
+   color:#2a2a2a;
+   margin:0;
+
+}
+
+
+.col-md-8 p  {
+    font-size: 20px;
+    /*font-family: serif, Cambria, Cochin, Georgia, Times, Times New Roman;*/  
+}
+
+
+div.text-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+div.carousel-container {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.carousel {
+    background: #ececec;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+/*image redim  ds carousel*/
+.carousel .carousel-inner .d-block{
+    width: 450px;
+    height: 350px;
+}
+
+.carousel .carousel-inner {
+    height: 300%;
+}
+.carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* pour le bouton numericall du header */
+.menubtn-numericall {
+    background-color: #da1816;
+}
+
+
+@media screen and (max-width: 768px) {
+   div.carousel-container {
+        padding-left: 0px;
+        padding-right: 0px;
+    } 
+}
+
+@media screen and (max-width: 576px) {
+    .carousel {
+        height: 250px;
+    }
+}
+
+
+
+
+
+
+
+
+/* *{
     box-sizing: border-box;
 }
 
 
-header{
-    height: 95px;
-    background-color:#2a2a2a;
-    
-}
 #logo_header{
     float: left;
     width: 20%;
@@ -30,61 +131,35 @@ header p{
     border: 7px solid rgb(219, 14, 14);
     height: 40%;
     width: 40%;
-}
-
-h2 {
-    color: #da1816;
-    margin: 10px;
-}
+} */
 
 
-body{
-   background-color: #ececec;
-   color:#2a2a2a;
-   margin:0;
-
-}
-
-.wrap.wrap-primary{
+/* .wrap.wrap-primary{
     padding: 6rem 0;
 }
 .container h1{
     margin-bottom: 5rem;
-}
-.col-md-8 p  {
-    font-size: 20px;
-    /*font-family: serif, Cambria, Cochin, Georgia, Times, Times New Roman;*/
-  
-   
-}
-.lead span{
-    font-size: 20px;
-    /*font-family: serif,Cambria, Cochin, Georgia, Times, Times New Roman;*/
-}
+} */
 
 
-.rounded mx-auto d-block{
+
+/* .rounded mx-auto d-block{
     position: relative;
     
 }
 .page-main-content{
     background-color:#ececec;
-}
+} */
 
-
-#yolo {
-    border: solid 22px red;
-}
-
-footer{
+/* footer{
     height: 20 px;
     width: 20 px;
     background-color:rgb(34,34,33); 
     color:white;
-}
+} */
 
 
-.container2 img{
+/* .container2 img{
     width:200px;
     margin:40px;
 
@@ -106,9 +181,9 @@ footer{
 .row.row2{
     text-align: center;
 
-}
+} */
 
-#slideshow {
+/* #slideshow {
 	position: relative;
 	width: 640px;
 	height: 310px;
@@ -116,56 +191,25 @@ footer{
 	margin: 0 auto 2em;
 	border: 1px solid #ddd;
 	background: #FFF;
-	/* effects */
 	background: linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
 	border-radius: 2px 2px 2px 2px;
 	box-shadow: 0 0 3px rgba(0,0,0, 0.2);
-
-}
-
-
-.carousel {
-
-    background: black;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100%;
-    height: 330px;
-    position: relative;
-
-}
-/*image redim  ds carousel*/
-.carousel .carousel-inner .d-block{
-    width: 450px;
-    height: 350px;
-}
+} */
 
 
 
-
-
-.carousel .carousel-inner {
-
-    height: 300%;
-
-    background: blue;
-
-}
-.carousel img {
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-
-}
-
-#lead{
+/* #lead{
     margin-left: 20px;
 }
 .carousel slide{
  border: 7px solid rgb(219, 14, 14); 
-}
+} */
+
+
+
+
+
+
 
 /*equipe enseignante**/
 /**********************/
