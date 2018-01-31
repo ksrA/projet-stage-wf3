@@ -1,0 +1,20 @@
+{% extends "base-backoffice.html.twig" %}
+
+
+{% block body %}
+
+    <h1>Insertion notes candidats</h1>
+    {% form_theme formNote 'bootstrap_4_layout.html.twig' %}
+
+    {{ form(formNote) }}
+    <div id="tab-and-form-container">
+        {# C'est ici qu'est placé le tableau généré depuis ajax#}
+    </div>
+
+{% endblock %}
+
+{%block javascripts %}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="/assets/js/note.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+ {%endblock%}

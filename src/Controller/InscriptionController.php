@@ -15,13 +15,14 @@
         /**
          * @Route ("/inscription", name="inscription_waitlist")
          */
-        public function inscriptionForm(Request $request, \Swift_Mailer $mailer, ValidatorInterface $validator)
+        public function inscriptionForm(Request $request, \Swift_Mailer $mailer)
         {
             $inscription = new Inscription();
             $inscription->setStatus('waitlisted');
 
             $date = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
-            $inscription->setDateInscription($date->format('d-m-Y'));
+            //$inscription->setDateInscription($date->format('d-m-Y'));
+            $inscription->setDateInscription($date);
 
             $form = $this->createForm(InscriptionAddType::class, $inscription);
 

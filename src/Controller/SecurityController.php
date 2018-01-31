@@ -32,15 +32,20 @@
         {
             $user = new User();
 
-            $pass = 'tag';
+            $pass = 'anicet';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('tag');
-            $user->setEmail('tag@gmail.com');
+            $user->setUsername('anicetk');
+            $user->setEmail('anicetkesraoui@gmail.com');
+
+            //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
+            $bytes = openssl_random_pseudo_bytes(30);
+            $resethash = bin2hex($bytes);
+            /*
             $str = $encoder->encodePassword($user, 'tag@gmail.com'); // password_hash
             $str = 'zd/k' . $str;
             $resethash = str_replace('/', '8r', $str);
-
+*/
             $user->setResetHash($resethash);
             $user->setRoles(['ROLE_SUPERADMIN']);
 
@@ -218,9 +223,12 @@
                     $user->setEmail($data['email']);
 
                     //encodage de la chaine reset_hash
-                    $str = $encoder->encodePassword($user, $data['email']); // password_hash
+                    $bytes = openssl_random_pseudo_bytes(30);
+                    $resethash = bin2hex($bytes);
+
+                    /*$str = $encoder->encodePassword($user, $data['email']); // password_hash
                     $str = 'zd/k' . $str;
-                    $resethash = str_replace('/', '8r', $str);
+                    $resethash = str_replace('/', '8r', $str);*/
 
                     $user->setResetHash($resethash);
                     //Ecrire une phrase dans la vue qui précise ce que fait le ROLE_ADMIN et le ROLE_SUPERADMIN
@@ -393,9 +401,12 @@
                             $encoded = $encoder->encodePassword($user, $newpass);
                             $user->setPassword($encoded);
 
-                            $str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
+                            $bytes = openssl_random_pseudo_bytes(30);
+                            $resethash = bin2hex($bytes);
+
+                           /* $str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
                             $str = 'l/k' . $str;
-                            $resethash = str_replace('/', 'k6', $str);
+                            $resethash = str_replace('/', 'k6', $str);*/
 
                             $user->setResetHash($resethash);
 
@@ -479,9 +490,12 @@
                 if ($user->getEmail() == $data['email'] && empty($inputError)){
                     $user->setEmail($data['newemail']);
 
-                    $str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
+                   /*$str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
                     $str = 'l/b' . $str;
-                    $resethash = str_replace('/', 'e4', $str);
+                    $resethash = str_replace('/', 'e4', $str);*/
+                    $bytes = openssl_random_pseudo_bytes(30);
+                    $resethash = bin2hex($bytes);
+
                     $user->setResetHash($resethash);
 
                     $em = $this->getDoctrine()->getManager();

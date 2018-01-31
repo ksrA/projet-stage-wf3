@@ -13,16 +13,15 @@ class InscriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscription::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function selectByStatusWaitListed($campus)
     {
-        return $this->createQueryBuilder('i')
-            ->where('i.something = :value')->setParameter('value', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $status = 'waitlisted';
+        $query = $this->createQueryBuilder('i')
+            ->where('i.status = :waitlisted')
+            ->andWhere('i.locality = :campus')
+            ->setParameter('waitlisted', $status)
+            ->setParameter('campus', $campus)
+            ->getQuery();
+        return $query->execute();
     }
-    */
 }

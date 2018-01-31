@@ -9,6 +9,7 @@ parameters:
     mailer_port: 587
     mailer_user: helloworldwf3@gmail.com
     mailer_password: webforce3
+    uploads_directory: '%kernel.project_dir%/public/uploads'
 
 services:
     # default configuration for services in *this* file

@@ -1,0 +1,18 @@
+{% extends "base-email.html.twig" %}
+
+{% block body %}
+    <h1>Invitation réunion d'information</h1>
+    <h2>Date réunion</h2>
+
+   <p>Le {{ dateReunion }} : {{ address }}</p>
+
+    {% if financer is defined %}
+    <p>Financeur : {{ financer }}</p>
+    {% endif %}
+
+    <p>Session concernée : Rentrée le {{ dateSession }} sur le campus de {{ campus }}</p>
+    <p>Réunion d'information est obligatoire. Merci de candidater en ligne seulement si vous comptez être présent a la réunion d'information à l'adresse suivante :<br>
+        {{ url }}<br>
+        <a href="{{ url }}">Candidater</a>
+    </p>
+{% endblock %}

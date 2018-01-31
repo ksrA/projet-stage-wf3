@@ -1,0 +1,33 @@
+{% extends "base-backoffice.html.twig" %}
+
+
+{% block body %}
+    {% if submit is defined %}
+        <p>Réunion et session crées,
+        invitation des candidats a remplir formulaire envoyé par mail</p>
+    {% else %}
+    <div>
+        {#
+            <h1>Liste des candidats en attente pour le campus {{ campus }}</h1>
+        #}
+    <ul>
+        {% set myVal = 0 %}
+        {% for array in waitinglist %}
+            {% set myVal = loop.length %}
+            <li>{{ array.firstname }}
+                {{ array.lastname }}
+                {{ array.email }}</li>
+        {% endfor %}
+        <p>Nombre de candidat en attente : {{ myVal }}</p>
+    </ul>
+    <div>
+    <div style="float: right;">
+
+        {# afficher le form en flex sur le coté, et prévoir un bloc pour le div d'au dessus
+        si jamais la liste est trop long en mode overflow #}
+    {% form_theme formCreateReunion 'bootstrap_4_layout.html.twig' %}
+
+    {{ form(formCreateReunion) }}
+    </div>
+    {% endif %}
+{% endblock %}
