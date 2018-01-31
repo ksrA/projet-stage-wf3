@@ -25,6 +25,7 @@
     </head>
     <body>
 
+        <!-- HEADER -->
         <header>
             <div class="row justify-content-around" id="nav">
                 <!-- logo numericall -->
@@ -39,15 +40,14 @@
                     <div id="menu" class="navbar-collapse" id="navbarsExample03">
                         <ul class="navbar-nav">
                             <!-- bouton acceuil -->
-                            <li id="menubtn" class="nav-item">
-                                <a id="lien" class="nav-link" href="#"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                            <li id="menubtn" class="nav-item menubtn-home">
+                                <a id="lien" class="nav-link" href="{{ path('home') }}"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <!-- dropdown menu -->
-                            <li id="menubtn" class="nav-item dropdown">
-                                <a id="lien" class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">Formations</a>
+                            <li id="menubtn" class="nav-item dropdown menubtn-formation">
+                                <a id="lien" class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formations</a>
                                 <!-- dropdown item -->
                                 <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdown03">
                                     <a id="lienDrop" class="dropdown-item" href="{{ path('Webforce3_description') }}">Webforce3</a>
@@ -56,19 +56,19 @@
                                 </div>
                             </li>
                             <!-- bouton Numéricall -->
-                            <li id="menubtn" class="nav-item">
+                            <li id="menubtn" class="nav-item menubtn-numericall">
                                 <a id="lien" class="nav-link" href="{{ path('numericall') }}">NumericALL</a>
                             </li>
                             <!-- bouton contact -->
-                            <li id="menubtn" class="nav-item">
+                            <li id="menubtn" class="nav-item menubtn-contact">
                                 <a id="lien" class="nav-link" href="{{ path('contact_page') }}">Contact</a>
                             </li>
                             <!-- bouton actu -->
-                            <li id="menubtn" class="nav-item">
-                                <a id="lien" class="nav-link" href="/actualitesp1">Actualités</a>
+                            <li id="menubtn" class="nav-item menubtn-actu">
+                                <a id="lien" class="nav-link" href="{{ path('actu_page1') }}">Actualités</a>
                             </li>
                             <!-- bouton faq -->
-                            <li id="menubtn" class="nav-item">
+                            <li id="menubtn" class="nav-item menubtn-faq">
                                 <a id="lien" class="nav-link" href="{{ path('faq') }}">F.A.Q</a>
                             </li>
                         </ul>
@@ -84,6 +84,7 @@
         <aside id="sidebar-social">
             <ul>
                 <li>
+                    <!-- Facebook de Numericall -->
                     <a href="https://www.facebook.com/NumericAll/" class="facebook" target="_blank">
                         <span class="network-name">Facebook</span>
                         <span class="fa-stack">
@@ -93,6 +94,7 @@
                     </a>
                 </li>
                 <li>
+                    <!-- Twitter de Numericall -->
                     <a href="https://twitter.com/info_numericall" class="twitter" target="_blank">
                         <span class="network-name">Twitter</span>
                         <span class="fa-stack">
@@ -102,6 +104,7 @@
                     </a>
                 </li>
                 <li>
+                    <!-- Linkedin de Numericall -->
                     <a href="https://www.linkedin.com/school/10940579/" class="linkedin" target="_blank">
                         <span class="network-name">LinkedIn</span>
                         <span class="fa-stack">
@@ -113,14 +116,17 @@
             </ul>
         </aside>
 
+        <!-- FOOTER -->
         <footer id="footer">
             <div class="container-fluid">
                 <div class="row">
+                    <!-- logo Numericall -->
                     <div class="col-12 col-md-3 logo">
                         <a href="#">
                             <img class="img-fluid" src="assets/img/numericall_logo.png" alt="logo-numericall">
                         </a>
                     </div>
+                    <!-- mini menu de navigation (le même que dans le header) -->
                     <div class="col-12 col-sm-4 col-md-4 mini-nav">
                         <div class="ul-container">
                             <ul>
@@ -134,27 +140,29 @@
                             <ul>
                                 <li> # <a href="{{ path('numericall') }}"> Numericall </a> </li>
                                 <li> # <a href="{{ path('contact_page') }}"> Contact </a> </li>
-                                <li> # <a href="/actualitesp1"> Actualités </a> </li>
+                                <li> # <a href="{{ path('actu_page1') }}"> Actualités </a> </li>
                                 <li> # <a href="{{ path('faq') }}"> F.A.Q </a> </li>
                             </ul>
                         </div>
                     </div>
+                    <!-- actu: liens vers les 3 derniers articles -->
                     <div class="col-12 col-sm-8 col-md-5 arts">
                         <h3>Les dernières actualités :</h3>
                         <ul>
-                            <li><a href="/art050118">Fit4CodingJobs Session 1 Day One au Technoport</a></li>
-                            <li><a href="/art081217">NumericALL lauréate au European Digital Skills Awards 2017</a></li>
-                            <li><a href="/art281117">Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
+                            <li><a href="{{ path('article050118_page') }}">Fit4CodingJobs Session 1 Day One au Technoport</a></li>
+                            <li><a href="{{ path('article081217_page') }}">NumericALL lauréate au European Digital Skills Awards 2017</a></li>
+                            <li><a href="{{ path('article281117_page') }}">Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="row copyright">
                     <div class="col-md-6"> 
-                        <i class="fa fa-copyright" aria-hidden="true"></i>2018 Numericall | Tous droits réservés 
-                        <a href="{{ path('login') }}">Back-office</a><!-- Ne pas oublier de mettre une route éxistante pour que ça fonctionne (la route de bas est login (ne pas mettre de /)) --> 
+                        <i class="fa fa-copyright" aria-hidden="true"></i> 2018 Numericall | Tous droits réservés
+                        <!-- lien vers l'interface administrateur --> 
+                        <a href="{{ path('login') }}">Back-office</a>
                     </div>
 
-                    <div class="col-md-6"> Réalisation : Anicet, Clément, Florent, Joshua & Yohan </div>
+                    <div class="col-md-6"> Réalisation : Anicet, Clément, Florent, Joshua & Yoann </div>
                 </div>
             </div>
         </footer>

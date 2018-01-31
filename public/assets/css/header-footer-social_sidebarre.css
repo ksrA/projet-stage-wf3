@@ -1,3 +1,9 @@
+body{
+    background-color: #ececec;
+}
+
+
+
 /*********************************************/
 /* HEADER ***********************************/
 /*******************************************/
@@ -29,6 +35,7 @@
     /* height: 70px; */
     padding: 15px 8px;
     margin: 0;
+    transition: all 0.2s ease;
 }
 #dropdown{
     background-color: #2a2a2a;
@@ -37,15 +44,13 @@
     font-size: 20px;
     color: #ececec;
 }
-#lien:hover{
-    background-color: #da1816;
-}
 #lienDrop{
     font-size: 20px;
     color: #ececec;
 }
 #lienDrop:hover{
     color: #da1816;
+    background-color: #ececec;
 }
 #menubtn:hover{
     background-color:#da1816; 
@@ -85,6 +90,8 @@
 #footer {
     background-color: #2a2a2a;
     padding: 2em 0em 0em 0em;
+    position: relative;
+    z-index: 20;
 }
 
 /* mini nav */
@@ -194,7 +201,7 @@
 
 #sidebar-social a {
    text-decoration: none;
-   background: rgb(255, 0, 0);
+   /* background: rgb(255, 0, 0); */
    color: #fff;
    display: block;
    height: 36px;
@@ -234,4 +241,61 @@
 #sidebar-social a.twitter span.fa-stack i.fa-twitter { color: #00aced; }
 #sidebar-social a.linkedin { background: #007bb6; } 
 #sidebar-social a.linkedin span.fa-stack i.fa-linkedin { color: #007bb6; }
+
+
+
+
+/* media queries */
+/****************/
+/* met la sid-bar des réseau en horisontal au dessus du footer */
+@media screen and (max-width:768px) {
+    
+    #sidebar-social {
+        position: static;
+        margin: auto;
+        width: 300px;
+    }
+
+    #sidebar-social ul {
+        display: flex;
+        width: 300px;
+    }
+
+    #sidebar-social ul li {
+        width: 100px;
+        transition: all 0.3s ease;
+    }
+
+    #sidebar-social a {
+        position: static;
+        width: 100px;
+        left: 0px;
+        transition: all 0.3s ease
+    }
+
+    #sidebar-social a span.network-name {
+        width: 100px;
+    }
+
+    #sidebar-social a span.fa-stack {
+        margin-left: 0px;
+        display: none;
+    }
+
+    /* changement de couleur avec :hover :focus :active */
+    #sidebar-social li:hover a,
+    #sidebar-social li:focus a,
+    #sidebar-social li:active a { color: #dce0e9; }
+    #sidebar-social li:hover a.facebook,
+    #sidebar-social li:focus a.facebook,
+    #sidebar-social li:active a.facebook { background-color: #2d4475; }
+    #sidebar-social li:hover a.twitter,
+    #sidebar-social li:focus a.twitter,
+    #sidebar-social li:active a.twitter { background-color: #008fc4; }
+    #sidebar-social li:hover a.linkedin,
+    #sidebar-social li:focus a.linkedin,
+    #sidebar-social li:active a.linkedin { background-color: #006391; }
+
+}
+
 
