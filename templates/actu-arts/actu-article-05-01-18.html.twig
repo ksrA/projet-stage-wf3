@@ -1,7 +1,7 @@
 {% extends "base-actu.html.twig" %}
 
 {% block title %}
-    Numéricall-actualités-05/01/18
+    Actualités 05/01/18 - Numericall
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block body1 %}
+<!-- titre de l'article en tête de page -->
 <div class=" container-fluid" id="title1">
     <div class="row">
         <div class="col-12"><h1>Fit4CodingJobs Session 1 Day One au Technoport</h1></div>
@@ -20,6 +21,7 @@
 {% block body2 %}
 <section class="col-lg-9" id="articles">
 
+    <!-- liens article suivant ou précédant -->
     <div class="container">
         <div class="row justify-content-between previous-next-border">
             <div class="previous">
@@ -27,17 +29,18 @@
                 <div class="animate"></div> -->
             </div>
             <div class=" next">
-                <a href="/art081217"> Article suivant <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <a href="{{ path('article081217_page') }}"> Article suivant <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
                 <div class="animate"></div>
             </div>
         </div>
     </div>
 
+    <!-- l'article -->
     <article class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="https://www.numericall.fr/wp-content/uploads/2018/01/Screen-Shot-2018-01-04-at-11.45.32.png" target="_blank">
-                    <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2018/01/Screen-Shot-2018-01-04-at-11.45.32.png" alt="Screen-Shot-2018-01-04-at-11.45.32">
+                <a href="assets/img/actu/05-01-18.png" target="_blank">
+                    <img class="img-fluid" src="assets/img/actu/05-01-18.png" alt="Screen-Shot-2018-01-04-at-11.45.32">
                 </a>
             </div>
             <div class="col-12">

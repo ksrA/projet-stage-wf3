@@ -191,6 +191,9 @@
     "symfony/polyfill-php72": {
         "version": "v1.6.0"
     },
+    "symfony/polyfill-util": {
+        "version": "v1.6.0"
+    },
     "symfony/process": {
         "version": "v4.0.3"
     },
@@ -220,6 +223,9 @@
             "version": "3.3",
             "ref": "34eb245ce4194e7ae713558084180e2c532e7afd"
         }
+    },
+    "symfony/security-csrf": {
+        "version": "v4.0.3"
     },
     "symfony/stopwatch": {
         "version": "v4.0.3"

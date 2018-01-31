@@ -1,7 +1,7 @@
 {% extends "base-actu.html.twig" %}
 
 {% block title %}
-    Numéricall-actualités de janvier 2018
+    Actualités de janvier 2018 - Numericall
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block body1 %}
+<!-- titre de page -->
 <div class=" container-fluid" id="title1">
     <div class="row">
         <div class="col-12"><h1>Janvier 2018</h1></div>
@@ -24,20 +25,20 @@
         <div class="row justify-content-end">
             <div class="col-md-6">
                 <div class="container box-item">
-                    <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2018/01/Screen-Shot-2018-01-04-at-11.45.32.png" alt="Screen-Shot-2018-01-04-at-11.45.32">
+                    <img class="img-fluid" src="assets/img/actu/05-01-18.png" alt="Screen-Shot-2018-01-04-at-11.45.32">
                     <div class="row align-items-center items">
                         <div class="col-6 link">
-                            <a href="/art050118"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            <a href="{{ path('article050118_page') }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-6 zoom">
-                            <a href="https://www.numericall.fr/wp-content/uploads/2018/01/Screen-Shot-2018-01-04-at-11.45.32.png" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            <a href="assets/img/actu/05-01-18.png" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="title2 mt-md-0">
-                    <a href="/art050118"> <h2>Fit4CodingJobs Session 1 Day One au Technoport</h2> </a>
+                    <a href="{{ path('article050118_page') }}"> <h2>Fit4CodingJobs Session 1 Day One au Technoport</h2> </a>
                     <div class="animate"></div>
                 </div>
                 <span>5 janvier 2018</span>
@@ -45,7 +46,7 @@
                     propose désormais le programme de développeur-intégrateur web de 490 heures intégralement [...]</p>
             </div>
             <div class="read-more">
-                <a href="/art050118">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <a href="{{ path('article050118_page') }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
                 <div class="animate"></div>
             </div>
         </div>

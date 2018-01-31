@@ -1,12 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Témoignages{% endblock %}
+{% block title %}
+    Témoignages - Numericall
+{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="assets/css/testimony.css">
 {% endblock %}
 
 {% block body %}
+
+<!-- titre de page -->
+<div class=" container-fluid" id="title1">
+    <div class="row">
+        <div class="col-12"><h1>Témoignage</h1></div>
+    </div>
+</div>
+
 <h2>< Ils parlent de WebForce3 ></h2>
 
 <div class="card-columns">
@@ -53,7 +63,7 @@
         </iframe>
     </div>
     <div class="card">
-        <p>
+        <p id="casse-couille">
             <span class="quotes"><<</span><br>
             <b>85%</b> des stagiaires trouvent un travail à l'issue de cette formation. Leurs compétences acquises
             dans le codage fait toute la différence, notamment pour ceux qui sont graphistes.<br>
@@ -160,7 +170,5 @@
             Etudiante de la session 3
         </p>
     </div>
-
 </div>
-
 {% endblock %}

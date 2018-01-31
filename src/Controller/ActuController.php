@@ -141,16 +141,4 @@ class ActuController extends Controller
     }
 
 
-
-
-
-    /**
-     * @Route("/test", name="test")
-     */
-    public function teste()
-    {
-        return $this->render('test.html.twig');
-    }
-
-
 }

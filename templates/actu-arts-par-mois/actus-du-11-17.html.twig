@@ -1,7 +1,7 @@
 {% extends "base-actu.html.twig" %}
 
 {% block title %}
-    Numéricall-actualités de novembre 2017
+    Actualités de novembre 2017 - Numericall
 {% endblock %}
 
 {% block stylesheets %}
@@ -24,20 +24,20 @@
             <div class="row justify-content-end">
                 <div class="col-md-6">
                     <div class="container box-item">
-                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2015/11/numericall-logo-.png" alt="numericall-logo">
+                        <img class="img-fluid" src="assets/img/actu/28-11-17.png" alt="numericall-logo">
                         <div class="row align-items-center items">
                             <div class="col-6 link">
-                                <a href="/art281117"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                <a href="{{ path('article281117_page') }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                             </div>
                             <div class="col-6 zoom">
-                                <a href="https://www.numericall.fr/wp-content/uploads/2015/11/numericall-logo-.png" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                <a href="assets/img/actu/28-11-17.png" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="title2 mt-md-0">
-                        <a href="/art281117"> <h2>Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</h2> </a>
+                        <a href="{{ path('article281117_page') }}"> <h2>Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</h2> </a>
                         <div class="animate"></div>
                     </div>
                     <span>28 novembre 2017</span>
@@ -45,7 +45,7 @@
                         Une formation de 490 heures de développeur - intégrateur web. Pour vous [...]</p>
                 </div>
                 <div class="read-more">
-                    <a href="/art281117">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                    <a href="{{ path('article281117_page') }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
                     <div class="animate"></div>
                 </div>
             </div>

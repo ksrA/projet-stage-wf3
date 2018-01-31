@@ -6,27 +6,59 @@ body {
     box-sizing: border-box;
 }
 
+
+
+/* block du titre de page **************************/
+#title1 { 
+    background-color: #da1816;
+    padding: 1% 1% 1% 1%;
+    box-shadow: 0px 1px 5px #2a2a2a;
+}
+
+#title1>div {
+    margin: 0% 5% 0% 5%;
+}
+
+#title1 div div h1 {
+    font-size: 2em;
+    color: #ececec;
+}
+/* ************************************************ */
+
+
+
 h2 {
     text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     font-weight: bold;
-    color: #464646;
+    color: #da1816;
     padding: 50px;
 }
 
 p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     font-weight: bold;
 }
 
-a {
+div.container {
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div.faq-response {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.24);
+}
+
+a.question {
     display: block;
     padding: 7px;
     width: 50%;
-    color: white;
+    color: #ececec;
     text-align: center;
     margin: auto;
-    background-color: #da0000;
+    background-color: #da1816;
     border-radius: 10px;
     box-shadow: inset 1px 1px 30px #363636;
 }
@@ -34,7 +66,7 @@ a {
 p a:hover {
     background-color: #ff0000;
     text-decoration: none;
-    color: white;
+    color: #ececec;
 }
 
 div.answer {
@@ -42,8 +74,14 @@ div.answer {
     margin: auto;
     width: 50%;
     background-color: #ececec;
-    color: black;
+    color: #2a2a2a;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+
+/* pour le bouton F.A.Q du header */
+.menubtn-faq {
+    background-color: #da1816;
 }

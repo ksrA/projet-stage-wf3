@@ -1,7 +1,7 @@
 {% extends "base-actu.html.twig" %}
 
 {% block title %}
-    Numéricall-actualités-08/12/17
+    Actualités 08/12/17 - Numericall
 {% endblock %}
 
 {% block stylesheets %}
@@ -23,11 +23,11 @@
     <div class="container">
         <div class="row justify-content-between previous-next-border">
             <div class="previous">
-                <a href="/art050118"> <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Précédant article </a>
+                <a href="{{ path('article050118_page') }}"> <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Précédant article </a>
                 <div class="animate"></div>
             </div>
             <div class=" next">
-                <a href="/art281117"> Article suivant <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <a href="{{ path('article281117_page') }}"> Article suivant <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
                 <div class="animate"></div>
             </div>
         </div>
@@ -36,8 +36,8 @@
     <article class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="https://www.numericall.fr/wp-content/uploads/2017/12/AWARD.jpeg" target="_blank">
-                    <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2017/12/AWARD.jpeg" alt="AWARD">
+                <a href="assets/img/actu/08-12-17.jpeg" target="_blank">
+                    <img class="img-fluid" src="assets/img/actu/08-12-17.jpeg" alt="AWARD">
                 </a>
             </div>
             <div class="col-12">

@@ -1,7 +1,7 @@
 {% extends "base-actu.html.twig" %}
 
 {% block title %}
-    Numéricall-actualités-page2
+    Actualités page2 - Numericall
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,170 +10,115 @@
 {% endblock %}
 
 {% block body1 %}
-    <div class=" container-fluid" id="title1">
-        <div class="row">
-            <div class="col-8"><h1>Actualités</h1></div>
-            <div class="col-4 row justify-content-end"> <a href="#pagination-menu"> Page 2 </a> </div>
-        </div>
+<!-- titre de page -->
+<div class=" container-fluid" id="title1">
+    <div class="row">
+        <div class="col-8"><h1>Actualités</h1></div>
+        <div class="col-4 row justify-content-end"> <a href="#pagination-menu"> Page 2 </a> </div>
     </div>
+</div>
 {% endblock %}
 
 {% block body2 %}
-    <section class="col-lg-9" id="articles">
+<section class="col-lg-9" id="articles">
 
-        <article class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-md-6">
-                    <div class="container box-item">
-                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2016/08/Prochaine-reunion-dinformation-logo.jpg" alt="Prochaine-reunion-dinformation-logo">
-                        <div class="row align-items-center items">
-                            <div class="col-6 link">
-                                <a href="/art110517"><i class="fa fa-link" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="col-6 zoom">
-                                <a href="https://www.numericall.fr/wp-content/uploads/2016/08/Prochaine-reunion-dinformation-logo.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            </div>
+    <article class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+                <div class="container box-item">
+                    <img class="img-fluid" src="assets/img/actu/11-05-17.jpg" alt="Prochaine-reunion-dinformation-logo">
+                    <div class="row align-items-center items">
+                        <div class="col-6 link">
+                            <a href="{{ path('article110517_page') }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-6 zoom">
+                            <a href="assets/img/actu/11-05-17.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="title2 mt-md-0">
-                        <a href="/art110517"> <h2>Réunion d’information WF3 le 11 juillet, de 9h à 12h – Rue Bender, Luxembourg ville</h2> </a>
-                        <div class="animate"></div>
-                    </div>
-                    <span>11 mai 2017</span>
-                    <p>
-                        <!-- contenu vide -->
-                    </p>
-                </div>
-                <div class="read-more">
-                    <a href="/art110517">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+            </div>
+            <div class="col-md-6">
+                <div class="title2 mt-md-0">
+                    <a href="{{ path('article110517_page') }}"> <h2>Réunion d’information WF3 le 11 juillet, de 9h à 12h – Rue Bender, Luxembourg ville</h2> </a>
                     <div class="animate"></div>
                 </div>
+                <span>11 mai 2017</span>
+                <p>
+                    <!-- contenu vide -->
+                </p>
             </div>
-        </article>
+            <div class="read-more">
+                <a href="{{ path('article110517_page') }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <div class="animate"></div>
+            </div>
+        </div>
+    </article>
 
-        <article class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-md-6">
-                    <div class="container box-item">
-                        <img class="img-fluid" src="https://www.numericall.fr/wp-content/uploads/2017/01/IMG_2139-1200x900.jpg" alt="IMG_2139-1200x900">
-                        <div class="row align-items-center items">
-                            <div class="col-6 link">
-                                <a href="/art050117"><i class="fa fa-link" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="col-6 zoom">
-                                <a href="https://www.numericall.fr/wp-content/uploads/2017/01/IMG_2139-1200x900.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            </div>
+    <article class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+                <div class="container box-item">
+                    <img class="img-fluid" src="assets/img/actu/05-01-17.jpg" alt="IMG_2139-1200x900">
+                    <div class="row align-items-center items">
+                        <div class="col-6 link">
+                            <a href="{{ path('article050117_page') }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-6 zoom">
+                            <a href="assets/img/actu/05-01-17.jpg" target="_blank"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="title2 mt-md-0">
-                        <a href="/art050117"> <h2>Day one Session 4 WF3 Fit4coding au Luxembourg. C’est parti!</h2> </a>
-                        <div class="animate"></div>
-                    </div>
-                    <span>5 janvier 2017</span>
-                    <p>
-                        <!-- contenu vide -->
-                    </p>
+            </div>
+            <div class="col-md-6">
+                <div class="title2 mt-md-0">
+                    <a href="{{ path('article050117_page') }}"> <h2>Day one Session 4 WF3 Fit4coding au Luxembourg. C’est parti!</h2> </a>
+                    <div class="animate"></div>
                 </div>
-                <div class="read-more">
-                    <a href="/art050117">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <span>5 janvier 2017</span>
+                <p>
+                    <!-- contenu vide -->
+                </p>
+            </div>
+            <div class="read-more">
+                <a href="{{ path('article050117_page') }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                <div class="animate"></div>
+            </div>
+        </div>
+    </article>
+
+    
+    <!-- Pagination des pages : -->
+    <!-- pour la dèrnière page -->
+    <nav class='row' id="pagination-menu">
+        <div class="col-md-3 container nextorprev-div">
+            <div class="row justify-content-start mt-5 mb-5">
+                <div class="prev">
+                    <a href="{{ path('actu_page1') }}">
+                        <strong>Page précédante</strong>
+                    </a>
                     <div class="animate"></div>
                 </div>
             </div>
-        </article>
+        </div>
 
-        <!-- pour la première page -->
-        <!-- <nav class='row' id="pagination-menu">
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-start mt-md-5 mb-md-5">
-                </div>
+        <div class="col-md-6 container button-div">
+            <div class="row justify-content-center mt-md-5 mb-5">
+                <a href="{{ path('actu_page1') }}" class="ml-0 button">1</a>
+                <span>2</span>
             </div>
+        </div>
 
-            <div class="col-md-6 container button-div">
-                <div class="row justify-content-center mt-5 mb-md-5">
-                    <span class="ml-0">1</span>
-                    <a href="### (page2 des articles)..." class="button">2</a>
-                    <a href="### (page3 des articles)..." class="button">3</a>
-                    <a href="### (page4 des articles)..." class="button">4</a>
-                    <a href="### (page5 des articles)..." class="button">5</a>
-                </div>
+        <div class="col-md-3 container nextorprev-div">
+            <div class="row justify-content-end mt-md-5 mb-md-5">
+                <!-- <div class="next">
+                    <a href="/actualitesp3">
+                        <strong>Page suivante</strong>
+                    </a>
+                    <div class="animate"></div>
+                </div> -->
             </div>
+        </div>
+    </nav>
 
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-end mt-5 mb-5">
-                    <div class="next">
-                        <a href="### (page des articles suivantes)...">
-                            <strong>Page suivante</strong>
-                        </a>
-                        <div class="animate"></div>
-                    </div>
-                </div>
-            </div>
-        </nav> -->
-
-        <!-- pour la page 2, 3, 4, 5 ... -->
-        <!-- <nav class='row' id="pagination-menu">
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-start mt-5 mb-5">
-                    <div class="prev">
-                        <a href="### (page des articles précédente)...">
-                            <strong>Page précédante</strong>
-                        </a>
-                        <div class="animate"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 container button-div">
-                <div class="row justify-content-center mt-md-5 mb-md-5">
-                    <a href="### (page1 des articles)..." class="ml-0 button">1</a>
-                    <span>2</span>
-                    <a href="### (page3 des articles)..." class="button">3</a>
-                    <a href="### (page4 des articles)..." class="button">4</a>
-                    <a href="### (page5 des articles)..." class="button">5</a>
-                </div>
-            </div>
-
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-end mt-5 mb-5">
-                    <div class="next">
-                        <a href="### (page des articles suivantes)...">
-                            <strong>Page suivante</strong>
-                        </a>
-                        <div class="animate"></div>
-                    </div>
-                </div>
-            </div>
-        </nav> -->
-
-        <!-- pour la dèrnière page -->
-        <nav class='row' id="pagination-menu">
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-start mt-5 mb-5">
-                    <div class="prev">
-                        <a href="/actualitesp1">
-                            <strong>Page précédante</strong>
-                        </a>
-                        <div class="animate"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 container button-div">
-                <div class="row justify-content-center mt-md-5 mb-5">
-                    <a href="/actualitesp1" class="ml-0 button">1</a>
-                    <span>2</span>
-                </div>
-            </div>
-
-            <div class="col-md-3 container nextorprev-div">
-                <div class="row justify-content-end mt-md-5 mb-md-5">
-                </div>
-            </div>
-        </nav>
-
-    </section>
+</section>
 {% endblock %}
