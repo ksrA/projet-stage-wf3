@@ -1,0 +1,75 @@
+{#
+    Génération de l'affichage lorsqu'une réunion est selectionnée
+#}
+
+<div class="container">
+    <div class="row justify-content-around">
+
+        <div class="col-6">
+            <a id="note-candidat" class="card" data-toggle="collapse" href="#multiCollapse1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                <h5>Ajouter note candidat</h5>
+            </a>
+        </div>
+
+        <div class="col-6">
+            <a  id="select-candidat" class="card align-self-center" data-toggle="collapse" href="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                <h5>Selection des candidats par la note pour entretien</h5>
+            </a>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="collapse" id="multiCollapse1">
+                {% if reunion is defined %}
+                <p>Si le candidat n'a pas fait le test ou n'a pas été présent a la réunion, ne pas remplir le champs note</p>
+                <form name="form" action="{{ path('save_note') }}" method="post" id="note-formu">
+                    <table>
+                        <thead>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Note</th>
+                        </thead>
+                        <tbody>
+                        {#
+
+                        //On parcours la liste des candidats et on affiche leur nom, prénom puis un champs input
+                        //pour pouvoir entrer leur note
+                        //La soumission du formulaire appelle la route save_note pour mettre a jour la bdd
+
+                        #}
+                        {% for candidat in candidats %}
+                            <tr>
+                                <td>{{ candidat.lastName }}</td>
+                                <td>{{ candidat.firstName }}</td>
+                                <td><input type="number" name="{{ candidat.id }}"/></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="submit" id="send-note">Envoyer</button>
+                </form>
+                <p id="note-saved"></p>
+                {% endif %}
+            </div>
+        </div>
+
+    {#
+        Formulaire de saisie de la note minimale a avoir afin d'etre selectionné pour les entretiens
+    #}
+        <div class="col-6">
+            <div class="collapse" id="multiCollapse2">
+                <form method="post" id="note-ref-formu">
+                    {% if reunion is defined %}
+                        <label for="note-ref">
+                        Note minimal :
+                        <input type="number" name="note-ref" id="note-ref"/>
+                    </label>
+                    <button type="submit" id="send-note-ref">Envoyer</button>
+                    {% endif %}
+                </form>
+                <div id="note-checked"></div>
+            </div>
+        </div>
+    </div>
+</div>

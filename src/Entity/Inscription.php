@@ -1,5 +1,6 @@
 <?php
     namespace App\Entity;
+
     use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,7 +45,7 @@ class Inscription
     //@ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
     //private $timestamp;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="datetime")
      */
     private $dateInscription;
 

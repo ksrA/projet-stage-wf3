@@ -1,0 +1,28 @@
+{#
+    Tableau html généré et retourné par la requete ajax s'il y'a des candidats ayant la note minimale
+#}
+
+{% if candidats is defined %}
+    <table>
+        <thead>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Note</th>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.lastName }}</td>
+                <td>{{ candidat.firstName }}</td>
+                <td>{{ candidat.email }}</td>
+                <td>{{ candidat.phoneNumber }}</td>
+                <td>{{ candidat.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Aucun candidat ne correspond à la recherche</p>
+{% endif %}
