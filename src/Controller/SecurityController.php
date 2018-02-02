@@ -32,6 +32,7 @@
         {
             $user = new User();
 
+
             $pass = 'clement';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
