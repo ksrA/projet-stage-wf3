@@ -2,26 +2,54 @@
 
 
 {% block body %}
-
-
-{# Tout afficher dans un tableau html ??
- Sinon, faire comme sur la page FAQ de Joshua,
- info de session clikable et ca déroule les candidats#}
     <h1>Liste réunion et candidats</h1>
     {#
         On parcours chaque session
         On affiche d'abord ses informations
         Puis on liste en dessous les candidats
     #}
-    {% for session in sessions %}
-        <p>
-            <b>id session : </b>{{ session.id }}
-            <b>Campus : </b>{{ session.campus }}
-            <b>Financeur : </b>{{ session.financer }}
-            <b>Date Réunion : </b> {{ session.dateReunion|date('d/m/Y H:m') }}
-            <b>Début de la session Session : </b> {{ session.dateSession|date('d/m/Y') }}
-        </p>
 
+    {% for session in sessions %}
+        <div class="container">
+            <p>
+                <a class="infosession" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+                    <b>Campus : </b>{{ session.campus }}
+                    <b>Financeur : </b>{{ session.financer }}
+                    <b>Date Réunion : </b> {{ session.dateReunion|date('d/m/Y H:m') }}
+                    <b>Début de la session Session : </b> {{ session.dateSession|date('d/m/Y') }}
+                </a>
+            </p>
+            {%  if applicants is defined %}
+            <div class="answer session-candidat" id="collapse1">
+                <table border="1">
+                    <thead>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Téléphone</th>
+                    <th>E-mail</th>
+                    <th>Lettre de motivation</th>
+                    <th>CV</th>
+                    </thead>
+                    <tbody>
+                    {% for key, value in applicants %}
+                        {% if key == session.id %}
+                            {% for val in value %}
+                                <tr>
+                                    <td>{{ val.firstName }}</td>
+                                    <td>{{ val.lastName }}</td>
+                                    <td>{{ val.phoneNumber }}</td>
+                                    <td>{{ val.email }}</td>
+                                    <td><a href="/uploads/{{ val.resume }}">CV</a></td>
+                                    <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
         {#
             on parcours le tableau contenant info sur les candidats
             si la cléfs de ce tableau correspond a l'id de la réunion
@@ -29,20 +57,7 @@
             et on affiche cette val (cf :
                     $tabApplicant[$infosession->getId()][$j] = $applicant;)
         #}
-        {% for key, value in applicants %}
-            {% if key == session.id %}
-                {# Faire le rendu dans un tableau html plutot qu'une liste ?? #}
-            <ul>
-                {% for val in value %}
-                    <li>
-                        {{ val.firstName }} {{ val.lastName }} {{ val.phoneNumber }} {{ val.email }}
-                        <a href="/uploads/{{ val.resume }}">Visualiser le CV</a>
-                        <a href="/uploads/{{ val.coverLetter }}">Visualiser la lettre de motivation</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        {% endfor %}
+
     {% endfor %}
 {% endblock %}
 

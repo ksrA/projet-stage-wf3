@@ -2,13 +2,93 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- normalize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <!-- feuille de style bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+
+    <!-- font awesom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- feuille de style pour base-backoffice -->
+    <link rel="stylesheet" href="/assets/css/base-back-office-style.css">
+
     {% block stylesheets %}{% endblock %}
     {% block redirectionPage %}{% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+
+<!-- HEADER - NAV MENU -->
+<header class="container-fluid justify-content-center menu">
+    <div class="row ">
+        <div class="col-4 col-lg-12 mini-menu-contain recrut">
+            <h2>RECRUTEMENT</h2>
+            <ul>
+                <a href="{{ path('select_list') }}">
+                    <li>Créer une réunion</li>
+                </a>
+                <a href="{{ path('note_page') }}">
+                    <li>Note candidat</li>
+                </a>
+                <a href="{{ path('session_info') }}">
+                    <li>Info session</li>
+                </a>
+            </ul>
+        </div>
+        <div class="col-4 col-lg-12 mini-menu-contain param-compt">
+            <h2>PARAMETRE DU COMPTE</h2>
+            <ul>
+                <a href="{{ path('change_email') }}">
+                    <li>Changer Email</li>
+                </a>
+                <a href="{{ path('change_password') }}">
+                    <li>Changer Mot de passe</li>
+                </a>
+            </ul>
+        </div>
+        {% if is_granted('ROLE_SUPERADMIN') %}
+        <div class="col-4 col-lg-12 mini-menu-contain gest-admin">
+            <h2>GESTION ADMINISTRATEUR</h2>
+            <ul>
+                <a href="{{ path('create_user') }}">
+                    <li>Créer un administrateur</li>
+                </a>
+                <a href="{{ path('delete_user') }}">
+                    <li>Supprimer un administrateur</li>
+                </a>
+                <a href="{{ path('change_role') }}">
+                    <li>Changer le role d'un administrateur</li>
+                </a>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <a id="buton-deco" class="btn btn-danger" href="{{ path('logout') }}" role="button">Déconexion</a>
+    </div>
+</div>
+
+<main>
+{% block body %}
+{% endblock %}
+</main>
+
+<!-- script pour bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>

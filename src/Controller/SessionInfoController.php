@@ -45,9 +45,16 @@
                 }
             }
 
-            return $this->render('candidatSession/candidat-session.html.twig', [
-                'sessions' => $sessions,
-                'applicants' => $tabApplicant,
-            ]);
+            if (!empty($tabApplicant)){
+                return $this->render('candidatSession/candidat-session.html.twig', [
+                    'sessions' => $sessions,
+                    'applicants' => $tabApplicant,
+                ]);
+            }
+            else {
+                return $this->render('candidatSession/candidat-session.html.twig', [
+                    'sessions' => $sessions,
+                ]);
+            }
         }
     }

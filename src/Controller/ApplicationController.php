@@ -20,6 +20,7 @@
          */
         public function applicationForm($slug, Request $request, \Swift_Mailer $mailer)
         {
+            //On recupére le hashlink de la session pour vérifier le slug de l'url
             $repository = $this->getDoctrine()->getRepository(SessionFormation::class);
             if (($sessionFormation = $repository->findOneBy(['hashLink' => $slug])) != null) {
                 $hashlink = $sessionFormation->getHashLink();
@@ -28,19 +29,15 @@
                 $dateNow = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
                 $dateReunion = $sessionFormation->getDateReunion();
 
-                // Exemple pour explication :
-                // echo 'date de maintenant : ' . '<br>';
-                // var_dump($dateNow = new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-                // echo '<br>' . 'date de la réunion : ';
-                // var_dump($dateReunion = $sessionFormation->getDateReunion());
-                // $interval = $dateReunion->diff($dateNow);
-                // echo $interval->format('%R%a days');
 
                 //Comparaison date
+                //S'il postule après la date de réunion alors message qui indique que les candidature sont closes
                 if ($dateNow > $dateReunion){
                     return new Response('<h1>Candidature close</h1>');
                 }
 
+                //Si le slug de l'url correspond au hashlink alors on affiche le formulaire de candidature
+                //Sinon message d'erreur 404
                 if ($slug == $hashlink) {
 
                     //pas besoin de passer application?
@@ -94,6 +91,7 @@
                         $em->persist($data);
                         $em->flush();
 
+                        //Envoi de mail
                         $message = new \Swift_Message('Candidature WF3 envoyée');
                         $message
                             ->setFrom('helloworldwf3@gmail.com') // Expéditeur

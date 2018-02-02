@@ -32,7 +32,7 @@
         {
             $user = new User();
 
-            $pass = 'anicet';
+            $pass = 'anicetk';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
             $user->setUsername('anicetk');
@@ -134,10 +134,21 @@
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
-                if ($data['firstnewpassword'] == $data['secondnewpassword']){
-                    $user = $this->getUser();
+                $oldPassword = $data['password'];
+                $user = $this->getUser();
+
+                if (!($encoder->isPasswordValid($user, $oldPassword))){
+                    $error[] = 'Vous avez mal saisi votre mot de passe';
+                }
+
+                if ($data['firstnewpassword'] != $data['secondnewpassword']){
+                    $error[] = 'Les mots de passe doivent être identiques';
+                }
+
+                if (!isset($error)){
                     $newpass = $data['firstnewpassword'];
                     $encoded = $encoder->encodePassword($user, $newpass);
+
                     $user->setPassword($encoded);
 
                     $em = $this->getDoctrine()->getManager();
@@ -155,6 +166,7 @@
                     return $this->render('formChangePassword/change-password.html.twig', [
                         'formChange' => $form->createView(),
                         'notchange' => $notchange,
+                        'msgError' => $error,
                     ]);
                 }
             }
@@ -586,11 +598,22 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Accès interdit !');
 
+            $user = $this->getUser();
+
+            $repository = $this->getDoctrine()->getRepository(User::class);
+            $personBdd = $repository->findAll();
+            foreach($personBdd as $userAdmin){
+                if ($user->getUsername() != $userAdmin->getUsername()){
+                    $value[] = $userAdmin->getUsername();
+                    $key[] = $userAdmin->getId();
+                }
+            }
+            $arrayUser = array_combine($value, $key);
+
             $form = $this->createFormBuilder()
-                ->add('username', EntityType::class, [
-                    'class' => User::class,
-                    'choice_label' => 'username',
+                ->add('username', ChoiceType::class, [
                     'placeholder' => 'Choisir l\'utilisateur',
+                    'choices' => $arrayUser,
                 ])
                 ->add('role', ChoiceType::class, [
                     'placeholder' => 'Choisir le nouveau rôle : ',
@@ -608,7 +631,7 @@
                 $data = $form->getData();
 
                 $repository = $this->getDoctrine()->getRepository(User::class);
-                $personBdd = $repository->findOneBy(['username' => $data['username']->getUsername()]);
+                $personBdd = $repository->findOneBy(['id' => $data['username']]);
 
                 if ($data['role'] == "ROLE_SUPERADMIN"){
                     $personBdd->setRoles(['ROLE_SUPERADMIN']);

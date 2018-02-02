@@ -1,33 +1,92 @@
 {% extends "base-backoffice.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/create-reunion.css">
+{% endblock %}
 
 {% block body %}
     {% if submit is defined %}
-        <p>Réunion et session crées,
-        invitation des candidats a remplir formulaire envoyé par mail</p>
+        <b>Les personnes en liste d'attente ont été invité à la réunion
+            ainsi qu'à remplir le formulaire de candidature</b>
     {% else %}
-    <div>
-        {#
-            <h1>Liste des candidats en attente pour le campus {{ campus }}</h1>
-        #}
-    <ul>
-        {% set myVal = 0 %}
-        {% for array in waitinglist %}
-            {% set myVal = loop.length %}
-            <li>{{ array.firstname }}
-                {{ array.lastname }}
-                {{ array.email }}</li>
-        {% endfor %}
-        <p>Nombre de candidat en attente : {{ myVal }}</p>
-    </ul>
-    <div>
-    <div style="float: right;">
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h2>Liste des candidats en attente pour le campus de {{ campus }}</h2>
+                    <table class="table table-bordered table-light">
+                        <thead>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Email</th>
+                        </thead>
+                        <tbody>
+                            {% set myVal = 0 %}
+                            {% for array in waitinglist %}
+                            <tr>
+                                {% set myVal = loop.length %}
+                                <td>{{ array.firstname }}</td>
+                                <td> {{ array.lastname }}</td>
+                                <td>{{ array.email }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-        {# afficher le form en flex sur le coté, et prévoir un bloc pour le div d'au dessus
-        si jamais la liste est trop long en mode overflow #}
-    {% form_theme formCreateReunion 'bootstrap_4_layout.html.twig' %}
+                <div class="col-12 col-md-6">
+                    <h2>Formulaire création de réunion</h2>
+                    <p>Nombre de candidat en attente : {{ myVal }}</p>
 
-    {{ form(formCreateReunion) }}
-    </div>
+                    {% form_theme formCreateReunion 'bootstrap_4_layout.html.twig' %}
+
+                    {{ form(formCreateReunion) }}
+
+  {#
+                    {{ form_start(formCreateReunion, {'attr': {'class': 'form-group'}}) }}
+
+                    <div class="form-group">
+                        {{ form_widget(formCreateReunion.place,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': 'Adresse de la réunion'
+                            }})
+                        }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(formCreateReunion.financer,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': 'Financeur'
+                            }})
+                        }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(formCreateReunion.dateSession,{'attr': {
+                            'class': 'form-control',
+                            }})
+                        }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(formCreateReunion.dateReunion,{'attr': {
+                            'class': 'form-control',
+                            }})
+                        }}
+                    </div>
+
+                    {{ form_widget(formCreateReunion.save, {'attr': {'class': 'btn btn-secondary btn-block'}}) }}
+
+                    {{ form_end(formCreateReunion) }}
+  #}
+                </div>
+            </div>
+        </div>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/assets/js/datepicker-form.js"></script>
 {% endblock %}

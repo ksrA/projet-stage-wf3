@@ -1,4 +1,5 @@
 {% extends "base-backoffice.html.twig" %}
+
 {% block body %}
     {% if formOk is defined %}
         <div>Nouvel utilisateur créer en bdd. Un mail va lui être envoyé avec un mdp généré aléatoirement!<br>
@@ -15,4 +16,5 @@
         {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
         {{ form(formCreateAdmin) }}
     {% endif %}
+
         {% endblock %}

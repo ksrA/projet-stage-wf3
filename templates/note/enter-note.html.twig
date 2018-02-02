@@ -1,12 +1,26 @@
 {% extends "base-backoffice.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/enter-note.css">
+{% endblock %}
+
 
 {% block body %}
 
-    <h1>Insertion notes candidats</h1>
-    {% form_theme formNote 'bootstrap_4_layout.html.twig' %}
+    <h2 class="display-5">Insertion de la note des candidats et selection entretiens</h2>
 
-    {{ form(formNote) }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-xs-6">
+                    {{ form_start(formNote, {'attr': {'class': 'form-group'}}) }}
+                    <div class="form-group">
+                        {{ form_widget(formNote.select, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    {{ form_end(formNote) }}
+            </div>
+        </div>
+    </div>
+
     <div id="tab-and-form-container">
         {# C'est ici qu'est placé le tableau généré depuis ajax#}
     </div>
@@ -16,5 +30,4 @@
 {%block javascripts %}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <script src="/assets/js/note.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
  {%endblock%}

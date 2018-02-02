@@ -3,26 +3,28 @@
 #}
 
 {% if candidats is defined %}
-    <table>
-        <thead>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Note</th>
-        </thead>
-        <tbody>
-        {% for candidat in candidats %}
-            <tr>
-                <td>{{ candidat.lastName }}</td>
-                <td>{{ candidat.firstName }}</td>
-                <td>{{ candidat.email }}</td>
-                <td>{{ candidat.phoneNumber }}</td>
-                <td>{{ candidat.note }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-light">
+            <thead>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Note</th>
+            </thead>
+            <tbody>
+            {% for candidat in candidats %}
+                <tr>
+                    <td style="text-align: center;">{{ candidat.firstName }}</td>
+                    <td style="text-align: center;">{{ candidat.lastName }}</td>
+                    <td style="text-align: center;">{{ candidat.email }}</td>
+                    <td style="text-align: center;">{{ candidat.phoneNumber }}</td>
+                    <td style="text-align: center;">{{ candidat.note }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% else %}
     <p>Aucun candidat ne correspond à la recherche</p>
 {% endif %}

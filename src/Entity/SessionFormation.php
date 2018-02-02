@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+// Entité représentant la session de formation en bdd
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SessionFormationRepository")
  */

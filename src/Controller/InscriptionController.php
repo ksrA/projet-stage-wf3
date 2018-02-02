@@ -12,6 +12,8 @@
 
     class InscriptionController extends Controller
     {
+        //Formulaire d'inscription sur liste d'attente
+
         /**
          * @Route ("/inscription", name="inscription_waitlist")
          */
@@ -20,8 +22,9 @@
             $inscription = new Inscription();
             $inscription->setStatus('waitlisted');
 
+            //On récupére la date du moment où la personne s'inscrit sur liste d'attente
             $date = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
-            //$inscription->setDateInscription($date->format('d-m-Y'));
+
             $inscription->setDateInscription($date);
 
             $form = $this->createForm(InscriptionAddType::class, $inscription);
@@ -32,7 +35,7 @@
                 $personneWaitList = $form->getData();
                 $repository = $this->getDoctrine()->getRepository(Inscription::class);
 
-                // Si l'adresse mail existe déjà en bdd
+                // Si l'adresse mail existe déjà en bdd on return le form avec message d'erreur
                 if(($personneBdd = $repository->findOneBy(['email' => $personneWaitList->getEmail()])) != null){
                     return $this->render('formWaitList/inscription-form.html.twig', [
                         'mailExist' => "Adresse mail déjà utilisée",
@@ -45,6 +48,7 @@
                     $em->persist($personneWaitList);
                     $em->flush();
 
+                    //Mail
                     $message = new \Swift_Message('NumericALL - Confirmation inscription liste d\'attente');
                     $message
                         ->setFrom('helloworldwf3@gmail.com')
@@ -60,37 +64,8 @@
                         'formWaitList' => $form->createView(),
                         'formValid' => $formValid,
                     ]);
-
-                    //Si on veut rediriger vers une autre route
-                    // return $this->redirectToRoute('confirmation_inscription_waitlist');
                 }
             }
-
             return $this->render('formWaitList/inscription-form.html.twig', ['formWaitList' => $form->createView()]);
-        }
-
-        /**
-         * @Route ("/inscription/confirmation", name="confirmation_inscription_waitlist")
-         */
-        public function inscriptionConfirmation()
-        {
-         /*   $repository = $this->getDoctrine()->getRepository(Inscription::class);
-            $waitlist = $repository->findBy(['status' => 'waitlisted']);
-
-            $message = new \Swift_Message('Confirmation inscription liste d\'attente');
-            $message
-                ->setFrom('helloworldwf3@gmail.com') // Expéditeur
-                ->setBody($this->renderView('email/body-confirmation.html.twig'), 'text/html');// Contenu
-
-            foreach($waitlist as $personne){
-                $message->setTo($personne->getEmail()); // Destinataire
-                $mailer->send($message);
-            }*/
-            //dump($waitlist);
-
-            return $this->render('formWaitList/inscription-confirmation.html.twig');
-           /* return $this->render('formWaitList/inscription-confirmation.html.twig', [
-                'list' => $waitlist,
-            ]);*/
         }
     }

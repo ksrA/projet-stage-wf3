@@ -58,6 +58,9 @@
             return $this->render('testimony/testimony.html.twig');
         }
 
+
+        //Formulaire de contact frontOffice. Création du formulaire et envoie de mail
+
         /**
          * @Route("/contact", name="contact_page")
          */
@@ -119,7 +122,7 @@
                         'firstname' => $data['firstname'],
 
                     ]), 'text/html')
-                    ->setTo('anicetkesraoui@gmail.com');
+                    ->setTo('helloworldwf3@gmail.com');
 
                 $mailer->send($message);
 
