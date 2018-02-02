@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    S'inscrire - Numericall
+{% endblock %}
+
 
 {% block body %}
     {% if formValid is defined %}
@@ -14,4 +18,8 @@
     {% endif %}
     <p>Le lieu de réunion peut parfois être différent du lieu de formation.</p>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="form_contact-frontoffice-script.js"></script>
 {% endblock %}

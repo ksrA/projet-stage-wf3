@@ -1,14 +1,23 @@
 {% extends "base-backoffice.html.twig" %}
 
+
 {% block stylesheets %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="/assets/css/create-reunion.css">
+
+{% block title %}
+    Créer Réunion - Numericall
+
 {% endblock %}
 
 {% block body %}
     {% if submit is defined %}
-        <b>Les personnes en liste d'attente ont été invité à la réunion
-            ainsi qu'à remplir le formulaire de candidature</b>
+        <div class="alert alert-success" role="alert">
+            <p>
+            Réunion et session crées<br>
+            Invitation des candidats a remplir le formulaire envoyé par mail
+            </p>
+        </div>
     {% else %}
         <div class="container-fluid mt-4">
             <div class="row">
