@@ -37,18 +37,31 @@
         {
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
-
             $form = $this->createFormBuilder()
                 ->add('locality', ChoiceType::class, [
-                    'label' => 'Campus : ',
+                    'label' => ' ',
                     'placeholder' => 'Choisir le lieu de formation',
                     'choices' => [
                         'Piennes' => 'Piennes',
                         'Esch-sur-Alzette' => 'Esch-sur-Alzette',
                     ],
                 ])
+                ->add('save', SubmitType::class, ['label' => 'Selectionner'])
                 ->getForm();
 
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $data = $form->getData();
+
+                $waitingList = $this->getDoctrine()->getRepository(Inscription::class)->selectByStatusWaitListed($data['locality']);
+
+                $session = new Session();
+                $session->set('list', $waitingList);
+                $session->set('campus', $data['locality']);
+
+                return $this->redirectToRoute('create-reunion');
+            }
             return $this->render('reunion/select-waiting-list.html.twig', [
                 'formSelectWaitingList' => $form->createView(),
             ]);
@@ -62,13 +75,12 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
 
-            $locality = $request->get('locality');
-
-            $waitingList = $this->getDoctrine()->getRepository(Inscription::class)->selectByStatusWaitListed($locality);
-
+            $waitinglist = $this->get('session')->get('list');
+            $campus = $this->get('session')->get('campus');
             //$sessionFormation = new SessionFormation();
             $form = $this->createForm(CreateReunionFormType::class);
 
+            // dump($waitingList);
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
@@ -76,13 +88,13 @@
 
                 $sessionFormation = new SessionFormation();
 
-                $sessionFormation->setCampus($locality);
+                $sessionFormation->setCampus($campus);
                 $sessionFormation->setDateReunion($data['dateReunion']);
                 $sessionFormation->setDateSession($data['dateSession']);
                 $sessionFormation->setFinancer($data['financer']);
 
                 //$user = new App\Entity\User();
-               //$repository = $this->getDoctrine()->getRepository(User::class);
+                //$repository = $this->getDoctrine()->getRepository(User::class);
                 //obligé d'utiliser User providers de security.yaml ?
                 $repository = $this->getDoctrine()->getRepository(User::class);
                 $user = $repository->find(1);
@@ -109,9 +121,9 @@
                 //Envoi du message avec le hashlink
                 $message = new \Swift_Message('Formulaire de candidature');
                 $message
-                   ->setFrom('helloworldwf3@gmail.com') // Expéditeur
-                   ->setBody($this->renderView('email/body-application-link.html.twig',[
-                       'campus' => $sessionFormation->getCampus(),
+                    ->setFrom('helloworldwf3@gmail.com') // Expéditeur
+                    ->setBody($this->renderView('email/body-application-link.html.twig',[
+                        'campus' => $sessionFormation->getCampus(),
                         'dateReunion' => $sessionFormation->getDateReunion()->format('d/m/Y à H:m'),
                         'dateSession' => $sessionFormation->getDateSession()->format('d/m/Y'),
                         'financer' => $sessionFormation->getFinancer(),
@@ -122,9 +134,9 @@
                 $waitingList = $this->getDoctrine()->getRepository(Inscription::class)->selectByStatusWaitListed($campus);
 
                 foreach($waitingList as $personne){
-                   $message->setTo($personne->getEmail()); // Destinataire
-                   $mailer->send($message);
-                   $personne->setStatus('done');
+                    $message->setTo($personne->getEmail()); // Destinataire
+                    $mailer->send($message);
+                    $personne->setStatus('done');
                 }
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
@@ -136,7 +148,8 @@
             }
 
             return $this->render('reunion/create-reunion.html.twig', [
-                'waitinglist' => $waitingList,
+                'waitinglist' => $waitinglist,
+                'campus' => $campus,
                 'formCreateReunion' => $form->createView(),
             ]);
         }

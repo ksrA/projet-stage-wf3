@@ -1,13 +1,50 @@
-{% extends "base-backoffice.html.twig" %}
-{% block body %}
-    {% if change is defined %}
-        <div>Un email de redéfinition de mdp vous a été envoyé !<br>
-            Stylise moi stpppp!</div>
-    {% elseif notchange is defined %}
-        {% form_theme askEmail 'bootstrap_4_layout.html.twig' %}
-        {{ form(askEmail) }}
-        {% if userNotFound is defined %}
-            <p>Utilisateur non existant</p>
-        {% endif %}
-    {% endif %}
-        {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/formBackUser.css">
+    <title>Mot de pass oublié</title>
+</head>
+<body>
+    {% block body %}
+        <div class="container">
+            <div id="title">
+                
+                <h1 class="display-3">Réinisialisation du mot de passe </h1>
+            </div>
+            <div>
+                    {% if userNotFound is defined %}
+                    <div id="alertUser" class="alert alert-danger">
+                        <i class="far fa-times-circle fa-5x "></i>
+                        <p >Utilisateur non existant</p>
+                    </div>
+                    
+                    {% endif %}
+                </div>
+            <div class="row justify-content-center">
+                <div id="containerBack" class="row align-items-center">
+                    
+                    {% if change is defined %}
+                        <div id="alertUser" class="alert alert-success">
+                                <i class="far fa-check-circle fa-5x"></i>
+                            <h1>Un émail de réinisialisation a été evoyé à l'adresse mail indiqué</h1>
+                        </div>
+                        {% elseif notchange is defined %}
+                            <div class="container" id="formContainer">
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        {% form_theme askEmail 'bootstrap_4_layout.html.twig' %}
+                                        {{ form(askEmail) }}
+                                    </div>
+                                </div>
+                            </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</body>

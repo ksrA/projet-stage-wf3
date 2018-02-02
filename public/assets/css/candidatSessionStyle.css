@@ -1,0 +1,19 @@
+#ContainerSession{
+    height: 100vh;
+}
+#title{
+    color: #2a2a2a;
+}
+#table{
+    padding: 5px;
+    border-radius: 5px;
+}
+p{
+    text-align: center;
+    
+    background-color: #2a2a2a;
+    border-radius: 2px;
+}
+p a{
+    color: #ececec;
+}

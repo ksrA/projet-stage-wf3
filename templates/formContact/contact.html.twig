@@ -1,12 +1,23 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/formBackUser.css">
+{% endblock %}
 {% block body %}
     {% if formValid is defined %}
-    <div>Done!<br>
-        Stylise moi stpppp!</div>
-    {% else %}
-    {% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+        <div>
+            Done!<br>
+            Stylise moi stpppp!
+        </div>
+{% else %}
+    <h1 id="title">Contactez-Nous</h1><br>
+    <div class="container" id="formContainer">
+        <div class="row justify-content-around" id="formyo">
+            <div class="col">
+                {% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+                {{ form(formContact) }}
+            </div>
+        </div>
+    </div>
+{% endif %}
 
-    {{ form(formContact) }}
-    {% endif %}
 {% endblock %}

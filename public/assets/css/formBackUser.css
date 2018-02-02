@@ -1,0 +1,57 @@
+body{
+    background-color: #ececec;
+}
+#containerBack{
+    text-align: center;
+}
+#formContainer{
+    padding: 10px;
+    margin-bottom:20px; 
+    width: 400px;
+    border-radius:5px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4)
+}
+#title{
+    color:#da1816;
+    margin: 50px 0;
+    text-align: center;
+}
+#username{
+    margin-bottom:10px;
+}
+#password{
+    margin-bottom:10px;
+}
+#mdpforgot{
+    color:#da1816;
+}
+#btnlogin{
+    background-color: #2a2a2a;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s
+}
+#btnlogin:hover{
+    background-color: #da1816;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+}
+#form_save{
+    background-color: #2a2a2a;
+    color:#ececec;
+    margin-top:10px;
+    border: 0;
+    transition: 0.5s;
+}
+#form_save:hover{
+    background-color: #da1816;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+}
+#alertUser{
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
