@@ -28,7 +28,7 @@ $(function(){
                     data: $('#note-formu').serialize(),
                 }).done(function(response){
                     $('#note-saved').text('Notes enregistrées en bdd').fadeIn(1000);
-                    $('#note-saved').fadeOut(8000);
+                    $('#note-saved').fadeOut(4000);
                 });
             });
 

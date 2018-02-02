@@ -1,18 +1,34 @@
 {% extends "base-backoffice.html.twig" %}
+
+
+{% block title %}
+    Créer Administrateur - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/gestion-admin/create-admin.css">
+{% endblock %}
+
 {% block body %}
-    {% if formOk is defined %}
-        <div>Nouvel utilisateur créer en bdd. Un mail va lui être envoyé avec un mdp généré aléatoirement!<br>
-            Stylise moi stpppp!</div>
+{% if formOk is defined %}
+    <div class="alert alert-success" role="alert">
+        Nouvel utilisateur créer en base de donnée.<br> 
+        Un mail va lui être envoyé avec un mot de passe généré aléatoirement!<br>
+    </div>
+    <div class="alert alert-success" role="alert">
         <i>{{ mdp }}</i>
-    {% elseif formNotOk is defined %}
-        {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
-        {# Petit texte pour l'input select Role => préciser ce que recouvre le ROLE_ADMIN ainsi que le ROLE_SUPERADMIN #}
-        {{ form(formCreateAdmin) }}
-        {% for error in inputError %}
+    </div>
+{% elseif formNotOk is defined %}
+    {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
+    {# Petit texte pour l'input select Role => préciser ce que recouvre le ROLE_ADMIN ainsi que le ROLE_SUPERADMIN #}
+    {{ form(formCreateAdmin) }}
+    {% for error in inputError %}
+        <div class="alert alert-danger" role="alert">
             <p>{{ error }}</p>
-        {% endfor %}
-    {% else %}
-        {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
-        {{ form(formCreateAdmin) }}
-    {% endif %}
-        {% endblock %}
+        </div>
+    {% endfor %}
+{% else %}
+    {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
+    {{ form(formCreateAdmin) }}
+{% endif %}
+{% endblock %}

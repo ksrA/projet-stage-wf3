@@ -1,14 +1,17 @@
 {% extends "base-backoffice.html.twig" %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/css/candidatSessionStyle.css">
 {% endblock %}
 {% block body %}
 <div class="container">
+
     {#
         On parcours chaque session
         On affiche d'abord ses informations
         Puis on liste en dessous les candidats
     #}
+
     <div id="ContainerSession" class="row justify-content-center">
         <h1 id="title" class="display-4">Liste des réunions et des candidats</h1>     
         {% set index = 0 %}
@@ -65,4 +68,5 @@
     {% endfor %}
     </div>
 </div>
+
 {% endblock %}

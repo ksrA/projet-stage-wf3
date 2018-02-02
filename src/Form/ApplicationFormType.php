@@ -24,7 +24,7 @@ class ApplicationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // Construction
+        // Formulaire de candiature
 
         $builder->add('firstname',   TextType::class, [
             'label' => 'Prénom : ',
@@ -53,7 +53,7 @@ class ApplicationFormType extends AbstractType
             'choices' => [
                 'Française' => 'Française',
                 'Luxembourgeoise' => 'Luxembourgeoise',
-                "Other" => "Autre",
+                "Autre" => "Autre",
             ],
         ]);
         $builder->add('email',   EmailType::class, [
@@ -74,7 +74,7 @@ class ApplicationFormType extends AbstractType
                 new Length(['min' => 10, 'max' => 14]),
                 //possibilité de faire comme ca, a voir selon la view
                 //new Regex(['pattern' => '/^[\w_]*$/', 'message' => 'login.login.only_alpha_underscore'])
-                new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[1-9]([0-9]){7,8}$/'),
+                new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[0-9]([0-9]){7,8}$/'),
             ],
         ]);
         $builder->add('birthday',   BirthdayType::class, [
@@ -83,13 +83,6 @@ class ApplicationFormType extends AbstractType
                 'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ]
         ]);
-   /*     $builder->add('resume',   TextType::class, [
-            'label' => 'Upload CV : ',
-            'constraints' => [
-                new NotBlank(),
-                new Length(['min' => 2, 'max' => 30]),
-            ],
-        ]);*/
         $builder->add('resume', FileType::class, [
             'label' => 'CV (Format PDF uniquement) : ',
             'constraints' => [
@@ -133,7 +126,6 @@ class ApplicationFormType extends AbstractType
             ],
         ]);
         $builder->add('save', SubmitType::class, ['label' => 'Candidater']);
-        //AJOUTER CHAMPS CHECKBOX -> CONFIRMER PRESENCE. VOIR CSQ POUR LE STATUS EN BDD
     }
 
     public function configureOptions(OptionsResolver $resolver)

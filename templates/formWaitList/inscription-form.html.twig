@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="/assets/css/waitlistFormStyle.css">
 {% endblock %}
 
+{% block title %}
+    S'inscrire - Numericall
+{% endblock %}
+
 {% block body %}
     {% if formValid is defined %}
         <div>DONE!</div>
@@ -40,4 +44,8 @@
     
     {% endif %}
     
+{% endblock %}
+
+{% block javascripts %}
+    <script src="form_contact-frontoffice-script.js"></script>
 {% endblock %}

@@ -5,30 +5,23 @@
 <div class="container">
     <div class="row justify-content-around">
 
-        <div class="col-6">
+        <div class="col-md-12">
             <a id="note-candidat" class="card" data-toggle="collapse" href="#multiCollapse1" aria-expanded="false" aria-controls="multiCollapseExample1">
                 <h5>Ajouter note candidat</h5>
             </a>
         </div>
 
-        <div class="col-6">
-            <a  id="select-candidat" class="card align-self-center" data-toggle="collapse" href="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapseExample2">
-                <h5>Selection des candidats par la note pour entretien</h5>
-            </a>
-        </div>
-
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-12">
             <div class="collapse" id="multiCollapse1">
                 {% if reunion is defined %}
-                <p>Si le candidat n'a pas fait le test ou n'a pas été présent a la réunion, ne pas remplir le champs note</p>
-                <form name="form" action="{{ path('save_note') }}" method="post" id="note-formu">
-                    <table>
+                <form name="form-group" action="{{ path('save_note') }}" method="post" id="note-formu">
+                    <table class="table table-bordered table-light">
                         <thead>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Note</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Note</th>
                         </thead>
                         <tbody>
                         {#
@@ -40,14 +33,16 @@
                         #}
                         {% for candidat in candidats %}
                             <tr>
-                                <td>{{ candidat.lastName }}</td>
-                                <td>{{ candidat.firstName }}</td>
-                                <td><input type="number" name="{{ candidat.id }}"/></td>
+                                <td style="text-align: center;">{{ candidat.firstName }}</td>
+                                <td style="text-align: center;">{{ candidat.lastName }}</td>
+                                <td style="width: 100px;">
+                                        <input class="form-control" id="input-note" type="number" name="{{ candidat.id }}"/>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
-                    <button type="submit" id="send-note">Envoyer</button>
+                    <button type="submit" id="send-note" class="btn btn-secondary my-3">Envoyer</button>
                 </form>
                 <p id="note-saved"></p>
                 {% endif %}
@@ -57,15 +52,21 @@
     {#
         Formulaire de saisie de la note minimale a avoir afin d'etre selectionné pour les entretiens
     #}
-        <div class="col-6">
-            <div class="collapse" id="multiCollapse2">
-                <form method="post" id="note-ref-formu">
+        <div class="col-md-12 styleblock">
+            <a  id="select-candidat" class="card align-self-center" data-toggle="collapse" href="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                <h5>Selection des candidats par la note pour entretien</h5>
+            </a>
+        </div>
+
+        <div class="col-md-12">
+            <div class="collapse mt-3" id="multiCollapse2">
+                <form name="form-group" method="post" id="note-ref-formu">
                     {% if reunion is defined %}
-                        <label for="note-ref">
-                        Note minimal :
-                        <input type="number" name="note-ref" id="note-ref"/>
-                    </label>
-                    <button type="submit" id="send-note-ref">Envoyer</button>
+                        <div class="row justify-content-start pl-3">
+                            <label for="note-ref" class="pt-2 pr-2">Note minimale : </label>
+                            <input class="form-control" type="number" name="note-ref" id="note-ref"/>
+                        </div>
+                            <button type="submit" id="send-note-ref" class="btn btn-secondary my-3">Selectionner</button>
                     {% endif %}
                 </form>
                 <div id="note-checked"></div>

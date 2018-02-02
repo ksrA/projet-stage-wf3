@@ -24,8 +24,6 @@ class ActuController extends Controller
         return $this->render('actu-pages/actu-page2.html.twig');
     }
 
-
-
     /**
      * @Route("/art050118", name="article050118_page")
      */
@@ -89,8 +87,6 @@ class ActuController extends Controller
     {
         return $this->render('actu-arts/actu-article-05-01-17.html.twig');
     }
-
-
 
     /**
      * @Route("/actualitesdu0118", name="actus_du_0118_page")

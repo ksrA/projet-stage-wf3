@@ -51,6 +51,12 @@
 
             $form->handleRequest($request);
 
+<<<<<<< HEAD
+=======
+            //Si le formulaire est soumis
+            //On recupérè la liste des candidats en fonction de la locality
+            //Avec un appel method du fichier dans le dossier reposiroty
+>>>>>>> master
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
@@ -75,9 +81,18 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
 
+<<<<<<< HEAD
             $waitinglist = $this->get('session')->get('list');
             $campus = $this->get('session')->get('campus');
             //$sessionFormation = new SessionFormation();
+=======
+            //Récupération de la liste des candidats mis en session
+            //Ainsi que de la locality
+            //Cf controller selectList
+            $waitinglist = $this->get('session')->get('list');
+            $campus = $this->get('session')->get('campus');
+
+>>>>>>> master
             $form = $this->createForm(CreateReunionFormType::class);
 
             // dump($waitingList);
@@ -86,6 +101,9 @@
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
+                //Création d'un objet de type SessionFormation
+                //Et insertion des données dans l'entité
+
                 $sessionFormation = new SessionFormation();
 
                 $sessionFormation->setCampus($campus);
@@ -93,16 +111,10 @@
                 $sessionFormation->setDateSession($data['dateSession']);
                 $sessionFormation->setFinancer($data['financer']);
 
-                //$user = new App\Entity\User();
-                //$repository = $this->getDoctrine()->getRepository(User::class);
-                //obligé d'utiliser User providers de security.yaml ?
                 $repository = $this->getDoctrine()->getRepository(User::class);
                 $user = $repository->find(1);
 
-                //encodage du hash_link avec le timestamp de la date de réunion (save en bdd)
-                /*$str = $encoder->encodePassword($user,  $sessionFormation->getDateReunion()->getTimestamp()); // password_hash
-                $str = 'l/k' . $str;
-                $hashLink = str_replace('/', '9x', $str);*/
+                //Génération du hash_link qui servira de slug dans l'url du formulaire de candiature
                 $bytes = openssl_random_pseudo_bytes(30);
                 $hashLink = bin2hex($bytes);
 
@@ -112,13 +124,14 @@
                 $em->persist($sessionFormation);
                 $em->flush();
 
+                //Génération de l'url absolue
                 $url = $this->generateUrl(
                     'application_form',
                     array('slug' => $sessionFormation->getHashLink()),
                     UrlGeneratorInterface::ABSOLUTE_URL
                 );
 
-                //Envoi du message avec le hashlink
+                //Elaboration du message avec le hashlink
                 $message = new \Swift_Message('Formulaire de candidature');
                 $message
                     ->setFrom('helloworldwf3@gmail.com') // Expéditeur
@@ -131,8 +144,10 @@
                         'url' => $url,
                     ]), 'text/html');// Contenu
 
+                //Récupération de la liste des personnes en attente en fonction du campus
                 $waitingList = $this->getDoctrine()->getRepository(Inscription::class)->selectByStatusWaitListed($campus);
 
+                //Email envoyé a chaque personne et status modifié
                 foreach($waitingList as $personne){
                     $message->setTo($personne->getEmail()); // Destinataire
                     $mailer->send($message);

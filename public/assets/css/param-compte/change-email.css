@@ -1,0 +1,60 @@
+/* Pour le bouton du header qui concerne cette page */
+header.menu div ul a.change-mail {
+    background-color: #da1816;
+}
+@media screen and (max-width: 991.5px) {
+
+    header.menu div ul a.change-mail {
+        background-color: #2a2a2a;
+    }
+
+    header.menu div ul a.change-mail li {
+        color: #da1816;
+    }
+}
+
+
+
+
+/* block du formulaire */
+#form {
+    margin: 60px 20% 60px 20%;
+}
+
+/* labels des champs */
+.form-control-label {
+    color: #2a2a2a;
+}
+
+/* bouton du formulaire */
+#form_save {
+    color: #ececec;
+    background-color: #2a2a2a;
+    border: 0;
+    transition: all 0.2s ease;
+}
+#form_save:hover,
+#form_save:focus,
+#form_save:active {
+    background-color: #da1816;
+}
+
+/* message d'éreure */
+.alert-danger {
+    margin: 0px 20% 0px 20%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.alert-danger p {
+    margin-bottom: 0px;
+}
+
+/* message de success */
+.alert-success {
+    margin: 60px 20% 60px 20%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+

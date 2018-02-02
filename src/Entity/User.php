@@ -6,6 +6,8 @@
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Component\Security\Core\User\UserInterface;
 
+    //Entité représentant les users du back office
+
     /**
     * @ORM\Table(name="app_users")
     * @ORM\Entity(repositoryClass="App\Repository\UserRepository")

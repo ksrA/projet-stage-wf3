@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+//Entité représentant les candidats postulant
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ApplicationRepository")
  */

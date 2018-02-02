@@ -1,12 +1,21 @@
 {% extends "base-backoffice.html.twig" %}
 
+{% block title %}
+    Changer role Administrateur - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/gestion-admin/change-role.css">
+{% endblock %}
+
 {% block body %}
     {% if change is defined %}
-<div>Rôle assigné : {{ role [0]}}<br>
-    Stylise moi stpppp!</div>
-{% elseif notchange is defined %}
+        <div class="alert alert-success" role="alert">
+            Rôle assigné : {{ role [0]}}<br>
+        </div>
+    {% elseif notchange is defined %}
         {% form_theme formChangeRole 'bootstrap_4_layout.html.twig' %}
         {{ form(formChangeRole) }}
-{% endif %}
+    {% endif %}
 
 {% endblock %}
