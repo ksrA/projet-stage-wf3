@@ -32,11 +32,11 @@
         {
             $user = new User();
 
-            $pass = 'anicet';
+            $pass = 'joshua';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('anicetk');
-            $user->setEmail('anicetkesraoui@gmail.com');
+            $user->setUsername('joshua');
+            $user->setEmail('joshua.dessoit@gmail.com');
 
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
             $bytes = openssl_random_pseudo_bytes(30);
