@@ -1,0 +1,42 @@
+h2{
+    text-align: center;
+}
+
+#note-candidat,
+#select-candidat{
+    text-decoration: none;
+    text-align: center;
+    color: #ececec;
+    background-color: #2a2a2a;
+}
+
+#note-ref{
+    width: 100px;
+}
+
+.input-note {
+    text-align: center;
+}
+
+th{
+    text-align: center;
+    background-color: lightgrey;
+}
+
+#send-note,
+#send-note-ref{
+    background-color: #2a2a2a;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+    border: 0;
+}
+
+#send-note:hover,
+#send-note-ref:hover{
+    background-color: #da1816;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+    border: 0;
+}

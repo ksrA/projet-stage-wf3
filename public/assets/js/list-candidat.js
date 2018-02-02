@@ -11,6 +11,21 @@ $(function(){
             data: { "locality" : locality },
         }).done(function(response) {
             $('#list-and-form-container').html(response);
+
+            $('form').submit(function(){
+
+                $.ajax({
+                    method: "GET",
+                    url: "http://127.0.0.1:8000/panel-admin/select-list/create-reunion",
+                    data: {
+                        form : $('#note-formu').serialize(),
+                        locality : locality,
+                    },
+                }).done(function(response) {
+                        alert('hey');
+                });
+
+            });
         });
     });
 });

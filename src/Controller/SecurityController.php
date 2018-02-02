@@ -32,7 +32,6 @@
         {
             $user = new User();
 
-
             $pass = 'clement';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
@@ -599,11 +598,22 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Accès interdit !');
 
+            $user = $this->getUser();
+
+            $repository = $this->getDoctrine()->getRepository(User::class);
+            $personBdd = $repository->findAll();
+            foreach($personBdd as $userAdmin){
+                if ($user->getUsername() != $userAdmin->getUsername()){
+                    $value[] = $userAdmin->getUsername();
+                    $key[] = $userAdmin->getId();
+                }
+            }
+            $arrayUser = array_combine($value, $key);
+
             $form = $this->createFormBuilder()
-                ->add('username', EntityType::class, [
-                    'class' => User::class,
-                    'choice_label' => 'username',
+                ->add('username', ChoiceType::class, [
                     'placeholder' => 'Choisir l\'utilisateur',
+                    'choices' => $arrayUser,
                 ])
                 ->add('role', ChoiceType::class, [
                     'placeholder' => 'Choisir le nouveau rôle : ',
@@ -621,7 +631,7 @@
                 $data = $form->getData();
 
                 $repository = $this->getDoctrine()->getRepository(User::class);
-                $personBdd = $repository->findOneBy(['username' => $data['username']->getUsername()]);
+                $personBdd = $repository->findOneBy(['id' => $data['username']]);
 
                 if ($data['role'] == "ROLE_SUPERADMIN"){
                     $personBdd->setRoles(['ROLE_SUPERADMIN']);

@@ -1,5 +1,9 @@
 {% extends "base-backoffice.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/select-waiting-list.css">
+{% endblock %}
+
 {% block title %}
     Créer Réunion - Numericall
 {% endblock %}
@@ -11,64 +15,26 @@
 
     <div id="list-and-form-container">
 
+{% block body %}
+    <h2>Selection de la liste d'attente selon le campus</h2>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-xs-6">
+                {{ form_start(formSelectWaitingList, {'attr': {'class': 'form-group'}}) }}
+                <div class="form-group">
+                    {{ form_widget(formSelectWaitingList.locality, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {{ form_widget(formSelectWaitingList.save, {'attr': {'class': 'btn btn-secondary btn-block'}}) }}
+
+                {{ form_end(formSelectWaitingList) }}
+            </div>
+        </div>
     </div>
-   {# A DELETE SI PAS RE USE
-   {% if waitinglist is defined %}
-        <h2>Candidat en attente pour campus de {{ locality }} : </h2>
-        <ul>
-            {% set myVal = 0 %}
-            {% for array in waitinglist %}
-                {% set myVal = loop.length %}
-                <li>{{ array.firstname }}
-                    {{ array.lastname }}
-                    {{ array.email }}</li>
-            {% endfor %}
-            <p>Nombre de candidat en attente : {{ myVal }}</p>
-        </ul>
-    {% endif %}
-   #}
-
-    {# 1er form: selection de la liste d'attente:
-    Selectionner la date a partir de laquelle choisir les candidats sur liste d'attente.(input formaté)
-    Selectionner le campus
-    Clic sur "Selectionner"
-    Resultat:
-            -Disparition du form et affichage sur le coté de la liste des candidats (et leur nombre) en attente pour la période sélectionnée
-            -Stocker les mails dans un tableau
-
-    2e form apparait: Création de réunion avec cette liste d'attente
-    Date de la réunion calendrier input type
-    Champs input pour lieu/adresse de la réunion
-    Champs input pour le financeur.
-    Champs input pour la date de début de formation
-    Clic sur "Créer la réunion"
-    Resultat:
-            -Création nouvelle entrée dans la table session[campus,financeur(optionel),date_reunion, date_formation, hash_link]..
-  (Modeliser avec Florent)
-            -Envoi du mail (lien avec le formulaire de candidat) avec les données des champs aux adresses stocké dans le tableau
-
-    table candidat[id_session(date_reunion), info persos..]
-    Select tous les candidat where session.date_reunion  = "17 janvier" et afficher les candidatures (nom, prénom..)
-
-
-    {% if select is not defined %}
-    <h1>Selection de la liste d'attente</h1>
-    {{ form(formSelectWaitingList) }}
-    {% endif %}
-    {% if select is defined %}
-        <ul>
-        {% for array in waitinglist %}
-            <li>{{ array.firstname }}
-            {{ array.lastname }}
-            {{ array.email }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    #}
 
 {% endblock %}
 
-    {% block javascripts %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="/assets/js/list-candidat.js"></script>
-    {% endblock %}
+
+        {# {{ form_label(formSelectWaitingList.locality, 'MONMABELLL') }} #}
+
+        {# {{ form_widget(formSelectWaitingList.save, {'attr': {'class': 'selectionner-button'}}) }} #}

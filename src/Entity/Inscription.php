@@ -3,6 +3,8 @@
 
     use Doctrine\ORM\Mapping as ORM;
 
+// Entité représentant les inscrits sur liste d'attente
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InscriptionRepository")
  */
@@ -35,15 +37,11 @@ class Inscription
      */
     private $email;
 
-    //Enum ?
     /**
      * @ORM\Column(type="string")
      */
     private $locality;
 
-    //Possibilité de faire comme ci-dessous:
-    //@ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
-    //private $timestamp;
     /**
      * @ORM\Column(type="datetime")
      */

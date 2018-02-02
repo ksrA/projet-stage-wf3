@@ -141,9 +141,7 @@
                 ]);
             }
             else {
-                return $this->render('note/list-candidat-note-filter.html.twig', [
-                    'candidats' => $listCandidat,
-                ]);
+                return $this->render('note/list-candidat-note-filter.html.twig');
             }
         }
     }

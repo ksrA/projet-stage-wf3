@@ -23,34 +23,34 @@
                 </a>
             </p>
             {%  if applicants is defined %}
-                <div class="answer session-candidat" id="collapse1">
-                    <table border="1">
-                        <thead>
-                        <th>Prénom</th>
-                        <th>Nom</th>
-                        <th>Téléphone</th>
-                        <th>E-mail</th>
-                        <th>Lettre de motivation</th>
-                        <th>CV</th>
-                        </thead>
-                        <tbody>
-                        {% for key, value in applicants %}
-                            {% if key == session.id %}
-                                {% for val in value %}
-                                    <tr>
-                                        <td>{{ val.firstName }}</td>
-                                        <td>{{ val.lastName }}</td>
-                                        <td>{{ val.phoneNumber }}</td>
-                                        <td>{{ val.email }}</td>
-                                        <td><a href="/uploads/{{ val.resume }}">CV</a></td>
-                                        <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+            <div class="answer session-candidat" id="collapse1">
+                <table border="1">
+                    <thead>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Téléphone</th>
+                    <th>E-mail</th>
+                    <th>Lettre de motivation</th>
+                    <th>CV</th>
+                    </thead>
+                    <tbody>
+                    {% for key, value in applicants %}
+                        {% if key == session.id %}
+                            {% for val in value %}
+                                <tr>
+                                    <td>{{ val.firstName }}</td>
+                                    <td>{{ val.lastName }}</td>
+                                    <td>{{ val.phoneNumber }}</td>
+                                    <td>{{ val.email }}</td>
+                                    <td><a href="/uploads/{{ val.resume }}">CV</a></td>
+                                    <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             {% endif %}
         </div>
         {#

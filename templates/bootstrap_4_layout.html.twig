@@ -2,13 +2,6 @@
 
 {# Widgets #}
 
-{% block money_widget -%}
-    {% if not valid %}
-        {% set group_class = ' form-control is-invalid' %}
-        {% set valid = true %}
-    {% endif %}
-    {{- parent() -}}
-{%- endblock money_widget %}
 
 {% block datetime_widget -%}
     {%- if widget != 'single_text' and not valid -%}

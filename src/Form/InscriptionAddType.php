@@ -19,7 +19,7 @@
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
-            // Construction
+            // Formulaire d'inscription liste d'attente
 
             $builder->add('lastname',   TextType::class, [
                 'label' => 'Nom : ',
@@ -61,7 +61,7 @@
                     new Length(['min' => 10, 'max' => 14]),
                     //possibilité de faire comme ca, a voir selon la view
                     //new Regex(['pattern' => '/^[\w_]*$/', 'message' => 'login.login.only_alpha_underscore'])
-                    new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[1-9]([0-9]){7,8}$/'),
+                    new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[0-9]([0-9]){7,8}$/'),
                 ],
             ]);
             $builder->add('save', SubmitType::class, ['label' => 'M\'inscrire']);

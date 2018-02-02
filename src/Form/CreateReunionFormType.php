@@ -18,11 +18,13 @@ class CreateReunionFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //Formulaire de création réunion
+
             $builder->add('dateReunion',   DateTimeType::class, [
                 'label' => 'Date réunion : ',
                 'placeholder' => array(
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                    'hour' => 'Heure', 'minute' => 'Minute', 'second' => 'Seconde',
+                    'hour' => 'Heure', 'minute' => 'Minute',
                 ),
             ]);
             $builder->add('place',   TextType::class, [
@@ -33,7 +35,7 @@ class CreateReunionFormType extends AbstractType
                 ],
             ]);
             $builder->add('financer',   TextType::class, [
-                'label' => 'Financeur (Facultatif) : ',
+                'label' => 'Financeur : ',
                 'constraints' => [
                     new Length(['min' => 2, 'max' => 255]),
                 ],

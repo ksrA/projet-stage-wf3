@@ -1,0 +1,19 @@
+h2{
+    text-align: center;
+}
+
+#form_save{
+    background-color: #2a2a2a;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+    border: 0;
+}
+
+#form_save:hover{
+    background-color: #da1816;
+    color:#ececec;
+    margin-top:10px;
+    transition: 0.5s;
+    border: 0;
+}
