@@ -1,29 +1,13 @@
 {% extends "base-backoffice.html.twig" %}
 
-{% block body %}
-    <ul>
-        <li>   <a href="{{ path('logout') }}">Deconnexion</a>
-        </li>
-        <li>    <a href="{{ path('select_list') }}">Creer une réunion d'information et session</a>
-        </li>
-        <li>    <a href="{{ path('session_info') }}">Infos sessions</a>
-        </li>
-        <li>    <a href="{{ path('note_page') }}">Ajouter note étudiant</a>
-        </li>
-    </ul>
+{% block title %}
+    Home - Numericall
+{% endblock %}
 
-    <ul>
-        {% if is_granted('ROLE_SUPERADMIN') %}
-            <li>    <a href="{{ path('create_user') }}">Creer un user</a>
-            </li>
-            <li>    <a href="{{ path('delete_user') }}">Supprimer un user</a>
-            </li>
-            <li>    <a href="{{ path('change_role') }}">Changer role user</a>
-            </li>
-        {% endif %}
-        <li>    <a href="{{ path('change_password') }}">Changer mot de passe</a>
-        </li>
-        <li>    <a href="{{ path('change_email') }}">Changer email</a>
-        </li>
-    </ul>
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/home-backoffice-style.css">
+{% endblock %}
+
+{% block body %}
+    <img class="img-fluid" src="/assets/img/numericall_logo.png" alt="NumericALL-logo">
 {% endblock %}
