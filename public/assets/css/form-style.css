@@ -1,0 +1,28 @@
+#formContainer{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.493);
+}
+.title h1{
+    color: #da1816;
+}
+.title h2{
+    color: #2a2a2a;
+}
+#info{
+    color: #da1816;
+}
+#nlLogo{
+    width: 100%;
+}
+#wf3Logo{
+    width: 100%;
+}
+
+@media screen and (max-width:500px){
+    #wraper{
+        padding: 30px;
+    }
+}

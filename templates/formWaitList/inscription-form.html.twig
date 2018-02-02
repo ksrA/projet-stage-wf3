@@ -1,23 +1,49 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/waitlistFormStyle.css">
+{% endblock %}
+
 {% block title %}
     S'inscrire - Numericall
 {% endblock %}
-
 
 {% block body %}
     {% if formValid is defined %}
         <div>DONE!</div>
     {% else %}
-    {% form_theme formWaitList 'bootstrap_4_layout.html.twig' %}
-
-    {{ form(formWaitList) }}
-
-    {% if mailExist is defined %}
-        <span>L'adresse mail est déjà enregistré dans notre base de donnée</span>
+    <div class="container">
+        <h1 id="title">Formulaire d'inscription à la liste d'attente</h1>
+        <div class="container" id="formContainer">
+            <div class="row justify-content-around">
+                <div class=" col col-md-7">
+                    {% form_theme formWaitList 'bootstrap_4_layout.html.twig' %}
+                    {{ form(formWaitList) }} 
+                </div>
+                <div class="col col-md-4">
+                    <div class="d-flex align-content-center flex-wrap">
+                        <div class="p-2">
+                            <img class="logo" src="/assets/img/NlCollapsed.png" alt="logo_numerical_collapsed">
+                        </div>
+                        <div class="p-2">
+                            <img class="logo" src="/assets/img/Webforce3.png" alt="logo_webforce3">
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+           
+            {% if mailExist is defined %}
+                <span class="alert alert-danger">L'adresse mail est déjà enregistré dans notre base de donnée</span>
+            {% endif %}
+            <p id="annotation">Le lieu de réunion peut parfois être différent du lieu de formation.</p>
+        </div>
+    </div>
+    
+    
     {% endif %}
-    <p>Le lieu de réunion peut parfois être différent du lieu de formation.</p>
-    {% endif %}
+    
 {% endblock %}
 
 {% block javascripts %}

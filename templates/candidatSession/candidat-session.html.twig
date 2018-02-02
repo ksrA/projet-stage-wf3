@@ -1,65 +1,72 @@
 {% extends "base-backoffice.html.twig" %}
 
-{% block title %}
-    Candidat session - Numericall
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/candidatSessionStyle.css">
 {% endblock %}
-
 {% block body %}
-    <h1>Liste réunion et candidats</h1>
+<div class="container">
+
     {#
         On parcours chaque session
         On affiche d'abord ses informations
         Puis on liste en dessous les candidats
     #}
 
-    {% for session in sessions %}
-        <div class="container">
-            <p>
-                <a class="infosession" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
-                    <b>Campus : </b>{{ session.campus }}
-                    <b>Financeur : </b>{{ session.financer }}
-                    <b>Date Réunion : </b> {{ session.dateReunion|date('d/m/Y H:m') }}
-                    <b>Début de la session Session : </b> {{ session.dateSession|date('d/m/Y') }}
-                </a>
-            </p>
-            {%  if applicants is defined %}
-            <div class="answer session-candidat" id="collapse1">
-                <table border="1">
-                    <thead>
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Téléphone</th>
-                    <th>E-mail</th>
-                    <th>Lettre de motivation</th>
-                    <th>CV</th>
-                    </thead>
-                    <tbody>
-                    {% for key, value in applicants %}
-                        {% if key == session.id %}
-                            {% for val in value %}
-                                <tr>
-                                    <td>{{ val.firstName }}</td>
-                                    <td>{{ val.lastName }}</td>
-                                    <td>{{ val.phoneNumber }}</td>
-                                    <td>{{ val.email }}</td>
-                                    <td><a href="/uploads/{{ val.resume }}">CV</a></td>
-                                    <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
-                                </tr>
+    <div id="ContainerSession" class="row justify-content-center">
+        <h1 id="title" class="display-4">Liste des réunions et des candidats</h1>     
+        {% set index = 0 %}
+        {% for session in sessions %}
+        <div>
+                    <p>
+                        <a class="infosession" data-toggle="collapse" href="#collapse{{ index }}" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <b>Campus : </b>{{ session.campus }}
+                            <b>Financeur : </b>{{ session.financer }}
+                            <b>Date Réunion : </b> {{ session.dateReunion|date('d/m/Y H:m') }}
+                            <b>Début de la session Session : </b> {{ session.dateSession|date('d/m/Y') }}
+                        </a>
+                    </p>
+           
+                    {%  if applicants is defined %}
+                    <div class="table-responsive" id="collapse{{ index }}">
+                        <table id="table" class="table table-bordered table-light">
+                            <thead >
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>E-mail</th>
+                            <th>Lettre de motivation</th>
+                            <th>CV</th>
+                            </thead>
+                            <tbody>
+                            {% for key, value in applicants %}
+                                {% if key == session.id %}
+                                    {% for val in value %}
+                                        <tr>
+                                            <td>{{ val.firstName }}</td>
+                                            <td>{{ val.lastName }}</td>
+                                            <td>{{ val.phoneNumber }}</td>
+                                            <td>{{ val.email }}</td>
+                                            <td><a href="/uploads/{{ val.resume }}">CV</a></td>
+                                            <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
                             {% endfor %}
-                        {% endif %}
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            {% endif %}
-        </div>
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>  
         {#
             on parcours le tableau contenant info sur les candidats
             si la cléfs de ce tableau correspond a l'id de la réunion
             on parcours les valeurs du tableau contenant les infos sur les candidats
             et on affiche cette val (cf :
-                    $tabApplicant[$infosession->getId()][$j] = $applicant;)
+            $tabApplicant[$infosession->getId()][$j] = $applicant;)
         #}
-
+    {% set index = index + 1 %}
     {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

@@ -31,13 +31,11 @@
         public function registerUser(UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
-
             $pass = 'clement';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
             $user->setUsername('clement');
             $user->setEmail('clems21094@hotmail.fr');
-
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
             $bytes = openssl_random_pseudo_bytes(30);
             $resethash = bin2hex($bytes);
@@ -298,14 +296,14 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_ANONYMOUSLY');
             $form = $this->createFormBuilder()
                 ->add('username', TextType::class, [
-                    'label' => 'User : ',
+                    'label' => 'Nom d\'utilisateur',
                     'constraints' => [
                         new NotBlank(),
                         new Length(['min' => 2, 'max' => 30]),
                     ],
                 ])
                 ->add('email', EmailType::class, [
-                    'label' => 'Adresse mail : ',
+                    'label' => 'Adresse e-mail',
                     'constraints' => [
                         new NotBlank(),
                         new Email([
@@ -314,7 +312,7 @@
                         new Regex('/^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]{1,80}@[a-zA-Z0-9-]{1,40}(?:\.[a-zA-Z0-9-]{1,10})*$/'),
                         new Length(['min' => 2, 'max' => 255]),
                     ]])
-                ->add('save', SubmitType::class, ['label' => 'Recupérer mdp'])
+                ->add('save', SubmitType::class, ['label' => 'Recupérer le mot de passe'])
                 ->getForm();
 
             $form->handleRequest($request);

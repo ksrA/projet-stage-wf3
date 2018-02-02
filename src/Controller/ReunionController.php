@@ -51,9 +51,12 @@
 
             $form->handleRequest($request);
 
+<<<<<<< HEAD
+=======
             //Si le formulaire est soumis
             //On recupérè la liste des candidats en fonction de la locality
             //Avec un appel method du fichier dans le dossier reposiroty
+>>>>>>> master
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
@@ -78,14 +81,21 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
 
+<<<<<<< HEAD
+            $waitinglist = $this->get('session')->get('list');
+            $campus = $this->get('session')->get('campus');
+            //$sessionFormation = new SessionFormation();
+=======
             //Récupération de la liste des candidats mis en session
             //Ainsi que de la locality
             //Cf controller selectList
             $waitinglist = $this->get('session')->get('list');
             $campus = $this->get('session')->get('campus');
 
+>>>>>>> master
             $form = $this->createForm(CreateReunionFormType::class);
 
+            // dump($waitingList);
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
