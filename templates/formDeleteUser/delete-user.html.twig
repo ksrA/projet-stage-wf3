@@ -1,15 +1,26 @@
 {% extends "base-backoffice.html.twig" %}
 
-{% block body %}
-    {% if change is defined %}
-<div>Utilisateur supprimé !<br>
-    Stylise moi stpppp!</div>
-{% elseif notchange is defined %}
-        {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
+{% block title %}
+    Supprimer Administrateur - Numericall
+{% endblock %}
 
-        {{ form(formDeleteUser) }}
-        {% if notfound is defined %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/gestion-admin/delete-user.css">
+{% endblock %}
+
+{% block body %}
+{% if change is defined %}
+    <div class="alert alert-success" role="alert">
+        Utilisateur supprimé !
+    </div>
+{% elseif notchange is defined %}
+    {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
+
+    {{ form(formDeleteUser) }}
+    {% if notfound is defined %}
+        <div class="alert alert-danger" role="alert">
             <p>Problème lors de l'execution de la requête</p>
-        {% endif %}
+        </div>
+    {% endif %}
 {% endif %}
 {% endblock %}

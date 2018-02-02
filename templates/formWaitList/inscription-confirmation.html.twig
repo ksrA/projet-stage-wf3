@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    S'inscrire - Numericall
+{% endblock %}
+
 {% block redirectionPage %}
     <meta http-equiv="refresh" content="5; url={{ path('inscription_waitlist') }}">
 {% endblock %}
@@ -7,4 +11,8 @@
 {% block body %}
     <p>Votre demande a été pris en compte.
         Vous allez recevoir un e-mail prochainement lorsqu'une réunion d'information sera créée</p>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="form_contact-frontoffice-script.js"></script>
 {% endblock %}

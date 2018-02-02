@@ -32,11 +32,11 @@
         {
             $user = new User();
 
-            $pass = 'anicet';
+            $pass = 'clement';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('anicetk');
-            $user->setEmail('anicetkesraoui@gmail.com');
+            $user->setUsername('clement');
+            $user->setEmail('clems21094@hotmail.fr');
 
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
             $bytes = openssl_random_pseudo_bytes(30);
@@ -134,10 +134,21 @@
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
-                if ($data['firstnewpassword'] == $data['secondnewpassword']){
-                    $user = $this->getUser();
+                $oldPassword = $data['password'];
+                $user = $this->getUser();
+
+                if (!($encoder->isPasswordValid($user, $oldPassword))){
+                    $error[] = 'Vous avez mal saisi votre mot de passe';
+                }
+
+                if ($data['firstnewpassword'] != $data['secondnewpassword']){
+                    $error[] = 'Les mots de passe doivent être identiques';
+                }
+
+                if (!isset($error)){
                     $newpass = $data['firstnewpassword'];
                     $encoded = $encoder->encodePassword($user, $newpass);
+
                     $user->setPassword($encoded);
 
                     $em = $this->getDoctrine()->getManager();
@@ -155,6 +166,7 @@
                     return $this->render('formChangePassword/change-password.html.twig', [
                         'formChange' => $form->createView(),
                         'notchange' => $notchange,
+                        'msgError' => $error,
                     ]);
                 }
             }
