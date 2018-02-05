@@ -14,6 +14,7 @@
             Rôle assigné : {{ role [0]}}<br>
         </div>
     {% elseif notchange is defined %}
+        <h1 class="display-4"> Changer le role d'un administrateur </h1>
         {% form_theme formChangeRole 'bootstrap_4_layout.html.twig' %}
         {{ form(formChangeRole) }}
     {% endif %}

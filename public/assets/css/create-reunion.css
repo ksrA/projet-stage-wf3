@@ -1,3 +1,20 @@
+/* Pour le bouton du header qui concerne cette page */
+header.menu div ul a.creer-reunion {
+    background-color: #da1816;
+}
+@media screen and (max-width: 991.5px) {
+
+    header.menu div ul a.creer-reunion {
+        background-color: #2a2a2a;
+    }
+
+    header.menu div ul a.creer-reunion li {
+        color: #da1816;
+    }
+}
+
+
+
 #create_reunion_form_save {
     background-color: #2a2a2a;
     color:#ececec;
@@ -21,4 +38,11 @@ th{
 
 td{
     text-align: center;
+}
+
+.alert-success {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px; 
 }

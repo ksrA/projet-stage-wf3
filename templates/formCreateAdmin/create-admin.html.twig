@@ -28,6 +28,7 @@
         </div>
     {% endfor %}
 {% else %}
+    <h1 class="display-4"> Créer un compte administrateur </h1>
     {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
     {{ form(formCreateAdmin) }}
 {% endif %}

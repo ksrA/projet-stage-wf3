@@ -9,8 +9,17 @@
 {% endblock %}
 
 {% block body %}
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>S'inscrire</h1></div>
+        </div>
+    </div>
+
     {% if formValid is defined %}
-        <div>DONE!</div>
+        <div class="alert alert-success success" role="alert">
+            Inscription envoyée.
+        </div>
     {% else %}
     <div class="container">
         <h1 id="title">Formulaire d'inscription à la liste d'attente</h1>
@@ -40,12 +49,9 @@
             <p id="annotation">Le lieu de réunion peut parfois être différent du lieu de formation.</p>
         </div>
     </div>
-    
-    
     {% endif %}
-    
 {% endblock %}
 
 {% block javascripts %}
-    <script src="form_contact-frontoffice-script.js"></script>
+    <script src="form_inscrip-frontoffice-script.js"></script>
 {% endblock %}

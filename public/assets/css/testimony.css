@@ -32,7 +32,7 @@ h2 {
     padding: 20px;
     text-align: center;
     /* font-family: "PT Sans", Arial, Helvetica, sans-serif; */
-    color: #da1816;
+    color: #2a2a2a;
     font-weight: bold;
 }
 
@@ -51,6 +51,8 @@ div.card-columns div.card p {
 
 .card-columns {
     margin: 5vw;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .card {
