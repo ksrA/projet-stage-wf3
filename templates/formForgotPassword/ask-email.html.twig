@@ -12,8 +12,9 @@
     {% block body %}
         <div class="container">
             <div id="title">
-                
-                <h1 class="display-3">Réinisialisation du mot de passe </h1>
+                <div class='console-container'>
+                    <span class="display-3" id='text'></span>
+                </div>   
             </div>
             <div>
                     {% if userNotFound is defined %}
@@ -47,4 +48,5 @@
         </div>
     {% endblock %}
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="/assets/js/titleAnimation/titleMdpAnimation.js"></script>
 </body>

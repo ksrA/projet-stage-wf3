@@ -77,7 +77,7 @@
         {
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
-
+            
             //Récupération de la liste des candidats mis en session
             //Ainsi que de la locality
             //Cf controller selectList
