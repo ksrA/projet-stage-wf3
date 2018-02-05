@@ -12,21 +12,23 @@
 
     <h1 class="display-4">Insertion de la note des candidats et selection entretiens</h1>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5 col-xs-6">
-                    {{ form_start(formNote, {'attr': {'class': 'form-group'}}) }}
-                    <div class="form-group">
-                        {{ form_widget(formNote.select, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    {{ form_end(formNote) }}
+    {% if formNote is defined %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5 col-xs-6">
+                        {{ form_start(formNote, {'attr': {'class': 'form-group'}}) }}
+                        <div class="form-group">
+                            {{ form_widget(formNote.select, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {{ form_end(formNote) }}
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="tab-and-form-container">
-        {# C'est ici qu'est placé le tableau généré depuis ajax#}
-    </div>
+        <div id="tab-and-form-container">
+            {# C'est ici qu'est placé le tableau généré depuis ajax#}
+        </div>
+    {% endif %}
 
 {% endblock %}
 

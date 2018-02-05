@@ -63,10 +63,13 @@
                         // $file contient le fichier uploadé, il est de type Symfony\Component\HttpFoundation\File\UploadedFile
                         $cv = $data->getResume();
                         $coverLetter = $data->getCoverLetter();
+                        $picture = $data->getPicture();
 
                         // Génération d'un nom aléatoire
                         $cvName = md5(uniqid()) . '.' . $cv->guessExtension();
                         $coverLetterName = md5(uniqid()) . '.' . $coverLetter->guessExtension();
+                        $pictureName = md5(uniqid()) . '.' . $picture->guessExtension();
+
 
                         // Déplacement du fichier dans un dossier paramétré à l'avance (service.yaml)
                         $cv->move(
@@ -79,9 +82,16 @@
                             $coverLetterName
                         );
 
+                        $picture->move(
+                            $this->getParameter('uploads_directory'),
+                            $pictureName
+                        );
+
+
                         // Mise à jour de la table, pour stocker les noms de fichiers (cv lettre motive) et pas le contenu
                         $data->setResume($cvName);
                         $data->setCoverLetter($coverLetterName);
+                        $data->setPicture($pictureName);
 
                         $data->setCampus($campus);
                         $data->setIdReunion($id);
@@ -100,7 +110,7 @@
                         $message->setTo($data->getEmail()); // Destinataire
                         $mailer->send($message);
 
-                        return new Response('<h1>ITS WORKING. Candidature envoyée.</h1>');
+                        return new Response('<h1>Candidature envoyée.</h1>');
                     }
 
                     else{
@@ -110,9 +120,9 @@
                     }
                 }
                 else{
-                    return new Response('<h1>HASH NON CORRESPONDANT - ERROR 404</h1>');
+                    return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
                 }
             }
-            return new Response('<h1>ERROR 404</h1>');
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
     }

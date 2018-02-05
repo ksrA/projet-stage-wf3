@@ -52,3 +52,10 @@ a.infosession:active {
     background-color: #da1816;
 }
 
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}
