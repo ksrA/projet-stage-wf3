@@ -1,8 +1,13 @@
 {% extends "base-backoffice.html.twig" %}
 
+{% block title %}
+    Info session - NumericALL
+{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/css/candidatSessionStyle.css">
 {% endblock %}
+
 {% block body %}
 <div class="container">
 
@@ -13,11 +18,12 @@
     #}
 
     <div id="ContainerSession" class="row justify-content-center">
-        <h1 id="title" class="display-4">Liste des réunions et des candidats</h1>     
+        <h1 id="title" class="display-4">Liste des réunions et des candidats yfjf</h1>     
         {% set index = 0 %}
         {% for session in sessions %}
+
         <div class="col-12">
-                    <p>
+                    <p id="infosession-p">
                         <a class="infosession" data-toggle="collapse" href="#collapse{{ index }}" role="button" aria-expanded="false" aria-controls="collapse1">
                             <b>Campus : </b>{{ session.campus }}
                             <b>Financeur : </b>{{ session.financer }}

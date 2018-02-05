@@ -622,13 +622,15 @@
                     $key[] = $userAdmin->getId();
                 }
             }
-            $arrayUser = array_combine($value, $key);
+
+            if (isset($value) && isset($key)) {
+                $arrayUser = array_combine($value, $key);
+            }
 
             $form = $this->createFormBuilder()
                 ->add('username', ChoiceType::class, [
                     'placeholder' => 'Choisir l\'utilisateur',
                     'choices' => $arrayUser,
-                    'label' => 'Nom d\'utilisateur',
                 ])
                 ->add('role', ChoiceType::class, [
                     'placeholder' => 'Choisir le nouveau rôle : ',

@@ -1,21 +1,55 @@
+/* Pour le bouton du header qui concerne cette page */
+header.menu div ul a.info-session {
+    background-color: #da1816;
+}
+@media screen and (max-width: 991.5px) {
+
+    header.menu div ul a.info-session {
+        background-color: #2a2a2a;
+    }
+
+    header.menu div ul a.info-session li {
+        color: #da1816;
+    }
+}
+
+
+
+
+
 #ContainerSession{
     height: 100vh;
 }
 #title{
+    text-align: center;
+    margin: 30px 0;
     color: #2a2a2a;
 }
 #table{
     padding: 5px;
     border-radius: 5px;
 }
-p{
+#infosession-p{
     text-align: center;
-    
     background-color: #2a2a2a;
-    border-radius: 2px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
-p a{
+#infosession-p a.infosession{
+    display: block;
+    border-radius: 4px;
+    padding: 5px;
     color: #ececec;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+#infosession-p:hover {
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.24); 
+}
+a.infosession:hover,
+a.infosession:focus,
+a.infosession:active {
+    background-color: #da1816;
 }
 
 th{

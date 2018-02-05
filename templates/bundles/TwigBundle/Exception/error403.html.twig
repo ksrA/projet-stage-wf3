@@ -7,28 +7,33 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/css/error403.css">
 {% endblock %}
+
+
 {% block body %}
+    <section class="error">
+        <h1 class="error-title">◄ Accès refusé/interdit !!! ►</h1>
+        <br><br><br>
+        <div class="container">
+            <div class="row ">
+                <div class="col-12 col-md-6">
+                    <img class="img-fluid"  id="picture" src="/assets/img/erreur403.jpg" alt="page 403">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="kk">
+                        <p>
+                            Le serveur a compris la requête, mais refuse de l'exécuter.<br>
+                            Il se peut que le flux de données HTTP envoyé par le client soit correct,<br>
+                            mais que l'accès à la ressource identifiée par l'URL est interdit pour certaines raisons.<br>
 
-<section class="error">
-    <h1>◄Accès refusé/interdit !!!►</h1>
-    <br><br><br>
-    <div class="container">
-        <div class="row ">
-            <div class="col-6">
-                <img id="403" src="/assets/img/erreur403.jpg" alt="page 403">
-            </div>
-            <div class="col-6 kk">
-                <p>
-                    Le serveur a compris la requête, mais refuse de l'exécuter.<br>
-                    Il se peut que le flux de données HTTP envoyé par le client soit correct,<br>
-                    mais que l'accès à la ressource identifiée par l'URL est interdit pour certaines raisons.<br>
-
-                    <a href="{{ path('home') }}">Retourner sur la page d'accueil</a>
-                </p>
+                            <div class="button">
+                                <a href="{{ path('home') }}">Retourner sur la page d'accueil</a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
     <br><br><br>
-</section>
-<br><br><br>
+{% endblock %}

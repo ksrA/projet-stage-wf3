@@ -16,6 +16,13 @@ header.menu div ul a.change-mail {
 
 
 
+/* titre */
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    color: #2a2a2a;
+}
+
 /* block du formulaire */
 #form {
     margin: 60px 20% 60px 20%;

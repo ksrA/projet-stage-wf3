@@ -51,7 +51,6 @@
 
             $form->handleRequest($request);
 
-
             //Si le formulaire est soumis
             //On recupérè la liste des candidats en fonction de la locality
             //Avec un appel method du fichier dans le dossier reposiroty
