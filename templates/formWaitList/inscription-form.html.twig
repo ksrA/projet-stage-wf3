@@ -10,12 +10,17 @@
 
 {% block body %}
     {% if formValid is defined %}
-        <div>DONE!</div>
+        <div class="container">
+            <div id="success" class="alert alert-success">
+                <i class="far fa-check-circle fa-5x"></i><br>
+                <p>Vous venez de vous inscrire à la lise d'attente un mail de comfimation va vous etre envoyé</p>
+            </div>
+        </div>
     {% else %}
     <div class="container">
-        <h1 id="title">Formulaire d'inscription à la liste d'attente</h1>
+            <h1 class="title">Inscription à la liste d'attente</h1>
         <div class="container" id="formContainer">
-            <div class="row justify-content-around">
+            <div class="row justify-content-around">  
                 <div class=" col col-md-7">
                     {% form_theme formWaitList 'bootstrap_4_layout.html.twig' %}
                     {{ form(formWaitList) }} 
@@ -29,23 +34,21 @@
                             <img class="logo" src="/assets/img/Webforce3.png" alt="logo_webforce3">
                         </div>
                     </div>
-                    
                 </div>
-                
             </div>
-           
             {% if mailExist is defined %}
-                <span class="alert alert-danger">L'adresse mail est déjà enregistré dans notre base de donnée</span>
+                <div id="alertUser" class="alert alert-danger">
+                    <i class="far fa-times-circle fa-5x "></i><br>
+                    <p>L'adresse mail existe déjà dans notre base de donnée</p>
+                </div>
             {% endif %}
             <p id="annotation">Le lieu de réunion peut parfois être différent du lieu de formation.</p>
-        </div>
+        </div> 
     </div>
-    
-    
     {% endif %}
     
 {% endblock %}
 
 {% block javascripts %}
-    <script src="form_contact-frontoffice-script.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 {% endblock %}
