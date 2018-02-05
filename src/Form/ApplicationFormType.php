@@ -72,8 +72,6 @@ class ApplicationFormType extends AbstractType
             'constraints' => [
                 new NotBlank(),
                 new Length(['min' => 10, 'max' => 14]),
-                //possibilité de faire comme ca, a voir selon la view
-                //new Regex(['pattern' => '/^[\w_]*$/', 'message' => 'login.login.only_alpha_underscore'])
                 new Regex('/^(0|\+33|\+32|\+49|\+352)[-.\s]?[0-9]([0-9]){7,8}$/'),
             ],
         ]);
@@ -82,6 +80,12 @@ class ApplicationFormType extends AbstractType
             'placeholder' => [
                 'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ]
+        ]);
+        $builder->add('picture', FileType::class, [
+            'label' => 'Photo personnelle(facultatif - format jpeg/png/jpg) : ',
+            'constraints' => [
+                new File(['mimeTypes' => ['image/jpeg', 'image/png', 'image/jpg']]),
+            ],
         ]);
         $builder->add('resume', FileType::class, [
             'label' => 'CV (Format PDF uniquement) : ',

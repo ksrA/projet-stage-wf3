@@ -17,3 +17,11 @@ p{
 p a{
     color: #ececec;
 }
+
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}

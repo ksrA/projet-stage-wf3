@@ -18,7 +18,7 @@ security:
                login_path: login
                check_path: login
                default_target_path: /panel-admin
-               failure_path: /home
+               failure_path: /login
                csrf_token_generator: security.csrf.token_manager
             logout:
                 path: /logout

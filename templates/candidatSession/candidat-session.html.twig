@@ -16,7 +16,7 @@
         <h1 id="title" class="display-4">Liste des réunions et des candidats</h1>     
         {% set index = 0 %}
         {% for session in sessions %}
-        <div>
+        <div class="col-12">
                     <p>
                         <a class="infosession" data-toggle="collapse" href="#collapse{{ index }}" role="button" aria-expanded="false" aria-controls="collapse1">
                             <b>Campus : </b>{{ session.campus }}
@@ -30,24 +30,26 @@
                     <div class="table-responsive" id="collapse{{ index }}">
                         <table id="table" class="table table-bordered table-light">
                             <thead >
-                            <th>Prénom</th>
-                            <th>Nom</th>
-                            <th>Téléphone</th>
-                            <th>E-mail</th>
-                            <th>Lettre de motivation</th>
-                            <th>CV</th>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">CV</th>
+                            <th scope="col">Lettre de motivation</th>
                             </thead>
                             <tbody>
                             {% for key, value in applicants %}
                                 {% if key == session.id %}
                                     {% for val in value %}
                                         <tr>
-                                            <td>{{ val.firstName }}</td>
-                                            <td>{{ val.lastName }}</td>
-                                            <td>{{ val.phoneNumber }}</td>
-                                            <td>{{ val.email }}</td>
-                                            <td><a href="/uploads/{{ val.resume }}">CV</a></td>
-                                            <td><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
+                                            <td style="border-collapse: collapse;"><img src="/uploads/{{ val.picture }}" height="100" width="90"/></td>
+                                            <td class="pt-5">{{ val.firstName }}</td>
+                                            <td class="pt-5">{{ val.lastName }}</td>
+                                            <td class="pt-5">{{ val.phoneNumber }}</td>
+                                            <td class="pt-5">{{ val.email }}</td>
+                                            <td class="pt-5"><a href="/uploads/{{ val.resume }}">CV</a></td>
+                                            <td class="pt-5"><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
                                         </tr>
                                     {% endfor %}
                                 {% endif %}
