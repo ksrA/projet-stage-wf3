@@ -2,19 +2,19 @@
     Génération de l'affichage lorsqu'une réunion est selectionnée
 #}
 
-<div class="container">
-    <div class="row justify-content-around">
+<div id="page-container" class="container">
 
-        <div class="col-md-12">
-            <a id="note-candidat" class="card" data-toggle="collapse" href="#multiCollapse1" aria-expanded="false" aria-controls="multiCollapseExample1">
+    <div class="row justify-content-around">
+        <div class="col-md-12 block-note-title">
+            <a id="note-candidat" class="link-note-title" data-toggle="collapse" href="#multiCollapse1" aria-expanded="false" aria-controls="multiCollapseExample1">
                 <h5>Ajouter note candidat</h5>
             </a>
         </div>
-
     </div>
+
     <div class="row">
         <div class="col-md-12">
-            <div class="collapse" id="multiCollapse1">
+            <div class="collapse mt-4" id="multiCollapse1">
                 {% if reunion is defined %}
                 <form name="form-group" action="{{ path('save_note') }}" method="post" id="note-formu">
                     <table class="table table-bordered table-light">
@@ -48,16 +48,20 @@
                 {% endif %}
             </div>
         </div>
+    </div>
 
     {#
         Formulaire de saisie de la note minimale a avoir afin d'etre selectionné pour les entretiens
     #}
-        <div class="col-md-12 styleblock">
-            <a  id="select-candidat" class="card align-self-center" data-toggle="collapse" href="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapseExample2">
+    <div class="row justify-content-around">
+        <div class="col-md-12 styleblock block-note-title">
+            <a  id="select-candidat" class="link-note-title" data-toggle="collapse" href="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapseExample2">
                 <h5>Selection des candidats par la note pour entretien</h5>
             </a>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-md-12">
             <div class="collapse mt-3" id="multiCollapse2">
                 <form name="form-group" method="post" id="note-ref-formu">
@@ -73,4 +77,5 @@
             </div>
         </div>
     </div>
+
 </div>

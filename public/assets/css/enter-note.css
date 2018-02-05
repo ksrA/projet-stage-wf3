@@ -1,14 +1,34 @@
-h2{
-    text-align: center;
+/* Pour le bouton du header qui concerne cette page */
+header.menu div ul a.note-candidat {
+    background-color: #da1816;
+}
+@media screen and (max-width: 991.5px) {
+
+    header.menu div ul a.note-candidat {
+        background-color: #2a2a2a;
+    }
+
+    header.menu div ul a.note-candidat li {
+        color: #da1816;
+    }
 }
 
-#note-candidat,
-#select-candidat{
-    text-decoration: none;
+
+
+/* titre */
+h1 {
     text-align: center;
-    color: #ececec;
-    background-color: #2a2a2a;
+    margin: 30px 5%;
+    color: #2a2a2a;
 }
+
+
+#page-container {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 50px;
+}
+
 
 #note-ref{
     width: 100px;
@@ -39,4 +59,36 @@ th{
     margin-top:10px;
     transition: 0.5s;
     border: 0;
+}
+
+
+
+
+.block-note-title{
+    text-align: center;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    padding: 0;
+    margin-top: 40px;
+    transition: all 0.2s ease;
+}
+#note-candidat,
+#select-candidat{
+    display: block;
+    border-radius: 4px;
+    padding: 5px;
+    color: #ececec;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.block-note-title:hover {
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.24); 
+}
+#note-candidat:hover,
+#select-candidat:hover,
+#note-candidat:focus,
+#select-candidat:focus,
+#note-candidat:active,
+#select-candidat:active {
+    background-color: #da1816;
 }

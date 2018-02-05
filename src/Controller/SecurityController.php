@@ -606,22 +606,25 @@
                     $key[] = $userAdmin->getId();
                 }
             }
-            $arrayUser = array_combine($value, $key);
 
-            $form = $this->createFormBuilder()
-                ->add('username', ChoiceType::class, [
-                    'placeholder' => 'Choisir l\'utilisateur',
-                    'choices' => $arrayUser,
-                ])
-                ->add('role', ChoiceType::class, [
-                    'placeholder' => 'Choisir le nouveau rôle : ',
-                    'choices' => [
-                        'ROLE_ADMIN' => 'ROLE_ADMIN',
-                        'ROLE_SUPERADMIN' => 'ROLE_SUPERADMIN',
-                    ]
-                ])
-                ->add('save', SubmitType::class, ['label' => 'Changer rôle de l\'utilisateur'])
-                ->getForm();
+            if (isset($value) && isset($key)) {
+                $arrayUser = array_combine($value, $key);
+            }
+
+                $form = $this->createFormBuilder()
+                    ->add('username', ChoiceType::class, [
+                        'placeholder' => 'Choisir l\'utilisateur',
+                        'choices' => $arrayUser,
+                    ])
+                    ->add('role', ChoiceType::class, [
+                        'placeholder' => 'Choisir le nouveau rôle : ',
+                        'choices' => [
+                            'ROLE_ADMIN' => 'ROLE_ADMIN',
+                            'ROLE_SUPERADMIN' => 'ROLE_SUPERADMIN',
+                        ]
+                    ])
+                    ->add('save', SubmitType::class, ['label' => 'Changer rôle de l\'utilisateur'])
+                    ->getForm();
 
             $form->handleRequest($request);
 

@@ -9,21 +9,28 @@
 {% endblock %}
 
 {% block body %}
-    {% if formValid is defined %}
-        <div>
-            Done!<br>
-            Stylise moi stpppp!
-        </div>
+
+<!-- titre de page -->
+<div class=" container-fluid" id="title1">
+    <div class="row">
+        <div class="col-12"><h1>Contact</h1></div>
+    </div>
+</div>
+
+{% if formValid is defined %}
+    <div class="alert alert-success success" role="alert">
+        Demande envoyée.
+    </div>
 {% else %}
-    <h1 id="title">Contactez-Nous</h1><br>
-    <div class="container" id="formContainer">
-        <div class="row justify-content-around" id="formyo">
-            <div class="col">
-                {% form_theme formContact 'bootstrap_4_layout.html.twig' %}
-                {{ form(formContact) }}
-            </div>
+<h1 id="title">Contactez-Nous</h1>
+<div class="container" id="formContainer">
+    <div class="row justify-content-around" id="formyo">
+        <div class="col">
+            {% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+            {{ form(formContact) }}
         </div>
     </div>
+</div>
 {% endif %}
 
 {% endblock %}

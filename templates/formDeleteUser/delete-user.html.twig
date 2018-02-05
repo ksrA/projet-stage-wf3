@@ -14,6 +14,7 @@
         Utilisateur supprimé !
     </div>
 {% elseif notchange is defined %}
+    <h1 class="display-4"> Supprimer le compte d'un administrateur </h1>
     {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
 
     {{ form(formDeleteUser) }}
