@@ -31,19 +31,17 @@
         public function registerUser(UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
-            $pass = 'clement';
+            $pass = 'anicetk';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('clement');
-            $user->setEmail('clems21094@hotmail.fr');
+            $user->setUsername('anicetk');
+            $user->setEmail('anicetkesraoui@gmail.com');
+
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
+            //Hash qui sera dans l'url afin qu'elle soit unique lorsqu'il voudra reset son mdp
             $bytes = openssl_random_pseudo_bytes(30);
             $resethash = bin2hex($bytes);
-            /*
-            $str = $encoder->encodePassword($user, 'tag@gmail.com'); // password_hash
-            $str = 'zd/k' . $str;
-            $resethash = str_replace('/', '8r', $str);
-*/
+
             $user->setResetHash($resethash);
             $user->setRoles(['ROLE_SUPERADMIN']);
 
@@ -87,17 +85,6 @@
         }
 
         /**
-         * @Route("/panel-admin/new-session", name="admin_new-session")
-         */
-        public function adminSession()
-        {
-            //Redirection vers 403 si celui qui accede a cette page n'a pas le role admin.
-            //C'est une protection
-            $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
-            return $this->render('admin/session.html.twig');
-        }
-
-        /**
          * @Route("/panel-admin/change-password", name="change_password")
          */
         public function changePassword(Request $request, UserInterface $user = null, UserPasswordEncoderInterface $encoder)
@@ -106,34 +93,40 @@
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
             $name = $user->getUsername();
 
+            //Formulaire de changemen de mot de passe
             $form = $this->createFormBuilder()
                 ->add('password', PasswordType::class, [
-                    'label' => 'Ancien mdp : ',
+                    'label' => 'Ancien mot de passe : ',
                     'constraints' => [
                         new NotBlank(),
                     ],
                 ])
                 ->add('firstnewpassword', PasswordType::class, [
-                    'label' => 'Nouveau mdp : ',
+                    'label' => 'Nouveau mot de passe : ',
                     'constraints' => [
                         new NotBlank(),
                     ],
                 ])
                 ->add('secondnewpassword', PasswordType::class, [
-                    'label' => 'Retaper le nouveau mdp : ',
+                    'label' => 'Retaper le nouveau mot de passe : ',
                     'constraints' => [
                         new NotBlank(),
                     ],
                 ])
-                ->add('save', SubmitType::class, ['label' => 'Envoyer'])
+                ->add('save', SubmitType::class, ['label' => 'Changer le mot de passe'])
                 ->getForm();
 
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
+                //Récupération de l'ancien mot de passe afin de check avec la method isPasswordValid
+                //Si le mot de passe actuel a été bien saisi
+                //Puis on vérifie si les 2 champs nouveau mdp sont identiques
                 $oldPassword = $data['password'];
                 $user = $this->getUser();
+
 
                 if (!($encoder->isPasswordValid($user, $oldPassword))){
                     $error[] = 'Vous avez mal saisi votre mot de passe';
@@ -143,6 +136,8 @@
                     $error[] = 'Les mots de passe doivent être identiques';
                 }
 
+                //Si la saisi ne comporte aucune erreur
+                //Encodage du nouveau mdp et enregistrement en bdd
                 if (!isset($error)){
                     $newpass = $data['firstnewpassword'];
                     $encoded = $encoder->encodePassword($user, $newpass);
@@ -183,7 +178,7 @@
             $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Accès interdit !');
             $form = $this->createFormBuilder()
                 ->add('username', TextType::class, [
-                    'label' => 'User : ',
+                    'label' => 'Nom d\'utilisateur : ',
                     'constraints' => [
                         new NotBlank(),
                         new Length(['min' => 2, 'max' => 30]),
@@ -215,16 +210,20 @@
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
                 $repository = $this->getDoctrine()->getRepository(User::class);
+
                 // Si l'adresse mail existe déjà en bdd
                 if(($personBdd = $repository->findOneBy(['email' => $data['email']])) != null){
                     $inputError[] = "Adresse mail déjà utilisée";
                 }
+                //Si le nom d'utilisateur existe déjà en bdd
                 if(($personBdd = $repository->findOneBy(['username' => $data['username']])) != null){
                     $inputError[] = "Nom d'utilisateur déjà utilisée";
                 }
                 if (!isset($inputError)){
                     $user = new User();
 
+                    //Génération de 10 caractères aléatoire qui seront le mot de passe par défaut
+                    //Lors de la création du compte. Ce mdp sera recu par mail au nouvel user
                     $pass = base64_encode(random_bytes(10));
                     $passHash = $encoder->encodePassword($user, $pass); // password_hash
                     $user->setPassword($passHash);
@@ -232,15 +231,13 @@
                     $user->setUsername($data['username']);
                     $user->setEmail($data['email']);
 
-                    //encodage de la chaine reset_hash
+                    //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
+                    //Hash qui sera dans l'url afin qu'elle soit unique lorsqu'il voudra reset son mdp
                     $bytes = openssl_random_pseudo_bytes(30);
                     $resethash = bin2hex($bytes);
 
-                    /*$str = $encoder->encodePassword($user, $data['email']); // password_hash
-                    $str = 'zd/k' . $str;
-                    $resethash = str_replace('/', '8r', $str);*/
-
                     $user->setResetHash($resethash);
+
                     //Ecrire une phrase dans la vue qui précise ce que fait le ROLE_ADMIN et le ROLE_SUPERADMIN
                     if ($data['role'] == "ROLE_SUPERADMIN"){
                         $user->setRoles(['ROLE_SUPERADMIN']);
@@ -294,6 +291,8 @@
         public function forgotPassword(Request $request, \Swift_Mailer $mailer)
         {
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_ANONYMOUSLY');
+
+            //Formulaire d'oublie de mdp
             $form = $this->createFormBuilder()
                 ->add('username', TextType::class, [
                     'label' => 'Nom d\'utilisateur',
@@ -321,13 +320,18 @@
                 $data = $form->getData();
                 $repository = $this->getDoctrine()->getRepository(User::class);
 
-                // Si l'adresse mail existe déjà en bdd
+                // On vérifie s'il existe bien une adresse mail et un utilisateur associé a ce compte
+
                 if (($personBdd = $repository->findOneBy(['email' => $data['email']])) != null) {
                     $findUserMail = "existe";
                 }
                 if (($personBdd = $repository->findOneBy(['username' => $data['username']])) != null) {
                     $findUserName = "existe";
                 }
+
+                //Si c'est le cas, on récupére ses infos en bdd
+                //Notamment le reset Hash afin de générer une URL unique
+                //Puis on envoi le mail avec ce lien
                 if (!empty($findUserName) && !empty($findUserMail)) {
 
                     $personBdd = $repository->findOneBy(['username' => $data['username']]);
@@ -350,8 +354,7 @@
                         ->setTo($data['email']);
 
                     $mailer->send($message);
-                    //go lui envoyer un mail avec lien temporaire routé vers
-                    //formulaire quui permet de changer mdp redéfinit en bdd
+
                     $change = 'exist';
                     return $this->render('formForgotPassword/ask-email.html.twig', [
                         'formChange' => $form->createView(),
@@ -380,20 +383,25 @@
          */
         public function forgotPasswordCreateNew($slug, $username, $str, Request $request, UserPasswordEncoderInterface $encoder)
         {
+            // On récupére l'entité user
+            //On vérifie qu'un utilisateur correspond a l'un des paramètre de la route (généré dans dans la public fonction précèdente)
+            //On récupére son reset hash
             $repository = $this->getDoctrine()->getRepository(User::class);
             if (($user = $repository->findOneBy(['username' => $username])) != null) {
                 $resethash = $user->getResetHash();
 
+                //Si le hash récupéré correspond a l'url unique
+                //Alors on génére le formulaire de re définition de mdp sinon page erreur 404
                 if ($resethash == $str) {
                     $form = $this->createFormBuilder()
                         ->add('firstnewpassword', PasswordType::class, [
-                            'label' => 'Nouveau mdp : ',
+                            'label' => 'Nouveau mot de passe : ',
                             'constraints' => [
                                 new NotBlank(),
                             ],
                         ])
                         ->add('secondnewpassword', PasswordType::class, [
-                            'label' => 'Retaper le nouveau mdp : ',
+                            'label' => 'Retaper le nouveau mot de passe : ',
                             'constraints' => [
                                 new NotBlank(),
                             ],
@@ -403,6 +411,10 @@
 
                     $form->handleRequest($request);
 
+                    //A la soumission du formulaire on check si les 2 mdp tapés sont identiques
+                    //Encodage du nouveau mdp
+                    //Génération d'un nouveau resetHash
+                    //Returrn message success
                     if ($form->isSubmitted() && $form->isValid()) {
                         $data = $form->getData();
 
@@ -414,10 +426,6 @@
                             $bytes = openssl_random_pseudo_bytes(30);
                             $resethash = bin2hex($bytes);
 
-                           /* $str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
-                            $str = 'l/k' . $str;
-                            $resethash = str_replace('/', 'k6', $str);*/
-
                             $user->setResetHash($resethash);
 
                             $em = $this->getDoctrine()->getManager();
@@ -425,29 +433,28 @@
                             $em->flush();
 
                             $change = 'exist';
-                            return $this->render('formChangePassword/change-password.html.twig', [
+                            return $this->render('formChangePassword/change-forgot-password.html.twig', [
                                 'formChange' => $form->createView(),
                                 'change' => $change,
                             ]);
                         } else {
                             $notchange = 'exist';
-                            return $this->render('formChangePassword/change-password.html.twig', [
+                            return $this->render('formChangePassword/change-forgot-password.html.twig', [
                                 'formChange' => $form->createView(),
                                 'notchange' => $notchange,
                             ]);
                         }
                     }
-                    return $this->render('formChangePassword/change-password.html.twig', [
+                    return $this->render('formChangePassword/change-forgot-password.html.twig', [
                         'formChange' => $form->createView(),
                     ]);
-                } else {
-                    // APPELER LA PAGE ERREUR 404
-                    return new Response('<h1>ERREUR 404 a styliser</h1>');
+                }
+                else {
+                    return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
                 }
             }
             else {
-               // APPELER LA PAGE ERREUR 404
-                return new Response('<h1>ERREUR 404 a styliser</h1>');
+                return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
             }
         }
 
@@ -459,6 +466,7 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Accès interdit !');
 
+            //Génération du formulaire
             $form = $this->createFormBuilder()
                 ->add('email', EmailType::class, [
                     'label' => 'Adresse mail actuelle : ',
@@ -488,6 +496,7 @@
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
 
+                //On check les eventuelles erreurs de saisie
                 $user = $this->getUser();
                 $repository = $this->getDoctrine()->getRepository(User::class);
                 if(($personBdd = $repository->findOneBy(['email' => $data['newemail']])) != null){
@@ -497,12 +506,12 @@
                     $inputError[] = "Adresse actuelle mal saisie";
                 }
 
+                //S'il n'y a pas d'errer
+                //On génére un nouveau reset hash
+                //Enregistrement en bdd de sa nouvelle adresse mail
                 if ($user->getEmail() == $data['email'] && empty($inputError)){
                     $user->setEmail($data['newemail']);
 
-                   /*$str = $encoder->encodePassword($user, $user->getEmail()); // password_hash
-                    $str = 'l/b' . $str;
-                    $resethash = str_replace('/', 'e4', $str);*/
                     $bytes = openssl_random_pseudo_bytes(30);
                     $resethash = bin2hex($bytes);
 
@@ -543,10 +552,12 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Accès interdit !');
 
+            //Génération du formulaire en utilisant un EntityType afin d'avoir en choix tous les nom d'utilisateur
             $form = $this->createFormBuilder()
                 ->add('username', EntityType::class, [
                     'class' => User::class,
                     'choice_label' => 'username',
+                    'label' => 'Nom d\'utilisateur :',
                     'placeholder' => 'Choisir l\'utilisateur',
                 ])
                 ->add('save', SubmitType::class, ['label' => 'Supprimer l\'utilisateur'])
@@ -554,6 +565,8 @@
 
             $form->handleRequest($request);
 
+            //Lorsque le formulaire est soumis
+            //On recupère cet utilisateur et on le remove de la bdd
             if ($form->isSubmitted() && $form->isValid()){
                 $data = $form->getData();
 
@@ -598,6 +611,9 @@
 
             $user = $this->getUser();
 
+            //Création tableau de cléf et valeur pour le ChoiceType du formulaire
+            //Afin de faire en sorte que l'utilisateur qui utilise ce formulaire ne puisse pas se supprimer lui même
+            //C'est une protection si jamais c'est le seul SUPER_ADMIN
             $repository = $this->getDoctrine()->getRepository(User::class);
             $personBdd = $repository->findAll();
             foreach($personBdd as $userAdmin){
@@ -606,7 +622,10 @@
                     $key[] = $userAdmin->getId();
                 }
             }
-            $arrayUser = array_combine($value, $key);
+
+            if (isset($value) && isset($key)) {
+                $arrayUser = array_combine($value, $key);
+            }
 
             $form = $this->createFormBuilder()
                 ->add('username', ChoiceType::class, [
@@ -631,6 +650,7 @@
                 $repository = $this->getDoctrine()->getRepository(User::class);
                 $personBdd = $repository->findOneBy(['id' => $data['username']]);
 
+                //Assignation du role en fonction de ce qui a été envoyé
                 if ($data['role'] == "ROLE_SUPERADMIN"){
                     $personBdd->setRoles(['ROLE_SUPERADMIN']);
                 }

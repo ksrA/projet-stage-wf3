@@ -1,52 +1,70 @@
+
 section.error {
-    background-color: white;
-    color: black;
+    background-color: #ffffff;
+    color: #2a2a2a;
     width: 80%;
     display:block;
     margin:auto;
     border-radius: 15px;
-    box-shadow: 1px 1px 15px grey;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.24);
     margin-top: 50px;
 }
-h1{
+.error-title{
     padding-top: 50px;
-    font: bold 1.2em "Fira Sans", serif;
     font-size: 50px;
     color: #da1816;
     text-align: center;
     border: 1px ;
     border-radius: 15px;
-
 }
 .kk{
-    position:relative;
-    right:5%;
-    top:20%;
-    background-color: #ececec;
-    box-shadow: 1px 1px 15px grey;
-    border-radius: 15px;
-    height: 100% ;
-    width: 50px;
-}
-button{
-    background-color: #ececec;
-    box-shadow: 1px 1px 15px grey;
-    border-radius: 15px;
 
+    background-color: #ececec;
+    box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
+    text-align: center;
+    padding: 6px;
+    margin-bottom: 15px;
+}
+.button{
+    background-color: #da1816;
+    border-radius: 5px;
+    margin: auto;
+    width: 250px;
+    padding: 5px 0;
+}
+.button:hover,
+.button:focus,
+.button:active {
+    background-color: #b61928;
+}
+.button a {
+    text-decoration: none;
+    color: #ececec;
 }
 
 body{
     background-color:#ececec;
-    font: normal 1.2em "Fira Sans", serif;
+}
+#picture{
+    display: block;
+    height: 70%;
+    width: 70%;
+    margin: auto;
+}
 
-}
-#403{
-    height: 100%;
-    width: 100%;
-}
 
 @media screen and (max-width: 768px) {
-    h1 {
+    .error-title {
         font-size: 25px;
     }
+    
+}
+
+@media screen and (max-width: 576px) {
+
+    .button{
+        width: 140px;
+    }
+    
 }

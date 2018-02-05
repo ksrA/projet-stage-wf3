@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="/assets/css/error404.css">
 {% endblock %}
 
+
 {% block body %}
     <section class="error">
-        <h1>◄Page introuvable !!!►</h1>
+        <h1 class="error-title">◄ Page introuvable !!! yolo ►</h1>
         <br><br><br>
         <div class="container">
             <div class="row ">
-                <div class="col-6">
-                    <img id="picpc" src="/assets/img/monitor-error.png" alt="page 404">
+                <div class="col-12 col-md-6">
+                    <img class="img-fluid" id="picpc" src="/assets/img/monitor-error.png" alt="page 404">
                 </div>
-                <div class="col-6 kk">
-                    <p>
-                        La page que vous avez demandée n’a pas été trouvée.<br>
-                        Il se peut que le lien que vous avez utilisé soit mort<br>
-                        ou que vous ayez tapé l’adresse (URL) incorrectement.<br>
+                <div class="col-12 col-md-6">
+                    <div class="kk">
+                        <p>
+                            La page que vous avez demandée n’a pas été trouvée.<br>
+                            Il se peut que le lien que vous avez utilisé soit mort<br>
+                            ou que vous ayez tapé l’adresse (URL) incorrectement.<br>
 
-                        <a href="{{ path('home') }}">Retourner sur la page d'accueil</a>
-                    </p>
+                            <div class="button">
+                                <a href="{{ path('home') }}">Retourner sur la page d'accueil</a>
+                            </div>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

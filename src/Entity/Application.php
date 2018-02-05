@@ -71,6 +71,11 @@ class Application
     /**
      * @ORM\Column(type="string")
      */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     private $status;
 
     /**
@@ -128,6 +133,22 @@ class Application
     public function setIdReunion($idReunion): void
     {
         $this->idReunion = $idReunion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture): void
+    {
+        $this->picture = $picture;
     }
 
     /**

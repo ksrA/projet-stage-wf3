@@ -11,12 +11,12 @@
 {% block body %}
 {% if change is defined %}
     <div class="alert alert-success" role="alert">
-        Adresse mail changé!<br>
+        Adresse mail changée !<br>
         Nouvelle adresse mail : {{ email }}
     </div>
 {% elseif notchange is defined %}
         
-
+    <h1 class="display-4"> Changer l'adresse Email du compte </h1>
     {% form_theme formChangeEmail 'bootstrap_4_layout.html.twig' %}
 
     {{ form(formChangeEmail) }}

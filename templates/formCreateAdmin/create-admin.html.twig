@@ -15,12 +15,8 @@
         Nouvel utilisateur créer en base de donnée.<br> 
         Un mail va lui être envoyé avec un mot de passe généré aléatoirement!<br>
     </div>
-    <div class="alert alert-success" role="alert">
-        <i>{{ mdp }}</i>
-    </div>
 {% elseif formNotOk is defined %}
     {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
-    {# Petit texte pour l'input select Role => préciser ce que recouvre le ROLE_ADMIN ainsi que le ROLE_SUPERADMIN #}
     {{ form(formCreateAdmin) }}
     {% for error in inputError %}
         <div class="alert alert-danger" role="alert">
@@ -28,6 +24,7 @@
         </div>
     {% endfor %}
 {% else %}
+    <h1 class="display-4"> Créer un compte administrateur </h1>
     {% form_theme formCreateAdmin 'bootstrap_4_layout.html.twig' %}
     {{ form(formCreateAdmin) }}
 {% endif %}

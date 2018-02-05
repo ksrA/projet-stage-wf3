@@ -9,13 +9,20 @@
 {% endblock %}
 
 {% block body %}
-    {% if formValid is defined %}
-        <div class="container">
-            <div id="success" class="alert alert-success">
-                <i class="far fa-check-circle fa-5x"></i><br>
-                <p>Vous venez de vous inscrire à la lise d'attente un mail de comfimation va vous etre envoyé</p>
-            </div>
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>S'inscrire</h1></div>
         </div>
+    </div>
+
+    {% if formValid is defined %}
+    <div class="container">
+        <div id="success" class="alert alert-success">
+            <i class="far fa-check-circle fa-5x"></i><br>
+            <p>Vous venez de vous inscrire à la lise d'attente un mail de comfimation va vous etre envoyé</p>
+        </div>
+    </div>
     {% else %}
     <div class="container">
             <h1 class="title">Inscription à la liste d'attente</h1>
@@ -46,9 +53,12 @@
         </div> 
     </div>
     {% endif %}
-    
 {% endblock %}
 
 {% block javascripts %}
+<<<<<<< HEAD
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+=======
+    <script src="form_inscrip-frontoffice-script.js"></script>
+>>>>>>> master
 {% endblock %}

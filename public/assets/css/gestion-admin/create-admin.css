@@ -15,6 +15,12 @@ header.menu div ul a.create-admin {
 
 
 
+/* titre */
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    color: #2a2a2a;
+}
 
 /* block du formulaire */
 #form {

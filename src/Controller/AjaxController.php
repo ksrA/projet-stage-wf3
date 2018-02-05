@@ -37,22 +37,28 @@
                 $sessionValue[] = 'Date de réunion : ' . $elem->getDateReunion()->format('d/m/Y');
             }
 
-            //On combine les 2 tableaux, les keys seront les date de réunion et la valeur les id de réunion
-            $arraySession = array_combine($sessionValue, $sessionKey);
+            if (isset($sessionValue) && isset($sessionKey)){
 
-            //Génération du formulaire select avec en choix les différentes réunion.
-            //Lorsqu'on choisi une réunion, on récupère sa valeur qui est son id
-            //La suite se passe en ajax (note.js)
-            $form = $this->createFormBuilder()
-                ->add('select', ChoiceType::class, [
-                    'placeholder' => 'Choisir la réunion : ',
-                    'choices' => $arraySession,
-                ])
-                ->getForm();
+                //On combine les 2 tableaux, les keys seront les date de réunion et la valeur les id de réunion
+                $arraySession = array_combine($sessionValue, $sessionKey);
 
-            return $this->render('note/enter-note.html.twig', [
-                'formNote' => $form->createView(),
-            ]);
+                //Génération du formulaire select avec en choix les différentes réunion.
+                //Lorsqu'on choisi une réunion, on récupère sa valeur qui est son id
+                //La suite se passe en ajax (note.js)
+                $form = $this->createFormBuilder()
+                    ->add('select', ChoiceType::class, [
+                        'placeholder' => 'Choisir la réunion : ',
+                        'choices' => $arraySession,
+                    ])
+                    ->getForm();
+
+                return $this->render('note/enter-note.html.twig', [
+                    'formNote' => $form->createView(),
+                ]);
+            }
+            else {
+                return $this->render('note/enter-note.html.twig');
+            }
         }
 
         /**
