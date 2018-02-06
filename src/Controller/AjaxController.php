@@ -52,12 +52,12 @@
                     ])
                     ->getForm();
 
-                return $this->render('note/enter-note.html.twig', [
+                return $this->render('backOffice/note/enter-note.html.twig', [
                     'formNote' => $form->createView(),
                 ]);
             }
             else {
-                return $this->render('note/enter-note.html.twig');
+                return $this->render('backOffice/note/enter-note.html.twig');
             }
         }
 
@@ -80,13 +80,13 @@
             //On return ce templates a la requete ajax
             //template qui contient l'affichage du tableau et champs input pour ajouter les notes
             if (!empty($listCandidat)){
-                return $this->render('note/tab-candidat-note.html.twig', [
+                return $this->render('backOffice/note/tab-candidat-note.html.twig', [
                     'candidats' => $listCandidat,
                     'reunion' => 'existe',
                 ]);
             }
             else {
-                return $this->render('note/tab-candidat-note.html.twig', [
+                return $this->render('backOffice/note/tab-candidat-note.html.twig', [
                     'candidats' => $listCandidat,
                 ]);
             }
@@ -141,13 +141,13 @@
 
             // Si on a bien des candidats réunissant les criteres de selection
             if (!empty($listCandidat)){
-                return $this->render('note/list-candidat-note-filter.html.twig', [
+                return $this->render('backOffice/note/list-candidat-note-filter.html.twig', [
                     'candidats' => $listCandidat,
                     'reunion' => 'existe',
                 ]);
             }
             else {
-                return $this->render('note/list-candidat-note-filter.html.twig');
+                return $this->render('backOffice/note/list-candidat-note-filter.html.twig');
             }
         }
     }

@@ -22,7 +22,7 @@ class FaqController extends Controller
         $repository = $this->getDoctrine()->getRepository(Faq::class);
         $faqs = $repository->findAll();
 
-        return $this->render('faq/faq.html.twig', [
+        return $this->render('frontOffice/faq/faq.html.twig', [
             'faqs' => $faqs,
         ]);
     }
@@ -68,12 +68,12 @@ class FaqController extends Controller
             $em->persist($faq);
             $em->flush();
 
-            return $this->render('faq/form-add-faq.html.twig', [
+            return $this->render('backOffice/faq/form-add-faq.html.twig', [
                 'change' => 'exist',
             ]);
         }
 
-        return $this->render('faq/form-add-faq.html.twig', [
+        return $this->render('backOffice/faq/form-add-faq.html.twig', [
             'formFaq' => $form->createView(),
             'notchange' => 'exist',
         ]);

@@ -21,15 +21,25 @@
 
     <div class="card-columns">
         {% for testimony in testimonies %}
+            {% if testimony.testimony is defined %}
             <div class="card">
                 <p class="card-text">
                     <span class="quotes"><<</span><br>
                     {{ testimony.testimony }}<br>
                     <span class="rquotes">>></span>
+                    {% if testimony.name is defined %}
                     <span class="slash">/</span><br>
                     {{ testimony.name }}
+                    {% endif %}
                 </p>
             </div>
+            {% endif %}
+            {% if testimony.url is defined %}
+            <div class="card">
+                <iframe width="560" height="315" src="{{ testimony.url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            {% endif %}
         {% endfor %}
         <!--
             <div class="card">

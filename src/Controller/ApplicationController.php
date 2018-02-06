@@ -53,7 +53,7 @@
                         //Verifier dans la table candidat que le mail n'existe pas déjà
                         //pour l'id réunion correspondant
                         if (($repository = $this->getDoctrine()->getRepository(Application::class)->checkEmailAndIdReunion($data->getEmail(),$id)) != null){
-                            return $this->render('formApplication/application-form.html.twig', [
+                            return $this->render('backOffice/formApplication/application-form.html.twig', [
                                 'formApplication' => $form->createView(),
                                 'email' => 'existe',
                             ]);
@@ -73,17 +73,17 @@
 
                         // Déplacement du fichier dans un dossier paramétré à l'avance (service.yaml)
                         $cv->move(
-                            $this->getParameter('uploads_directory'),
+                            $this->getParameter('uploads_directory_cv'),
                             $cvName
                         );
 
                         $coverLetter->move(
-                            $this->getParameter('uploads_directory'),
+                            $this->getParameter('uploads_directory_lm'),
                             $coverLetterName
                         );
 
                         $picture->move(
-                            $this->getParameter('uploads_directory_img'),
+                            $this->getParameter('uploads_directory_img_pic'),
                             $pictureName
                         );
 
@@ -105,7 +105,7 @@
                         $message = new \Swift_Message('Candidature WF3 envoyée');
                         $message
                             ->setFrom('helloworldwf3@gmail.com') // Expéditeur
-                            ->setBody($this->renderView('email/body-application-confirmation.html.twig',[
+                            ->setBody($this->renderView('backOffice/email/body-application-confirmation.html.twig',[
                             ]), 'text/html');// Contenu
                         $message->setTo($data->getEmail()); // Destinataire
                         $mailer->send($message);
@@ -114,7 +114,7 @@
                     }
 
                     else{
-                        return $this->render('formApplication/application-form.html.twig', [
+                        return $this->render('backOffice/formApplication/application-form.html.twig', [
                            'formApplication' => $form->createView(),
                         ]);
                     }

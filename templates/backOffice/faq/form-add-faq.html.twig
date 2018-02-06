@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/assets/css/faq.css">
+    <link rel="stylesheet" href="/assets/css/add-faq/add-faq-form.css">
 {% endblock %}
 
 {% block body %}
@@ -14,8 +14,10 @@
             Question ajoutée<br>
         </div>
     {% elseif notchange is defined %}
+        <h1 class="display-4"> Ajouter une question/réponse </h1>
+
         {% form_theme formFaq 'bootstrap_4_layout.html.twig' %}
         {{ form(formFaq) }}
-    {% endif %}
 
-        {% endblock %}
+        {% endif %}
+            {% endblock %}

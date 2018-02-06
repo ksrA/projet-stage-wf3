@@ -22,7 +22,7 @@ class TestimonyController extends Controller
         $repository = $this->getDoctrine()->getRepository(Testimony::class);
         $testimonies = $repository->findAll();
 
-        return $this->render('testimony/testimony.html.twig', [
+        return $this->render('frontOffice/testimony/testimony.html.twig', [
             'testimonies' => $testimonies,
         ]);
     }
@@ -41,6 +41,7 @@ class TestimonyController extends Controller
                 'attr' => ['placeholder' => 'Ecrire le témoignage'],
                 'constraints' => [
                     new NotBlank(),
+                    new Length(['max' => 50]),
                 ],
             ])
             ->add('name', TextType::class, [
@@ -68,12 +69,12 @@ class TestimonyController extends Controller
             $em->persist($testimony);
             $em->flush();
 
-            return $this->render('testimony/form-add-testimony.html.twig', [
+            return $this->render('backOffice/testimony/form-add-testimony.html.twig', [
                 'change' => 'exist',
             ]);
         }
 
-        return $this->render('testimony/form-add-testimony.html.twig', [
+        return $this->render('backOffice/testimony/form-add-testimony.html.twig', [
             'formTestimony' => $form->createView(),
             'notchange' => 'exist',
         ]);
