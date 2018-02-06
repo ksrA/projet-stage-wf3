@@ -65,7 +65,7 @@
                             </li>
                             <!-- bouton actu -->
                             <li id="menubtn" class="nav-item menubtn-actu">
-                                <a id="lien" class="nav-link" href="{{ path('actu_page_one') }}">Actualités</a>
+                                <a id="lien" class="nav-link" href="{{ path('page_actu', {'page' : 1}) }}">Actualités</a>
                             </li>
                             <!-- bouton faq -->
                             <li id="menubtn" class="nav-item menubtn-faq">
@@ -140,7 +140,7 @@
                             <ul>
                                 <li> # <a href="{{ path('numericall') }}"> Numericall </a> </li>
                                 <li> # <a href="{{ path('contact_page') }}"> Contact </a> </li>
-                                <li> # <a href="{{ path('actu_page_one') }}"> Actualités </a> </li>
+                                <li> # <a href="{{ path('page_actu', {'page' : 1}) }}"> Actualités </a> </li>
                                 <li> # <a href="{{ path('faq') }}"> F.A.Q </a> </li>
                             </ul>
                         </div>
@@ -149,9 +149,11 @@
                     <div class="col-12 col-sm-8 col-md-5 arts">
                         <h3>Les dernières actualités :</h3>
                         <ul>
-                            <li><a href="">Fit4CodingJobs Session 1 Day One au Technoport</a></li>
-                            <li><a href="">NumericALL lauréate au European Digital Skills Awards 2017</a></li>
-                            <li><a href="">Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
+                            {% if lastActu is defined %}
+                                {% for actu in lastActu %}
+                                    <li><a href="{{ path('actu_by_id', {'id' : actu.id}) }}">{{ actu.title }}</a></li>
+                                {% endfor %}
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

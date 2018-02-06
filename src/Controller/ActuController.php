@@ -59,30 +59,103 @@ class ActuController extends Controller
     }
 
     /**
-     * @Route("/actualites/page1", name="actu_page_one")
+     * @Route("/actualites/list/{page}", name="page_actu")
      */
-    public function actualitePageOne()
+    public function pagination($page)
     {
-        $repository = $this->getDoctrine()->getRepository(Actu::class);
-        $listActu = $repository->findAllByOrderDesc();
+        if (!is_numeric($page) || $page < 1) {
+           return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
 
-        return $this->render('actu-pages/actu-page1.html.twig',[
-            'listActu' => $listActu,
+        $repository = $this->getDoctrine()->getRepository(Actu::class);
+
+        //Récupération des dernières actu pour le footer et aside
+        $lastActuFooter = $repository->findTheLastActu();
+        $lastActuAside = $repository->findTheLastActu(5);
+
+        //Récupération des actualités de la page demandé
+        if (!$actus = $repository->findAllPaginedAndSorted($page, 6)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+
+        //Récupération du nombre d'entrée en utilisant paginator (instancié avec la requete)
+        //Afin de calculer le nombre de page
+        $pagination = $repository->findAllPaginedAndSorted($page, 6, 'count');
+
+        $nbPage = ceil(count($pagination) / 6);
+
+        return $this->render('actu-pagination/list-actu.html.twig', [
+            'actus' => $actus,
+            'page' => $page,
+            'nbPage' => $nbPage,
+            'lastActu' => $lastActuFooter,
+            'lastActuAside' => $lastActuAside,
         ]);
     }
 
     /**
-     * @Route("/actualites/{id}", name="actu_by_id")
+     * @Route("/actualites/articles/{id}", name="actu_by_id")
      */
     public function actuById($id)
     {
+        //Récupération de l'actualité en fonction de son id
+        //On récupére aussi l'actu d'après et la précedente
         $repository = $this->getDoctrine()->getRepository(Actu::class);
         $actu = $repository->findOneBy(['id' => $id]);
+        $precActu = $repository->findOneBy(['id' => $id - 1]);
+        $nextActu = $repository->findOneBy(['id' => $id + 1]);
 
-        return $this->render('actu-arts/actu-article.html.twig', [
-            'actu' => $actu,
-        ]);
+        //Récupération des dernières actu pour le footer et aside
+        $lastActuFooter = $repository->findTheLastActu();
+        $lastActuAside = $repository->findTheLastActu(5);
+
+        if ($precActu != null){
+            $precactu = 'exist';
+        }
+
+        if ($nextActu != null){
+            $nextactu = 'exist';
+        }
+
+        //S'il n'y a pas d'actu correspondant a cet id on retourne la page 404
+        if ($actu == null){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+        //Sinon, vérification des actu précédentes et next
+        //pour savoir quelle bouton de naviguation afficher en vue
+        else{
+            if (isset($precactu) && isset($nextactu)){
+                return $this->render('actu-arts/actu-article.html.twig', [
+                    'actu' => $actu,
+                    'precActu' => $precActu,
+                    'nextActu' => $nextActu,
+                    'lastActu' => $lastActuFooter,
+                    'lastActuAside' => $lastActuAside,
+                ]);
+            }
+            elseif (isset($precactu) && !isset($nextactu)){
+                return $this->render('actu-arts/actu-article.html.twig', [
+                    'actu' => $actu,
+                    'precActu' => $precActu,
+                    'lastActu' => $lastActuFooter,
+                    'lastActuAside' => $lastActuAside,
+                ]);
+            }
+            elseif (!isset($precactu) && isset($nextactu)){
+                return $this->render('actu-arts/actu-article.html.twig', [
+                    'actu' => $actu,
+                    'nextActu' => $nextActu,
+                    'lastActu' => $lastActuFooter,
+                    'lastActuAside' => $lastActuAside,
+                ]);
+            }
+            else{
+                return $this->render('actu-arts/actu-article.html.twig', [
+                    'actu' => $actu,
+                    'lastActu' => $lastActuFooter,
+                    'lastActuAside' => $lastActuAside,
+                ]);
+            }
+        }
     }
-
-
 }

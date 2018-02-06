@@ -1,0 +1,21 @@
+{% extends "base-backoffice.html.twig" %}
+
+{% block title %}
+    Ajout d'une question - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/faq.css">
+{% endblock %}
+
+{% block body %}
+    {% if change is defined %}
+        <div class="alert alert-success" role="alert">
+            Question ajoutée<br>
+        </div>
+    {% elseif notchange is defined %}
+        {% form_theme formFaq 'bootstrap_4_layout.html.twig' %}
+        {{ form(formFaq) }}
+    {% endif %}
+
+        {% endblock %}

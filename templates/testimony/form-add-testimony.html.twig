@@ -1,0 +1,21 @@
+{% extends "base-backoffice.html.twig" %}
+
+{% block title %}
+    Ajout d'un témoignage - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/testimony.css">
+{% endblock %}
+
+{% block body %}
+    {% if change is defined %}
+        <div class="alert alert-success" role="alert">
+            Témoignage ajouté<br>
+        </div>
+    {% elseif notchange is defined %}
+        {% form_theme formTestimony 'bootstrap_4_layout.html.twig' %}
+        {{ form(formTestimony) }}
+    {% endif %}
+
+        {% endblock %}

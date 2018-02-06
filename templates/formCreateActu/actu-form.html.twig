@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block stylesheets %}
+
     <link rel="stylesheet" href="/assets/css/ajout-contenu/actu-form.css">
+
 {% endblock %}
 
 {% block body %}
@@ -16,6 +18,7 @@
         </div>
     {% else %}
         <h1 class="display-4"> Ajouter un article </h1>
+
 
         {% form_theme formCreateActu 'bootstrap_4_layout.html.twig' %}
 
