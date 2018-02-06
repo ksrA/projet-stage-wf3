@@ -27,7 +27,7 @@
             $repository = $this->getDoctrine()->getRepository(Actu::class);
             $lastActu = $repository->findTheLastActu();
 
-            return $this->render('home/home.html.twig', [
+            return $this->render('frontOffice/home/home.html.twig', [
                 'lastActu' => $lastActu,
             ]);
         }
@@ -40,7 +40,7 @@
             $repository = $this->getDoctrine()->getRepository(Actu::class);
             $lastActu = $repository->findTheLastActu();
 
-            return $this->render('numericall-description.html.twig', [
+            return $this->render('frontOffice/numericall/numericall-description.html.twig', [
                 'lastActu' => $lastActu,
             ]);
         }
@@ -105,7 +105,7 @@
                 $message = new \Swift_Message($data['subject']);
                 $message
                     ->setFrom($data['email'])
-                    ->setBody($this->renderView('email/body-contact.html.twig', [
+                    ->setBody($this->renderView('backOffice/email/body-contact.html.twig', [
                         'message' => $data['message'],
                         'lastname' => $data['lastname'],
                         'firstname' => $data['firstname'],
@@ -117,14 +117,14 @@
 
                 $formValid = 'exist';
 
-                return $this->render('formContact/contact.html.twig', [
+                return $this->render('frontOffice/formContact/contact.html.twig', [
                     'formContact' => $form->createView(),
                     'formValid' => $formValid,
                     'message' => $data['message'],
                     'lastActu' => $lastActu,
                 ]);
             }
-            return $this->render('formContact/contact.html.twig', array(
+            return $this->render('frontOffice/formContact/contact.html.twig', array(
                 'formContact' => $form->createView(),
                 'lastActu' => $lastActu,
             ));

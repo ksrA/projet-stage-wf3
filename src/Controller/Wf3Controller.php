@@ -17,7 +17,7 @@
             $repository = $this->getDoctrine()->getRepository(Actu::class);
             $lastActu = $repository->findTheLastActu();
 
-            return $this->render('description_formation/wf3_desc.html.twig', [
+            return $this->render('frontOffice/description_formation/wf3_desc.html.twig', [
                 'lastActu' => $lastActu,
             ]);
         }

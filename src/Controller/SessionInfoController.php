@@ -46,13 +46,13 @@
             }
 
             if (!empty($tabApplicant)){
-                return $this->render('candidatSession/candidat-session.html.twig', [
+                return $this->render('backOffice/candidatSession/candidat-session.html.twig', [
                     'sessions' => $sessions,
                     'applicants' => $tabApplicant,
                 ]);
             }
             else {
-                return $this->render('candidatSession/candidat-session.html.twig', [
+                return $this->render('backOffice/candidatSession/candidat-session.html.twig', [
                     'sessions' => $sessions,
                 ]);
             }

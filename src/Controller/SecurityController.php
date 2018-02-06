@@ -31,11 +31,11 @@
         public function registerUser(UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
-            $pass = 'clement';
+            $pass = 'anicet';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('clement');
-            $user->setEmail('clems21094@hotmail.fr');
+            $user->setUsername('anicet');
+            $user->setEmail('anicetkesraoui@gmail.com');
 
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
             //Hash qui sera dans l'url afin qu'elle soit unique lorsqu'il voudra reset son mdp
@@ -62,7 +62,7 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_ANONYMOUSLY');
             $error = $authUtils->getLastAuthenticationError();
 
-            return $this->render('security/login.html.twig', array(
+            return $this->render('frontOffice/security/login.html.twig', array(
                 'error' => $error,
             ));
         }
@@ -79,7 +79,7 @@
             $user = $this->getUser();
             $name = $user->getUsername();
 
-            return $this->render('admin/home.html.twig', [
+            return $this->render('backOffice/admin/home.html.twig', [
                 'user' => $name,
             ]);
         }
@@ -149,21 +149,21 @@
                     $em->flush();
 
                     $change = 'exist';
-                    return $this->render('formChangePassword/change-password.html.twig', [
+                    return $this->render('backOffice/formChangePassword/change-password.html.twig', [
                         'formChange' => $form->createView(),
                         'change' => $change,
                     ]);
                 }
                 else{
                     $notchange = 'exist';
-                    return $this->render('formChangePassword/change-password.html.twig', [
+                    return $this->render('backOffice/formChangePassword/change-password.html.twig', [
                         'formChange' => $form->createView(),
                         'notchange' => $notchange,
                         'msgError' => $error,
                     ]);
                 }
             }
-            return $this->render('formChangePassword/change-password.html.twig', [
+            return $this->render('backOffice/formChangePassword/change-password.html.twig', [
                 'user' => $name,
                 'formChange' => $form->createView(),
             ]);
@@ -253,7 +253,7 @@
                     $message = new \Swift_Message('Nouveau compte');
                     $message
                         ->setFrom('helloworldwf3@gmail.com')
-                        ->setBody($this->renderView('email/body-create-user.html.twig', [
+                        ->setBody($this->renderView('backOffice/email/body-create-user.html.twig', [
                             'email' => $data['email'],
                             'username' => $data['username'],
                             'password' => $pass,
@@ -264,7 +264,7 @@
                     $mailer->send($message);
 
                     $formOk = 'exist';
-                    return $this->render('formCreateAdmin/create-admin.html.twig', [
+                    return $this->render('backOffice/formCreateAdmin/create-admin.html.twig', [
                         'formCreateAdmin' => $form->createView(),
                         'formOk' => $formOk,
                         'mdp' => $pass,
@@ -273,14 +273,14 @@
                 }
                 else{
                     $formNotOk = 'exist';
-                    return $this->render('formCreateAdmin/create-admin.html.twig', [
+                    return $this->render('backOffice/formCreateAdmin/create-admin.html.twig', [
                         'formCreateAdmin' => $form->createView(),
                         'formNotOk' => $formNotOk,
                         'inputError' => $inputError,
                     ]);
                 }
             }
-            return $this->render('formCreateAdmin/create-admin.html.twig', [
+            return $this->render('backOffice/formCreateAdmin/create-admin.html.twig', [
                 'formCreateAdmin' => $form->createView(),
             ]);
         }
@@ -346,7 +346,7 @@
                     $message = new \Swift_Message('Lien temporaire changement mdp');
                     $message
                         ->setFrom('helloworldwf3@gmail.com')
-                        ->setBody($this->renderView('email/body-forgot-password.html.twig', [
+                        ->setBody($this->renderView('backOffice/email/body-forgot-password.html.twig', [
                             'email' => $data['email'],
                             'username' => $data['username'],
                             'url' => $url,
@@ -356,7 +356,7 @@
                     $mailer->send($message);
 
                     $change = 'exist';
-                    return $this->render('formForgotPassword/ask-email.html.twig', [
+                    return $this->render('backOffice/formForgotPassword/ask-email.html.twig', [
                         'formChange' => $form->createView(),
                         'change' => $change,
                     ]);
@@ -364,7 +364,7 @@
                 else {
                     $notchange = 'exist';
                     $userNotFound = 'exist';
-                    return $this->render('formForgotPassword/ask-email.html.twig', [
+                    return $this->render('backOffice/formForgotPassword/ask-email.html.twig', [
                         'askEmail' => $form->createView(),
                         'notchange' => $notchange,
                         'userNotFound' => $userNotFound,
@@ -372,7 +372,7 @@
                 }
             }
             $notchange = 'exist';
-            return $this->render('formForgotPassword/ask-email.html.twig', [
+            return $this->render('backOffice/formForgotPassword/ask-email.html.twig', [
                 'askEmail' => $form->createView(),
                 'notchange' => $notchange,
             ]);
@@ -433,19 +433,19 @@
                             $em->flush();
 
                             $change = 'exist';
-                            return $this->render('formChangePassword/change-forgot-password.html.twig', [
+                            return $this->render('backOffice/formChangePassword/change-forgot-password.html.twig', [
                                 'formChange' => $form->createView(),
                                 'change' => $change,
                             ]);
                         } else {
                             $notchange = 'exist';
-                            return $this->render('formChangePassword/change-forgot-password.html.twig', [
+                            return $this->render('backOffice/formChangePassword/change-forgot-password.html.twig', [
                                 'formChange' => $form->createView(),
                                 'notchange' => $notchange,
                             ]);
                         }
                     }
-                    return $this->render('formChangePassword/change-forgot-password.html.twig', [
+                    return $this->render('backOffice/formChangePassword/change-forgot-password.html.twig', [
                         'formChange' => $form->createView(),
                     ]);
                 }
@@ -522,7 +522,7 @@
                     $em->flush();
 
                     $change = "existe";
-                    return $this->render('formChangeEmail/change-email.html.twig', [
+                    return $this->render('backOffice/formChangeEmail/change-email.html.twig', [
                         'formChangeEmail' => $form->createView(),
                         'change' => $change,
                         'email' => $user->getEmail(),
@@ -530,7 +530,7 @@
                 }
                 else{
                     $notchange = "existe";
-                    return $this->render('formChangeEmail/change-email.html.twig', [
+                    return $this->render('backOffice/formChangeEmail/change-email.html.twig', [
                         'formChangeEmail' => $form->createView(),
                         'inputError' => $inputError,
                         'notchange' => $notchange,
@@ -538,7 +538,7 @@
                 }
             }
             $notchange = "existe";
-            return $this->render('formChangeEmail/change-email.html.twig', [
+            return $this->render('backOffice/formChangeEmail/change-email.html.twig', [
                 'formChangeEmail' => $form->createView(),
                 'notchange' => $notchange,
             ]);
@@ -552,13 +552,32 @@
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Accès interdit !');
 
-            //Génération du formulaire en utilisant un EntityType afin d'avoir en choix tous les nom d'utilisateur
+            $user = $this->getUser();
+
+            //Création tableau de cléf et valeur pour le ChoiceType du formulaire
+            //Afin de faire en sorte que l'utilisateur qui utilise ce formulaire ne puisse pas se supprimer lui même
+            //C'est une protection si jamais c'est le seul SUPER_ADMIN
+            $repository = $this->getDoctrine()->getRepository(User::class);
+            $personBdd = $repository->findAll();
+            foreach($personBdd as $userAdmin){
+                if ($user->getUsername() != $userAdmin->getUsername()){
+                    $value[] = $userAdmin->getUsername();
+                    $key[] = $userAdmin->getId();
+                }
+            }
+
+            if (!isset($value) && !isset($key)) {
+                return $this->render('backOffice/formDeleteUser/delete-user.html.twig', [
+                    'notchange' => 'exist',
+                ]);
+            }
+
+            $arrayUser = array_combine($value, $key);
+
             $form = $this->createFormBuilder()
-                ->add('username', EntityType::class, [
-                    'class' => User::class,
-                    'choice_label' => 'username',
-                    'label' => 'Nom d\'utilisateur :',
+                ->add('username', ChoiceType::class, [
                     'placeholder' => 'Choisir l\'utilisateur',
+                    'choices' => $arrayUser,
                 ])
                 ->add('save', SubmitType::class, ['label' => 'Supprimer l\'utilisateur'])
                 ->getForm();
@@ -579,7 +598,7 @@
                     $em->flush();
 
                     $change = "exist";
-                    return $this->render('formDeleteUser/delete-user.html.twig', [
+                    return $this->render('backOffice/formDeleteUser/delete-user.html.twig', [
                         'formDeleteUser' => $form->createView(),
                         'change' => $change,
                     ]);
@@ -587,7 +606,7 @@
                 else {
                     $notchange = "exist";
                     $notFound = "exist";
-                    return $this->render('formDeleteUser/delete-user.html.twig', [
+                    return $this->render('backOffice/formDeleteUser/delete-user.html.twig', [
                         'formDeleteUser' => $form->createView(),
                         'notchange' => $notchange,
                         'notfound' => $notFound,
@@ -595,9 +614,10 @@
                 }
             }
             $notchange = "exist";
-            return $this->render('formDeleteUser/delete-user.html.twig', [
+            return $this->render('backOffice/formDeleteUser/delete-user.html.twig', [
                 'formDeleteUser' => $form->createView(),
                 'notchange' => $notchange,
+                'notEmpty' => 'exist',
             ]);
         }
 
@@ -624,7 +644,7 @@
             }
 
             if (!isset($value) && !isset($key)) {
-                return $this->render('formChangeRole/change-role.html.twig', [
+                return $this->render('backOffice/formChangeRole/change-role.html.twig', [
                     'notchange' => 'exist',
                 ]);
             }
@@ -667,14 +687,14 @@
                 $em->flush();
 
                 $change = "exist";
-                return $this->render('formChangeRole/change-role.html.twig', [
+                return $this->render('backOffice/formChangeRole/change-role.html.twig', [
                     'formChangeRole' => $form->createView(),
                     'role' => $personBdd->getRoles(),
                     'change' => $change,
                 ]);
             }
             $notchange = "exist";
-            return $this->render('formChangeRole/change-role.html.twig', [
+            return $this->render('backOffice/formChangeRole/change-role.html.twig', [
                 'formChangeRole' => $form->createView(),
                 'notchange' => $notchange,
                 'notEmpty' => 'exist',

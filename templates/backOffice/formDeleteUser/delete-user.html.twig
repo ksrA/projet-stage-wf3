@@ -15,9 +15,11 @@
     </div>
 {% elseif notchange is defined %}
     <h1 class="display-4"> Supprimer le compte d'un administrateur </h1>
-    {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
+    {% if notEmpty is defined %}
+        {% form_theme formDeleteUser 'bootstrap_4_layout.html.twig' %}
 
-    {{ form(formDeleteUser) }}
+        {{ form(formDeleteUser) }}
+    {% endif %}
     {% if notfound is defined %}
         <div class="alert alert-danger" role="alert">
             <p>Problème lors de l'execution de la requête</p>

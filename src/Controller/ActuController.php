@@ -48,12 +48,12 @@ class ActuController extends Controller
             $em->persist($data);
             $em->flush();
 
-            return $this->render('formCreateActu/actu-form.html.twig', [
+            return $this->render('backOffice/formCreateActu/actu-form.html.twig', [
                 'change' => 'exist',
             ]);
         }
 
-        return $this->render('formCreateActu/actu-form.html.twig', [
+        return $this->render('backOffice/formCreateActu/actu-form.html.twig', [
             'formCreateActu' => $form->createView(),
         ]);
     }
@@ -84,7 +84,7 @@ class ActuController extends Controller
 
         $nbPage = ceil(count($pagination) / 6);
 
-        return $this->render('actu-pagination/list-actu.html.twig', [
+        return $this->render('frontOffice/actu-pagination/list-actu.html.twig', [
             'actus' => $actus,
             'page' => $page,
             'nbPage' => $nbPage,
@@ -125,7 +125,7 @@ class ActuController extends Controller
         //pour savoir quelle bouton de naviguation afficher en vue
         else{
             if (isset($precactu) && isset($nextactu)){
-                return $this->render('actu-arts/actu-article.html.twig', [
+                return $this->render('frontOffice/actu-arts/actu-article.html.twig', [
                     'actu' => $actu,
                     'precActu' => $precActu,
                     'nextActu' => $nextActu,
@@ -134,7 +134,7 @@ class ActuController extends Controller
                 ]);
             }
             elseif (isset($precactu) && !isset($nextactu)){
-                return $this->render('actu-arts/actu-article.html.twig', [
+                return $this->render('frontOffice/actu-arts/actu-article.html.twig', [
                     'actu' => $actu,
                     'precActu' => $precActu,
                     'lastActu' => $lastActuFooter,
@@ -142,7 +142,7 @@ class ActuController extends Controller
                 ]);
             }
             elseif (!isset($precactu) && isset($nextactu)){
-                return $this->render('actu-arts/actu-article.html.twig', [
+                return $this->render('frontOffice/actu-arts/actu-article.html.twig', [
                     'actu' => $actu,
                     'nextActu' => $nextActu,
                     'lastActu' => $lastActuFooter,
@@ -150,7 +150,7 @@ class ActuController extends Controller
                 ]);
             }
             else{
-                return $this->render('actu-arts/actu-article.html.twig', [
+                return $this->render('frontOffice/actu-arts/actu-article.html.twig', [
                     'actu' => $actu,
                     'lastActu' => $lastActuFooter,
                     'lastActuAside' => $lastActuAside,

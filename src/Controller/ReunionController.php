@@ -65,7 +65,7 @@
 
                 return $this->redirectToRoute('create-reunion');
             }
-            return $this->render('reunion/select-waiting-list.html.twig', [
+            return $this->render('backOffice/reunion/select-waiting-list.html.twig', [
                 'formSelectWaitingList' => $form->createView(),
             ]);
         }
@@ -126,7 +126,7 @@
                 $message = new \Swift_Message('Formulaire de candidature');
                 $message
                     ->setFrom('helloworldwf3@gmail.com') // Expéditeur
-                    ->setBody($this->renderView('email/body-application-link.html.twig',[
+                    ->setBody($this->renderView('backOffice/email/body-application-link.html.twig',[
                         'campus' => $sessionFormation->getCampus(),
                         'dateReunion' => $sessionFormation->getDateReunion()->format('d/m/Y à H:m'),
                         'dateSession' => $sessionFormation->getDateSession()->format('d/m/Y'),
@@ -148,12 +148,12 @@
                 $em->flush();
 
                 $submit = "existe";
-                return $this->render('reunion/create-reunion.html.twig', [
+                return $this->render('backOffice/reunion/create-reunion.html.twig', [
                     'submit' => $submit,
                 ]);
             }
 
-            return $this->render('reunion/create-reunion.html.twig', [
+            return $this->render('backOffice/reunion/create-reunion.html.twig', [
                 'waitinglist' => $waitinglist,
                 'campus' => $campus,
                 'formCreateReunion' => $form->createView(),

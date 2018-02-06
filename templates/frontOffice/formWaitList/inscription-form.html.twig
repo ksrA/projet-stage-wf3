@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/waitlistFormStyle.css">
+{% endblock %}
+
+{% block title %}
+    S'inscrire - Numericall
+{% endblock %}
+
+{% block body %}
+
+    {% if formValid is defined %}
+        <div class="alert alert-success success" role="alert">
+            Inscription envoyée.
+        </div>
+    {% else %}
+
+        <!-- titre de page -->
+        <div class=" container-fluid" id="title1">
+            <div class="row">
+                <div class="col-12"><h1>S'inscrire</h1></div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if formValid is defined %}
+<div class="container">
+    <div id="success" class="alert alert-success">
+        <i class="far fa-check-circle fa-5x"></i><br>
+        <p>Vous venez de vous inscrire à la lise d'attente un mail de comfimation va vous etre envoyé</p>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h1 id="title">Inscription à la liste d'attente</h1>
+    <div class="container" id="formContainer">
+        <div class="row justify-content-around">
+            <div class=" col col-md-7">
+                {% form_theme formWaitList 'bootstrap_4_layout.html.twig' %}
+                {{ form(formWaitList) }}
+            </div>
+            <div class="col col-md-4">
+                <div class="d-flex align-content-center flex-wrap">
+                    <div class="p-2">
+                        <img class="logo" src="/assets/img/NlCollapsed.png" alt="logo_numerical_collapsed">
+                    </div>
+                    <div class="p-2">
+                        <img class="logo" src="/assets/img/Webforce3.png" alt="logo_webforce3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if mailExist is defined %}
+            <div id="alertUser" class="alert alert-danger">
+                <i class="far fa-times-circle fa-5x "></i><br>
+                <p>L'adresse mail existe déjà dans notre base de donnée</p>
+            </div>
+        {% endif %}
+        <p id="annotation">Le lieu de réunion peut parfois être différent du lieu de formation.</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/assets/js/form_inscrip-frontoffice-script.js"></script>
+{% endblock %}

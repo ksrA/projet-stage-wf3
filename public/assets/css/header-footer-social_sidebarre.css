@@ -54,7 +54,7 @@ body{
     background-color: #ececec;
 }
 #menubtn:hover{
-    background-color:#da1816; 
+    background-color:#da1816;
 }
 
 
@@ -156,7 +156,7 @@ body{
     color: #757575;
     font-size: 12px;
     text-align: center;
-    /* border-top: solid 1px #757575; */ 
+    /* border-top: solid 1px #757575; */
     padding: 10px 0px;
 }
 
@@ -184,16 +184,16 @@ body{
 /*******************************************/
 
 #sidebar-social {
-   left: 0px;
-   position: fixed;
-   top: 43%;
-   z-index: 1;
+    left: 0px;
+    position: fixed;
+    top: 43%;
+    z-index: 1;
 }
 
 #sidebar-social ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 #sidebar-social ul li {
@@ -201,16 +201,16 @@ body{
 }
 
 #sidebar-social a {
-   text-decoration: none;
-   /* background: rgb(255, 0, 0); */
-   color: #fff;
-   display: block;
-   height: 36px;
-   font: 16px "Open Sans", sans-serif;
-   position: relative;
-   width: 156px;
-   left: -120px;
-   transition: 0.2s ease;
+    text-decoration: none;
+    /* background: rgb(255, 0, 0); */
+    color: #ececec;
+    display: block;
+    height: 40px;
+    font: 16px "Open Sans", sans-serif;
+    position: relative;
+    width: 158px;
+    left: -120px;
+    transition: 0.2s ease;
 }
 
 #sidebar-social a:hover {
@@ -221,26 +221,27 @@ body{
     display: block;
     text-align: center;
     float: left;
-    width: 125px;
+    width: 120px;
     padding-top: 8px;
 }
 
 #sidebar-social a span.fa-stack {
     display: block;
     text-align: center;
-    margin-left: 122px;
+    margin-left: 117px;
     height: 36px;
-    padding-top: 2px;
+    width: 40px;
+    padding-top: 4px;
 }
 
-#sidebar-social a span.fa-stack i { transition: 1s ease; }
-#sidebar-social a:hover span.fa-stack i { transform: rotate(360deg); }
+/* #sidebar-social a span.fa-stack i { transition: 1s ease; }
+#sidebar-social a:hover span.fa-stack i { transform: rotate(360deg); } */
 
 #sidebar-social a.facebook { background: #3b5998; }
 #sidebar-social a.facebook span.fa-stack i.fa-facebook { color: #3b5998; }
 #sidebar-social a.twitter { background: #00aced; }
 #sidebar-social a.twitter span.fa-stack i.fa-twitter { color: #00aced; }
-#sidebar-social a.linkedin { background: #007bb6; } 
+#sidebar-social a.linkedin { background: #007bb6; }
 #sidebar-social a.linkedin span.fa-stack i.fa-linkedin { color: #007bb6; }
 
 
@@ -250,7 +251,7 @@ body{
 /****************/
 /* met la sid-bar des réseau en horisontal au dessus du footer */
 @media screen and (max-width:768px) {
-    
+
     #sidebar-social {
         position: static;
         margin: auto;
@@ -298,5 +299,3 @@ body{
     #sidebar-social li:active a.linkedin { background-color: #006391; }
 
 }
-
-

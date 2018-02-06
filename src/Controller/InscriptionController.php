@@ -42,7 +42,7 @@
 
                 // Si l'adresse mail existe déjà en bdd on return le form avec message d'erreur
                 if(($personneBdd = $repository->findOneBy(['email' => $personneWaitList->getEmail()])) != null){
-                    return $this->render('formWaitList/inscription-form.html.twig', [
+                    return $this->render('frontOffice/formWaitList/inscription-form.html.twig', [
                         'mailExist' => "Adresse mail déjà utilisée",
                         'formWaitList' => $form->createView(),
                         'lastActu' => $lastActu,
@@ -58,7 +58,7 @@
                     $message = new \Swift_Message('NumericALL - Confirmation inscription liste d\'attente');
                     $message
                         ->setFrom('helloworldwf3@gmail.com')
-                        ->setBody($this->renderView('email/body-confirmation.html.twig', [
+                        ->setBody($this->renderView('backOffice/email/body-confirmation.html.twig', [
                             'prenom' => $personneWaitList->getFirstName(),
                             'nom' => $personneWaitList->getLastName(),
                         ]), 'text/html')
@@ -66,14 +66,14 @@
 
                     $mailer->send($message);
                     $formValid = 'exist';
-                    return $this->render('formWaitList/inscription-form.html.twig', [
+                    return $this->render('frontOffice/formWaitList/inscription-form.html.twig', [
                         'formWaitList' => $form->createView(),
                         'formValid' => $formValid,
                         'lastActu' => $lastActu,
                     ]);
                 }
             }
-            return $this->render('formWaitList/inscription-form.html.twig', [
+            return $this->render('frontOffice/formWaitList/inscription-form.html.twig', [
                 'formWaitList' => $form->createView(),
                 'lastActu' => $lastActu,
             ]);

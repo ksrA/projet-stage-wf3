@@ -11,9 +11,9 @@
 {% block body %}
 
 {% if formValid is defined %}
-    <div class="alert alert-success success" role="alert">
-        Demande envoyée.
-    </div>
+<div class="alert alert-success success" role="alert">
+    Demande envoyée.
+</div>
 {% else %}
 
 <!-- titre de page -->
@@ -34,4 +34,8 @@
 </div>
 {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/assets/js/form_contact-frontoffice-script.js"></script>
 {% endblock %}
