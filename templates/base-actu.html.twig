@@ -31,7 +31,7 @@
                 <!-- logo numericall -->
                 <div class="col-md-auto">
                     <a id="brand" class="navbar-brand" href="#">
-                        <img id="logo" src="assets/img/numericall_logo.png" alt="logo">
+                        <img id="logo" src="/assets/img/numericall_logo.png" alt="logo">
                     </a>
                 </div>
 
@@ -65,7 +65,7 @@
                             </li>
                             <!-- bouton actu -->
                             <li id="menubtn" class="nav-item menubtn-actu">
-                                <a id="lien" class="nav-link" href="{{ path('actu_page1') }}">Actualités</a>
+                                <a id="lien" class="nav-link" href="{{ path('page_actu', {'page' : 1}) }}">Actualités</a>
                             </li>
                             <!-- bouton faq -->
                             <li id="menubtn" class="nav-item menubtn-faq">
@@ -93,24 +93,11 @@
                         <nav>
                             <ul>
                                 <!-- les 5 derniers articles -->
-                                <li><a href="{{ path('article050118_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fit4CodingJobs Session 1 Day One au Technoport</a></li>
-                                <li><a href="{{ path('article081217_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>NumericALL lauréate au European Digital Skills Awards 2017</a></li>
-                                <li><a href="{{ path('article281117_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
-                                <li><a href="{{ path('article110917_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Prochaine réunion d’information: Formation Développeur WebForce3</a></li>
-                                <li><a href="{{ path('article070917_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Piennes : Session WF3 Agefos, 6 Novembre 2017 au 7 Février 2018</a></li>
-                                <li><a href="{{ path('article070917esch_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Esch Technoport : day one – S6</a></li>
-                            </ul>
-                        </nav>
-                        <h3>Archives</h3>
-                        <nav>
-                            <ul>
-                                <!-- articles trié par mois -->
-                                <li><a href="{{ path('actus_du_0118_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Janvier 2018</a></li>
-                                <li><a href="{{ path('actus_du_1217_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Décembre 2017</a></li>
-                                <li><a href="{{ path('actus_du_1117_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Novembre 2017</a></li>
-                                <li><a href="{{ path('actus_du_0917_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Septembre 2017</a></li>
-                                <li><a href="{{ path('actus_du_0517_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mai 2017</a></li>
-                                <li><a href="{{ path('actus_du_0117_page') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Janvier 2017</a></li>
+                                {% if lastActuAside is defined %}
+                                    {% for actu in lastActuAside %}
+                                        <li><a href="{{ path('actu_by_id', {'id' : actu.id}) }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{ actu.title }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                         </nav>
                     </aside>
@@ -162,7 +149,7 @@
                     <!-- logo Numericall -->
                     <div class="col-12 col-md-3 logo">
                         <a href="#">
-                            <img class="img-fluid" src="assets/img/numericall_logo.png" alt="logo-numericall">
+                            <img class="img-fluid" src="/assets/img/numericall_logo.png" alt="logo-numericall">
                         </a>
                     </div>
                     <!-- mini menu de navigation (le même que dans le header) -->
@@ -179,7 +166,7 @@
                             <ul>
                                 <li> # <a href="{{ path('numericall') }}"> Numericall </a> </li>
                                 <li> # <a href="{{ path('contact_page') }}"> Contact </a> </li>
-                                <li> # <a href="{{ path('actu_page1') }}"> Actualités </a> </li>
+                                <li> # <a href="{{ path('page_actu', {'page' : 1}) }}"> Actualités </a> </li>
                                 <li> # <a href="{{ path('faq') }}"> F.A.Q </a> </li>
                             </ul>
                         </div>
@@ -188,9 +175,11 @@
                     <div class="col-12 col-sm-8 col-md-5 arts">
                         <h3>Les dernières actualités :</h3>
                         <ul>
-                            <li><a href="{{ path('article050118_page') }}">Fit4CodingJobs Session 1 Day One au Technoport</a></li>
-                            <li><a href="{{ path('article081217_page') }}">NumericALL lauréate au European Digital Skills Awards 2017</a></li>
-                            <li><a href="{{ path('article281117_page') }}">Réunion info WebForce3 13 décembre 2017 à l’ADEM 9H</a></li>
+                            {% if lastActu is defined %}
+                                {% for actu in lastActu %}
+                                    <li><a href="{{ path('actu_by_id', {'id' : actu.id}) }}">{{ actu.title }}</a></li>
+                                {% endfor %}
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

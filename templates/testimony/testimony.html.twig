@@ -10,165 +10,183 @@
 
 {% block body %}
 
-<!-- titre de page -->
-<div class=" container-fluid" id="title1">
-    <div class="row">
-        <div class="col-12"><h1>Témoignage</h1></div>
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>Témoignage</h1></div>
+        </div>
     </div>
-</div>
 
-<h2>< Ils parlent de WebForce3 ></h2>
+    <h2>< Ils parlent de WebForce3 ></h2>
 
-<div class="card-columns">
-    <div class="card">
-        <p class="card-text">
-            <span class="quotes"><<</span><br>
-            J'ai réalisé la formation en 2015. Je n'avais aucune notion en arrivant à la WebForce3. Cette
-            formation, dense en intense, a tenu ses promesses avec des formateurs très disponibles. J'ai
-            pu faire de l'intégration dès la fin des cours grâce à un stage soumis durant la formation, puis
-            ensuite en entreprise. La WebForce3 m'a donné de solides et d'excellentes bases pour mon projet
-            professionnel.<br>
-            <span class="rquotes">>></span>
-            <span class="slash">/</span><br>
-            Chrystelle R.<br>
-            Ancienne étudiante
-        </p>
+    <div class="card-columns">
+        {% for testimony in testimonies %}
+            <div class="card">
+                <p class="card-text">
+                    <span class="quotes"><<</span><br>
+                    {{ testimony.testimony }}<br>
+                    <span class="rquotes">>></span>
+                    <span class="slash">/</span><br>
+                    {{ testimony.name }}
+                </p>
+            </div>
+        {% endfor %}
+        <!--
+            <div class="card">
+                <iframe width="560" height="315" src="METTRE ACCOLADES AVEC URL ICI !!!" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="card">
+                <p class="card-text">
+                    <span class="quotes"><<</span><br>
+                    J'ai réalisé la formation en 2015. Je n'avais aucune notion en arrivant à la WebForce3. Cette
+                    formation, dense en intense, a tenu ses promesses avec des formateurs très disponibles. J'ai
+                    pu faire de l'intégration dès la fin des cours grâce à un stage soumis durant la formation, puis
+                    ensuite en entreprise. La WebForce3 m'a donné de solides et d'excellentes bases pour mon projet
+                    professionnel.<br>
+                    <span class="rquotes">>></span>
+                    <span class="slash">/</span><br>
+                    Chrystelle R.<br>
+                    Ancienne étudiante
+                </p>
+            </div>
+            <div class="card">
+                <p class="card-text">
+                    <span class="quotes"><<</span><br>
+                    Nous venons d’embaucher Sylvain en CDI. Je vous remercie de nouveau pour les profils que vous
+                    nous avez transmis, qui reflètent le sérieux et la qualité de votre formation.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    David L.<br>
+                    Directeur ESN
+                </p>
+            </div>
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6TAjuotaLHw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    A force d’abnégation, j’ai fini par trouver une agence digitale qui m’embauche en CDI dans une
+                    nouvelle ville (Lyon), pour un nouveau chapitre de notre vie avec ma compagne. Cette formation
+                    a été pour moi un déclic, je me rends compte qu’à l’heure actuelle que je m’épanouis à 100% dans ce domaine.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Steven H.
+                </p>
+            </div>
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rguMDfS-fwg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="card">
+                <p id="casse-couille">
+                    <span class="quotes"><<</span><br>
+                    <b>85%</b> des stagiaires trouvent un travail à l'issue de cette formation. Leurs compétences acquises
+                    dans le codage fait toute la différence, notamment pour ceux qui sont graphistes.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    France 2
+                </p>
+            </div>
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Fr5ecCVP1oU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    La formation est <b>ouverte à tout le monde</b>, surtout à des candidats qui sont motivés.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Laurent G.<br>
+                    Co-Fondateur de l'école WebForce3
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    Je vous écris pour vous annoncer l'heureuse nouvelle de la pérennité de mon emploi actuel.
+                    Je suis en CDI comme Archiviste/Records Manager à l'école CentraleSupelec sur le plateau de Paris Saclay.
+                    Je mobilise aujourd'hui de nombreuses connaissances acquises lors de ma formation à WebForce3 :
+                    Gestion de projet, connaissance de l'environnement numérique et de ses mutations constantes,
+                    vigilance sur les formats, l'intéropérabilité, la sécurité informatique, la gestion et modélisation de bases
+                    de données et même un peu de modélisation orientée objet. <br>
+                    Merci à vous tous car je dois mon emploi d'aujourd'hui à l'adaptabilité technologique que m'a apportée
+                    la formation.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Mélina M.<br>
+                    Etudiante de la session 1
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    J'ai choisis cette formation car elle correspondait à un manque dans mes compétences
+                    informatiques et car elle était appliquée et pratique. Ce qui m'a
+                    attiré est le sérieux affiché de la présentation de la formation et des personnes de l'équipe.
+                    Cette formation m'a permis de me lancer en tant qu'auto-entrepreneur avec daavantage de
+                    confiance, pour proposer la création de sites et pour faire mon propre site. Je ne regrette pas
+                    la formation.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Julien B.<br>
+                    Etudiant de la session 1
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    Je suis actuellement sur Sydney. Freelance enregistré en Australie dans la région de
+                    New South Wales.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Eric G.<br>
+                    Etudiant de la session 1
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    Après un premier stage plutôt convaincant et un Contrat à Durée Déterminée dans les
+                    semaines qui ont suivi, j’ai eu la surprise d’être pris en CDI en début d’année ce qui me permet
+                    aujourd’hui de mettre en pratique une bonne partie de ce qui m’a été enseigné durant la formation.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Alexandre O.<br>
+                    Etudiant de la session 1
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    J’ai suivi la formation WebForce3, formation proposée par Numericall à
+                    Piennes. A la fin de ma formation j’ai pu trouver un emploi assez rapidement
+                    (au bout de 15 jours) en télétravail pour une agence web pour laquelle j’ai
+                    travaillé deux mois avant de me voir proposer deux autres places.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Pierre A.<br>
+                    Etudiant de la session 2
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    J'ai une bonne nouvelle concernant ma recherche
+                    d'emploi. J'ai réussi à décrocher un CDD chez Razorfish.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Gwendoline L.<br>
+                    Etudiante de la session 3
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    <span class="quotes"><<</span><br>
+                    Je rentre du Luxembourg où j'ai eu le plaisir de signer
+                    mon CDI avec Adneom.
+                    Ma prise de poste, chez atHome commence lundi
+                    matin.
+                    Merci pour tout.<br>
+                    <span class="rquotes">>></span><span class="slash">/</span><br>
+                    Amélie D.<br>
+                    Etudiante de la session 3
+                </p>
+            </div>
+            -->
     </div>
-    <div class="card">
-        <p class="card-text">
-            <span class="quotes"><<</span><br>
-            Nous venons d’embaucher Sylvain en CDI. Je vous remercie de nouveau pour les profils que vous
-            nous avez transmis, qui reflètent le sérieux et la qualité de votre formation.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            David L.<br>
-            Directeur ESN
-        </p>
-    </div>
-    <div class="card">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/6TAjuotaLHw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            A force d’abnégation, j’ai fini par trouver une agence digitale qui m’embauche en CDI dans une
-            nouvelle ville (Lyon), pour un nouveau chapitre de notre vie avec ma compagne. Cette formation
-            a été pour moi un déclic, je me rends compte qu’à l’heure actuelle que je m’épanouis à 100% dans ce domaine.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Steven H.
-        </p>
-    </div>
-    <div class="card">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rguMDfS-fwg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
-    </div>
-    <div class="card">
-        <p id="casse-couille">
-            <span class="quotes"><<</span><br>
-            <b>85%</b> des stagiaires trouvent un travail à l'issue de cette formation. Leurs compétences acquises
-            dans le codage fait toute la différence, notamment pour ceux qui sont graphistes.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            France 2
-        </p>
-    </div>
-    <div class="card">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Fr5ecCVP1oU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            La formation est <b>ouverte à tout le monde</b>, surtout à des candidats qui sont motivés.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Laurent G.<br>
-            Co-Fondateur de l'école WebForce3
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            Je vous écris pour vous annoncer l'heureuse nouvelle de la pérennité de mon emploi actuel.
-            Je suis en CDI comme Archiviste/Records Manager à l'école CentraleSupelec sur le plateau de Paris Saclay.
-            Je mobilise aujourd'hui de nombreuses connaissances acquises lors de ma formation à WebForce3 :
-            Gestion de projet, connaissance de l'environnement numérique et de ses mutations constantes,
-            vigilance sur les formats, l'intéropérabilité, la sécurité informatique, la gestion et modélisation de bases
-            de données et même un peu de modélisation orientée objet. <br>
-            Merci à vous tous car je dois mon emploi d'aujourd'hui à l'adaptabilité technologique que m'a apportée
-            la formation.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Mélina M.<br>
-            Etudiante de la session 1
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            J'ai choisis cette formation car elle correspondait à un manque dans mes compétences
-            informatiques et car elle était appliquée et pratique. Ce qui m'a
-            attiré est le sérieux affiché de la présentation de la formation et des personnes de l'équipe.
-            Cette formation m'a permis de me lancer en tant qu'auto-entrepreneur avec daavantage de
-            confiance, pour proposer la création de sites et pour faire mon propre site. Je ne regrette pas
-            la formation.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Julien B.<br>
-            Etudiant de la session 1
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            Je suis actuellement sur Sydney. Freelance enregistré en Australie dans la région de
-            New South Wales.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Eric G.<br>
-            Etudiant de la session 1
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            Après un premier stage plutôt convaincant et un Contrat à Durée Déterminée dans les
-            semaines qui ont suivi, j’ai eu la surprise d’être pris en CDI en début d’année ce qui me permet
-            aujourd’hui de mettre en pratique une bonne partie de ce qui m’a été enseigné durant la formation.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Alexandre O.<br>
-            Etudiant de la session 1
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            J’ai suivi la formation WebForce3, formation proposée par Numericall à
-            Piennes. A la fin de ma formation j’ai pu trouver un emploi assez rapidement
-            (au bout de 15 jours) en télétravail pour une agence web pour laquelle j’ai
-            travaillé deux mois avant de me voir proposer deux autres places.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Pierre A.<br>
-            Etudiant de la session 2
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            J'ai une bonne nouvelle concernant ma recherche
-            d'emploi. J'ai réussi à décrocher un CDD chez Razorfish.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Gwendoline L.<br>
-            Etudiante de la session 3
-        </p>
-    </div>
-    <div class="card">
-        <p>
-            <span class="quotes"><<</span><br>
-            Je rentre du Luxembourg où j'ai eu le plaisir de signer
-            mon CDI avec Adneom.
-            Ma prise de poste, chez atHome commence lundi
-            matin.
-            Merci pour tout.<br>
-            <span class="rquotes">>></span><span class="slash">/</span><br>
-            Amélie D.<br>
-            Etudiante de la session 3
-        </p>
-    </div>
-</div>
 {% endblock %}

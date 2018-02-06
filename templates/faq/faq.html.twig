@@ -5,74 +5,86 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/assets/css/faq.css">
+    <link rel="stylesheet" href="assets/css/faq.css">
 {% endblock %}
 
 {% block body %}
 
-<!-- titre de page -->
-<div class=" container-fluid" id="title1">
-    <div class="row">
-        <div class="col-12"><h1>F.A.Q</h1></div>
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-12"><h1>F.A.Q</h1></div>
+        </div>
     </div>
-</div>
 
-<h2>< Foire aux Questions ></h2>
-
-<div class="container">
-    <p>
-        <a class="question" href="javascript:visibilite('response1');">
-            Comment recrutez-vous ?
-        </a>
-    </p>
-    <div class="faq-response" id="response1" style="display:none">
-        <p>Mauris feugiat sapien augue, ac efficitur neque blandit vitae. Maecenas iaculis ultricies tristique. Vestibulum eget convallis nisl. Mauris tristique malesuada lorem ac volutpat. Donec semper mauris in nunc viverra, vel vestibulum arcu blandit. Suspendisse a cursus elit. </p>
+    <h2>< Foire aux Questions ></h2>
+    {% for faq in faqs %}
+        <div class="container">
+            <p>
+                <a class="question" href="javascript:visibilite('response{{ faq.id }}');">
+                    {{ faq.question }}
+                </a>
+            </p>
+            <div class="faq-response" id="response{{ faq.id }}" style="display:none">
+                <p>{{ faq.response }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <!--
+    <div class="container">
+        <p>
+            <a class="question" href="javascript:visibilite('response1');">
+                Comment recrutez-vous ?
+            </a>
+        </p>
+        <div class="faq-response" id="response1" style="display:none">
+            <p>Mauris feugiat sapien augue, ac efficitur neque blandit vitae. Maecenas iaculis ultricies tristique. Vestibulum eget convallis nisl. Mauris tristique malesuada lorem ac volutpat. Donec semper mauris in nunc viverra, vel vestibulum arcu blandit. Suspendisse a cursus elit. </p>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <p>
-        <a class="question" href="javascript:visibilite('response2');">
-            Quelle est la prochaine date de réunion d'information ?
-        </a>
-    </p>
-    <div class="faq-response" id="response2" style="display:none">
-        <p>Aenean tempus turpis arcu, vel venenatis quam porta in. Integer sollicitudin tellus dui, in lobortis ex varius in. Ut malesuada tortor ut justo ullamcorper commodo.</p>
+    <div class="container">
+        <p>
+            <a class="question" href="javascript:visibilite('response2');">
+                Quelle est la prochaine date de réunion d'information ?
+            </a>
+        </p>
+        <div class="faq-response" id="response2" style="display:none">
+            <p>Aenean tempus turpis arcu, vel venenatis quam porta in. Integer sollicitudin tellus dui, in lobortis ex varius in. Ut malesuada tortor ut justo ullamcorper commodo.</p>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <p>
-        <a class="question" href="javascript:visibilite('response3');">
-            Quels sont les modes de financement ?
-        </a>
-    </p>
-    <div class="faq-response" id="response3" style="display:none">
-        <p>Fusce nisi ante, finibus sagittis diam in, imperdiet maximus purus. Aliquam finibus quis dolor iaculis convallis. Morbi varius turpis nec orci pulvinar luctus.</p>
+    <div class="container">
+        <p>
+            <a class="question" href="javascript:visibilite('response3');">
+                Quels sont les modes de financement ?
+            </a>
+        </p>
+        <div class="faq-response" id="response3" style="display:none">
+            <p>Fusce nisi ante, finibus sagittis diam in, imperdiet maximus purus. Aliquam finibus quis dolor iaculis convallis. Morbi varius turpis nec orci pulvinar luctus.</p>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <p>
-        <a class="question" href="javascript:visibilite('response4');">
-            Est-ce pour tout le monde ?
-        </a>
-    </p>
-    <div class="faq-response" id="response4" style="display:none">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla elementum quam non sollicitudin gravida.</p>
+    <div class="container">
+        <p>
+            <a class="question" href="javascript:visibilite('response4');">
+                Est-ce pour tout le monde ?
+            </a>
+        </p>
+        <div class="faq-response" id="response4" style="display:none">
+            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla elementum quam non sollicitudin gravida.</p>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <p>
-        <a class="question" href="javascript:visibilite('response5');">
-            Y a-t-il des prérequis ?
-        </a>
-    </p>
-    <div class="faq-response" id="response5" style="display:none">
-        <p>Donec consectetur risus at lacinia gravida. Vivamus eros orci, faucibus quis pellentesque eget, consequat eu neque.</p>
+    <div class="container">
+        <p>
+            <a class="question" href="javascript:visibilite('response5');">
+                Y a-t-il des prérequis ?
+            </a>
+        </p>
+        <div class="faq-response" id="response5" style="display:none">
+            <p>Donec consectetur risus at lacinia gravida. Vivamus eros orci, faucibus quis pellentesque eget, consequat eu neque.</p>
+        </div>
     </div>
-</div>
-
-<script src="assets/js/faq.js"></script>
+    -->
+    <script src="assets/js/faq.js"></script>
 {% endblock %}

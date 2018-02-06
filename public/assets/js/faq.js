@@ -1,4 +1,4 @@
-var response=document.getElementById('response1');
+var response=document.getElementById('response3');
 function visibilite(divId)
 {
     response.style.display='none';

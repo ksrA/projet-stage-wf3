@@ -83,7 +83,7 @@
                         );
 
                         $picture->move(
-                            $this->getParameter('uploads_directory'),
+                            $this->getParameter('uploads_directory_img'),
                             $pictureName
                         );
 

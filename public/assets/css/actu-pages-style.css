@@ -224,7 +224,7 @@ aside { background-color: rgb(80, 80, 230); } */
 
 
 /* bouton : */
-#pagination-menu div.button-div div span {
+#pagination-menu div.button-div div .pagine-active {
     display: block;
     margin-left: 1.5em;
     background-color: #da1816;
@@ -252,8 +252,6 @@ aside { background-color: rgb(80, 80, 230); } */
     color: #da1816;
     border-color: #da1816;
 }
-
-
 
 /* next or previous : */
 #pagination-menu div.nextorprev-div div div a {

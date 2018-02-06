@@ -1,0 +1,104 @@
+{% extends "base-actu.html.twig" %}
+
+{% block title %}
+    Actualités page1 - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- ma feuille de style -->
+    <link rel="stylesheet" href="/assets/css/actu-pages-style.css">
+{% endblock %}
+
+{% block body1 %}
+    <!-- titre de page -->
+    <div class=" container-fluid" id="title1">
+        <div class="row">
+            <div class="col-8"><h1>Actualités</h1></div>
+            <div class="col-4 row justify-content-end"> <a href="#pagination-menu"> Menu pagination </a> </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body2 %}
+        <section class="col-lg-9" id="articles">
+            {% for actu in actus %}
+                <article class="container-fluid">
+                    <div class="row justify-content-end">
+                        <div class="col-md-6">
+                            <div class="container box-item">
+                                <img class="img-fluid" src="/uploads/img/actu/{{ actu.img }}" alt="Screen-Shot-2018-01-04-at-11.45.32">
+                                <div class="row align-items-center items">
+                                    <div class="col-6 link">
+                                        <a href="{{ path('actu_by_id', {'id' : actu.id}) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                    </div>
+                                    <div class="col-6 zoom">
+                                        {# Zoom image #}
+                                        <a href="/uploads/img/actu/{{ actu.img }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="title2 mt-md-0">
+                                <a href="{{ path('actu_by_id', {'id' : actu.id}) }}"> <h2>{{ actu.title }}</h2> </a>
+                                <div class="animate"></div>
+                            </div>
+                            <span>{{ actu.date|date('d/m/Y') }}</span>
+                            {% if actu.content is defined %}
+                                <p>{{ actu.content|slice(0, 100) }}[...]</p>
+                            {% endif %}
+                        </div>
+                        <div class="read-more">
+                            <a href="{{ path('actu_by_id', {'id' : actu.id}) }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                            <div class="animate"></div>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        <nav class='row' id="pagination-menu">
+            <div class="col-md-3 container nextorprev-div">
+                <div class="row justify-content-start mt-md-5 mb-md-5">
+                    <div class="prev">
+                        {% if page > 1 %}
+                            <a href="{{ path('page_actu', {'page' : page - 1}) }}">
+                                <strong>Page précédente</strong>
+                            </a>
+                        {% endif %}
+                        <div class="animate"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 container button-div">
+                <div class="row justify-content-center mt-5 mb-md-5">
+                    {#
+                        Revoir style quand on est sur la page
+                        <span class="ml-0">1</span>
+                    #}
+                    {% for i in 1..nbPage %}
+                        {% if i == page %}
+                            <a href="{{ path('page_actu', {'page' : i}) }}" class="pagine-active">{{ i }}</a>
+                        {% else %}
+                            <a href="{{ path('page_actu', {'page' : i}) }}" class="button">{{ i }}</a>
+                        {% endif %}
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-3 container nextorprev-div">
+                <div class="row justify-content-end mt-5 mb-5">
+                    <div class="next">
+                        {% if page < nbPage %}
+                            <a href="{{ path('page_actu', {'page' : page + 1}) }}">
+                                <strong>Page suivante</strong>
+                            </a>
+                        {% endif %}
+                        <div class="animate"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </section>
+{% endblock %}

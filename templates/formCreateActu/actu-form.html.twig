@@ -1,0 +1,26 @@
+{% extends "base-backoffice.html.twig" %}
+
+
+{% block title %}
+    Créer un article - Numericall
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    {% if change is defined %}
+        <p>Div success. Article enregistré en bdd et publié</p>
+    {% else %}
+        <h1 class="display-4"> Créer une actualité </h1>
+
+        {% form_theme formCreateActu 'bootstrap_4_layout.html.twig' %}
+
+        {{ form(formCreateActu) }}
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

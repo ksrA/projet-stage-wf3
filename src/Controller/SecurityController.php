@@ -612,7 +612,7 @@
             $user = $this->getUser();
 
             //Création tableau de cléf et valeur pour le ChoiceType du formulaire
-            //Afin de faire en sorte que l'utilisateur qui utilise ce formulaire ne puisse pas se supprimer lui même
+            //Afin de faire en sorte que l'utilisateur qui utilise ce formulaire ne puisse pas changer son propre role lui même
             //C'est une protection si jamais c'est le seul SUPER_ADMIN
             $repository = $this->getDoctrine()->getRepository(User::class);
             $personBdd = $repository->findAll();
@@ -623,9 +623,13 @@
                 }
             }
 
-            if (isset($value) && isset($key)) {
-                $arrayUser = array_combine($value, $key);
+            if (!isset($value) && !isset($key)) {
+                return $this->render('formChangeRole/change-role.html.twig', [
+                    'notchange' => 'exist',
+                ]);
             }
+
+            $arrayUser = array_combine($value, $key);
 
             $form = $this->createFormBuilder()
                 ->add('username', ChoiceType::class, [
@@ -641,6 +645,7 @@
                 ])
                 ->add('save', SubmitType::class, ['label' => 'Changer rôle de l\'utilisateur'])
                 ->getForm();
+
 
             $form->handleRequest($request);
 
@@ -672,7 +677,7 @@
             return $this->render('formChangeRole/change-role.html.twig', [
                 'formChangeRole' => $form->createView(),
                 'notchange' => $notchange,
-
+                'notEmpty' => 'exist',
             ]);
         }
     }

@@ -2,6 +2,7 @@
 
     namespace App\Controller;
 
+    use App\Entity\Actu;
     use App\Entity\Inscription;
     use App\Form\InscriptionAddType;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,6 +20,10 @@
          */
         public function inscriptionForm(Request $request, \Swift_Mailer $mailer)
         {
+            $repository = $this->getDoctrine()->getRepository(Actu::class);
+            $lastActu = $repository->findTheLastActu();
+
+            //Création d'un objet de type inscription
             $inscription = new Inscription();
             $inscription->setStatus('waitlisted');
 
@@ -40,6 +45,7 @@
                     return $this->render('formWaitList/inscription-form.html.twig', [
                         'mailExist' => "Adresse mail déjà utilisée",
                         'formWaitList' => $form->createView(),
+                        'lastActu' => $lastActu,
                     ]);
                 }
 
@@ -63,9 +69,13 @@
                     return $this->render('formWaitList/inscription-form.html.twig', [
                         'formWaitList' => $form->createView(),
                         'formValid' => $formValid,
+                        'lastActu' => $lastActu,
                     ]);
                 }
             }
-            return $this->render('formWaitList/inscription-form.html.twig', ['formWaitList' => $form->createView()]);
+            return $this->render('formWaitList/inscription-form.html.twig', [
+                'formWaitList' => $form->createView(),
+                'lastActu' => $lastActu,
+            ]);
         }
     }

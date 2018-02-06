@@ -2,6 +2,7 @@
 
     namespace App\Controller;
 
+    use App\Entity\Actu;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,45 +20,30 @@
     class DefaultController extends Controller
     {
         /**
-         * @Route("/test", name="test_page")
-         */
-        public function test()
-        {
-            return $this->render('test.html.twig');
-        }
-
-        /**
-         * @Route("/numericall-description", name="numericall")
-         */
-        public function numericall()
-        {
-            return $this->render('numericall-description.html.twig');
-        }
-
-        /**
          * @Route("/home", name="home")
          */
         public function home()
         {
-            return $this->render('home/home.html.twig');
+            $repository = $this->getDoctrine()->getRepository(Actu::class);
+            $lastActu = $repository->findTheLastActu();
+
+            return $this->render('home/home.html.twig', [
+                'lastActu' => $lastActu,
+            ]);
         }
 
         /**
-         * @Route("/faq", name="faq")
+         * @Route("/numericall", name="numericall")
          */
-        public function faq()
+        public function numericall()
         {
-            return $this->render('faq/faq.html.twig');
-        }
+            $repository = $this->getDoctrine()->getRepository(Actu::class);
+            $lastActu = $repository->findTheLastActu();
 
-        /**
-         * @Route("/testimony", name="testimony")
-         */
-        public function testimony()
-        {
-            return $this->render('testimony/testimony.html.twig');
+            return $this->render('numericall-description.html.twig', [
+                'lastActu' => $lastActu,
+            ]);
         }
-
 
         //Formulaire de contact frontOffice. Création du formulaire et envoie de mail
 
@@ -66,6 +52,9 @@
          */
         public function contact(Request $request, \Swift_Mailer $mailer)
         {
+            $repository = $this->getDoctrine()->getRepository(Actu::class);
+            $lastActu = $repository->findTheLastActu();
+
             $form = $this->createFormBuilder()
                 ->add('lastname', TextType::class, [
                     'label' => 'Nom : ',
@@ -127,14 +116,17 @@
                 $mailer->send($message);
 
                 $formValid = 'exist';
+
                 return $this->render('formContact/contact.html.twig', [
                     'formContact' => $form->createView(),
                     'formValid' => $formValid,
                     'message' => $data['message'],
+                    'lastActu' => $lastActu,
                 ]);
             }
             return $this->render('formContact/contact.html.twig', array(
                 'formContact' => $form->createView(),
+                'lastActu' => $lastActu,
             ));
         }
     }
