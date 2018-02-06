@@ -28,53 +28,88 @@
     <!-- HEADER - NAV MENU -->
     <header class="container-fluid justify-content-center menu">
         <div class="row ">
-            <div class="col-4 col-lg-12 mini-menu-contain recrut">
-                <h2>RECRUTEMENT</h2>
-                <ul>
-                    <a class="creer-reunion" href="{{ path('select_list') }}">
-                        <li>Créer une réunion</li>
-                    </a>
-                    <a class="note-candidat" href="{{ path('note_page') }}">
-                        <li>Note candidat</li>
-                    </a>
-                    <a class="info-session" href="{{ path('session_info') }}">
-                        <li>Info session</li>
-                    </a>
-                </ul>
+
+            <div class="col-6 col-lg-12 mini-menu-contain recrut">
+                <a id="btn-h2-recrut" class="btn-h2" data-toggle="collapse" href="#collapseRecrut" role="button" aria-expanded="false" aria-controls="collapseRecrut">
+                    <h2>RECRUTEMENT</h2>
+                </a>
+                <div class="collapse" id="collapseRecrut">
+                    <ul>
+                        <a class="creer-reunion" href="{{ path('select_list') }}">
+                            <li>Créer une réunion</li>
+                        </a>
+                        <a class="note-candidat" href="{{ path('note_page') }}">
+                            <li>Note candidat</li>
+                        </a>
+                        <a class="info-session" href="{{ path('session_info') }}">
+                            <li>Info session</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
-            <div class="col-4 col-lg-12 mini-menu-contain param-compt">
-                <h2>PARAMETRE DU COMPTE</h2>
-                <ul>
-                    <a class="change-mail" href="{{ path('change_email') }}">
-                        <li>Changer Email</li>
-                    </a>
-                    <a class="change-password" href="{{ path('change_password') }}">
-                        <li>Changer Mot de passe</li>
-                    </a>
-                </ul>
+
+            <div class="col-6 col-lg-12 mini-menu-contain add-content">
+                <a id="btn-h2-content" class="btn-h2" data-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
+                    <h2>AJOUT DE CONTENUS</h2>
+                </a>
+                <div class="collapse" id="collapseContent">
+                    <ul>
+                        <a class="add-actu" href="{{ path('create_actu') }}">
+                            <li>Ajout d'article</li>
+                        </a>
+                        <a class="add-testimony" href="">
+                            <li>Ajout de témoignages</li>
+                        </a>
+                        <a class="add-faq" href="">
+                            <li>Ajout F.A.Q</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
+
+            <div class="col-6 col-lg-12 mini-menu-contain param-compt">
+                <a id="btn-h2-compt" class="btn-h2" data-toggle="collapse" href="#collapseCompt" role="button" aria-expanded="false" aria-controls="collapseCompt">
+                    <h2>PARAMETRE DU COMPTE</h2>
+                </a>
+                <div class="collapse" id="collapseCompt">
+                    <ul>
+                        <a class="change-mail" href="{{ path('change_email') }}">
+                            <li>Changer Email</li>
+                        </a>
+                        <a class="change-password" href="{{ path('change_password') }}">
+                            <li>Changer Mot de passe</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
             {% if is_granted('ROLE_SUPERADMIN') %}
-            <div class="col-4 col-lg-12 mini-menu-contain gest-admin">
+            <div class="col-6 col-lg-12 mini-menu-contain gest-admin">
+                <a id="btn-h2-amin" class="btn-h2" data-toggle="collapse" href="#collapseAdmin" role="button" aria-expanded="false" aria-controls="collapseAdmin">
                 <h2>GESTION ADMINISTRATEUR</h2>
-                <ul>
-                    <a class="create-admin" href="{{ path('create_user') }}">
-                        <li>Créer un administrateur</li>
-                    </a>
-                    <a class="remove-admin" href="{{ path('delete_user') }}">
-                        <li>Supprimer un administrateur</li>
-                    </a>
-                    <a class="change-role-admin" href="{{ path('change_role') }}">
-                        <li>Changer le role d'un administrateur</li>
-                    </a>
-                </ul>
+                </a>
+                <div class="collapse" id="collapseAdmin">
+                    <ul>
+                        <a class="create-admin" href="{{ path('create_user') }}">
+                            <li>Créer un administrateur</li>
+                        </a>
+                        <a class="remove-admin" href="{{ path('delete_user') }}">
+                            <li>Supprimer un administrateur</li>
+                        </a>
+                        <a class="change-role-admin" href="{{ path('change_role') }}">
+                            <li>Changer le role d'un administrateur</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
             {% endif %}
+
         </div>
     </header>
 
     <div class="container-fluid">
         <div class="row justify-content-end">
-            <a id="buton-deco" class="btn btn-danger" href="{{ path('logout') }}" role="button">Déconexion</a>
+            <a id="buton-deco" class="btn btn-danger" href="{{ path('logout') }}" role="button">Déconnexion</a>
         </div>
     </div>
 

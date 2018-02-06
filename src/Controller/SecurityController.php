@@ -31,11 +31,11 @@
         public function registerUser(UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
-            $pass = 'anicetk';
+            $pass = 'clement';
             $passHash = $encoder->encodePassword($user, $pass); // password_hash
             $user->setPassword($passHash);
-            $user->setUsername('anicetk');
-            $user->setEmail('anicetkesraoui@gmail.com');
+            $user->setUsername('clement');
+            $user->setEmail('clems21094@hotmail.fr');
 
             //Génération de 10 bytes aléatoires puis transformation en chaine hexadecimale
             //Hash qui sera dans l'url afin qu'elle soit unique lorsqu'il voudra reset son mdp

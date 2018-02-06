@@ -10,6 +10,12 @@
 
 {% block body %}
 
+{% if formValid is defined %}
+    <div class="alert alert-success success" role="alert">
+        Demande envoyée.
+    </div>
+{% else %}
+
 <!-- titre de page -->
 <div class=" container-fluid" id="title1">
     <div class="row">
@@ -17,11 +23,6 @@
     </div>
 </div>
 
-{% if formValid is defined %}
-    <div class="alert alert-success success" role="alert">
-        Demande envoyée.
-    </div>
-{% else %}
 <h1 id="title">Contactez-Nous</h1>
 <div class="container" id="formContainer">
     <div class="row justify-content-around" id="formyo">
