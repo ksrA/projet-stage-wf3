@@ -9,12 +9,20 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if formValid is defined %}
+        <div class="alert alert-success success" role="alert">
+            Inscription envoyée.
+        </div>
+    {% else %}
+
     <!-- titre de page -->
     <div class=" container-fluid" id="title1">
         <div class="row">
             <div class="col-12"><h1>S'inscrire</h1></div>
         </div>
     </div>
+
 
     {% if formValid is defined %}
     <div class="container">
