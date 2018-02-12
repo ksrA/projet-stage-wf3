@@ -29,11 +29,11 @@
                                 <img class="img-fluid" src="/uploads/img/actu/{{ actu.img }}" alt="Screen-Shot-2018-01-04-at-11.45.32">
                                 <div class="row align-items-center items">
                                     <div class="col-6 link">
-                                        <a href="{{ path('actu_by_id', {'id' : actu.id}) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                        <a href="{{ path('actu_by_id', {'id' : actu.id}) }}"> <i class="fas fa-link link" aria-hidden="true"></i> </a>
                                     </div>
                                     <div class="col-6 zoom">
                                         {# Zoom image #}
-                                        <a href="/uploads/img/actu/{{ actu.img }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                        <a href="/uploads/img/actu/{{ actu.img }}"> <i class="fas fa-search zoom" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -45,16 +45,18 @@
                             </div>
                             <span>{{ actu.date|date('d/m/Y') }}</span>
                             {% if actu.content is defined %}
-                                <p>{{ actu.content|slice(0, 100) }}[...]</p>
+                                <p>{{ actu.content|striptags|slice(0, 100) }}[...]</p>
                             {% endif %}
                         </div>
                         <div class="read-more">
-                            <a href="{{ path('actu_by_id', {'id' : actu.id}) }}">En savoir plus <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                            <a href="{{ path('actu_by_id', {'id' : actu.id}) }}">En savoir plus <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> </a>
                             <div class="animate"></div>
                         </div>
                     </div>
                 </article>
             {% endfor %}
+
+        
         <nav class='row' id="pagination-menu">
             <div class="col-md-3 container nextorprev-div">
                 <div class="row justify-content-start mt-md-5 mb-md-5">

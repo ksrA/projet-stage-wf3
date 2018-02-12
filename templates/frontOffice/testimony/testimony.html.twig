@@ -21,11 +21,13 @@
 
     <div class="card-columns">
         {% for testimony in testimonies %}
-            {% if testimony.testimony is defined %}
+            {% if testimony.id != 5 %}
             <div class="card">
                 <p class="card-text">
+                    {% if testimony.testimony is defined %}
                     <span class="quotes"><<</span><br>
                     {{ testimony.testimony }}<br>
+                    {% endif %}
                     <span class="rquotes">>></span>
                     {% if testimony.name is defined %}
                     <span class="slash">/</span><br>
@@ -34,9 +36,9 @@
                 </p>
             </div>
             {% endif %}
-            {% if testimony.url is defined %}
+            {% if testimony.id == 5 %}
             <div class="card">
-                <iframe width="560" height="315" src="{{ testimony.url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6TAjuotaLHw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
             {% endif %}

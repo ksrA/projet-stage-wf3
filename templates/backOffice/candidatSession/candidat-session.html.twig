@@ -49,13 +49,13 @@
                                 {% if key == session.id %}
                                     {% for val in value %}
                                         <tr>
-                                            <td style="border-collapse: collapse;"><img src="/uploads/img/{{ val.picture }}" height="100" width="90"/></td>
+                                            <td style="border-collapse: collapse;"><img src="/uploads/img/pic_candidat/{{ val.picture }}" height="100" width="90"/></td>
                                             <td class="pt-5">{{ val.firstName }}</td>
                                             <td class="pt-5">{{ val.lastName }}</td>
                                             <td class="pt-5">{{ val.phoneNumber }}</td>
                                             <td class="pt-5">{{ val.email }}</td>
-                                            <td class="pt-5"><a href="/uploads/{{ val.resume }}">CV</a></td>
-                                            <td class="pt-5"><a href="/uploads/{{ val.coverLetter }}">Lettre de motivation</a></td>
+                                            <td class="pt-5"><a href="/uploads/cv/{{ val.resume }}">CV</a></td>
+                                            <td class="pt-5"><a href="/uploads/lm/{{ val.coverLetter }}">Lettre de motivation</a></td>
                                         </tr>
                                     {% endfor %}
                                 {% endif %}

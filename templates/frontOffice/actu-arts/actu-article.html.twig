@@ -27,14 +27,14 @@
                     <div class="previous">
                     {% if precActu is defined %}
 
-                        <a href="{{ path('actu_by_id', {'id' : precActu.id}) }}"> <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Précédant article </a>
+                        <a href="{{ path('actu_by_id', {'id' : precActu.id}) }}"> <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Précédant article </a>
                         <div class="animate"></div>
                     {% endif %}
                     </div>
 
                     <div class=" next">
                         {% if nextActu is defined %}
-                        <a href="{{ path('actu_by_id', {'id' : nextActu.id}) }}"> Article suivant <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                        <a href="{{ path('actu_by_id', {'id' : nextActu.id}) }}"> Article suivant <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> </a>
                         <div class="animate"></div>
                         {% endif %}
                     </div>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="/uploads/img/actu/{{ actu.img }}">
-                        <img src="/uploads/img/actu/{{ actu.img }}"/>
+                        <img src="/uploads/img/actu/{{ actu.img }}" height="420" width="600"/>
                     </a>
                 </div>
                 <div class="col-12">
@@ -55,7 +55,7 @@
                     </div>
                     <p>
                         {% if actu.content is defined %}
-                            {{ actu.content }}
+                            {{ actu.content|raw }}
                         {% endif %}
                     </p>
                 </div>

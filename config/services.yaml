@@ -9,6 +9,8 @@ parameters:
     mailer_port: 587
     mailer_user: helloworldwf3@gmail.com
     mailer_password: webforce3
+    disable_delivery: false
+    intercept_redirects: true
     uploads_directory: '%kernel.project_dir%/public/uploads'
     uploads_directory_lm: '%kernel.project_dir%/public/uploads/lm'
     uploads_directory_cv: '%kernel.project_dir%/public/uploads/cv'

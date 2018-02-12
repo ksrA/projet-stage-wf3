@@ -8,7 +8,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-    #stream_options:
-    #    ssl:
-    #        verify_peer: false
-    #        verify_peer_name: false
+    stream_options:
+        ssl:
+            verify_peer: false
+            verify_peer_name: false

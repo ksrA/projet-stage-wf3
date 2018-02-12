@@ -90,14 +90,14 @@ aside { background-color: rgb(80, 80, 230); } */
     margin: 0 0 0 0;
 }
 
-#articles article div.box-item div.items a i {
+#articles article div.box-item div.items a {
     color: white;
     transition: all 0.3s ease;
     font-size: 200%;
 }
-#articles article div.box-item div.items a i:hover,
-#articles article div.box-item div.items a i:focus,
-#articles article div.box-item div.items a i:active {
+#articles article div.box-item div.items a:hover,
+#articles article div.box-item div.items a:focus,
+#articles article div.box-item div.items a:active {
     color: #2a2a2a;
 }
 

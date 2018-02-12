@@ -1,5 +1,5 @@
 // function([string1, string2],target)    
-consoleText(["Réinisialisation du mot de passe"], 'text');
+consoleText(["Réinitialisation du mot de passe"], 'text');
 
 function consoleText(words, id) {
   var visible = true;

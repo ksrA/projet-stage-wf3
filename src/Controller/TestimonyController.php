@@ -41,7 +41,6 @@ class TestimonyController extends Controller
                 'attr' => ['placeholder' => 'Ecrire le témoignage'],
                 'constraints' => [
                     new NotBlank(),
-                    new Length(['max' => 50]),
                 ],
             ])
             ->add('name', TextType::class, [
